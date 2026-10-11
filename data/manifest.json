@@ -19,6 +19,12 @@
       "name": "Mandarin (Kangxi Radicals 1-214)",
       "file": "./data/zh-radicals.json",
       "defaultMode": "standard"
+    },
+    {
+      "id": "fr-top500",
+      "name": "French Top 500 Words",
+      "file": "./data/fr-top500.json",
+      "defaultMode": "standard"
     }
   ]
 }

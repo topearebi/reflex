@@ -8,7 +8,7 @@
  */
 
 const SHELL_CACHE = "speedrecall-shell-v2";
-const DATA_CACHE = "speedrecall-data-v1";
+const DATA_CACHE = "speedrecall-data-v2";
 
 // Core static assets required for the PWA application shell
 const APP_SHELL = [

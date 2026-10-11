@@ -1,239 +1,1355 @@
 {
-  "name": "Mandarin (HSK 1 Core)",
-  "defaultMode": "pinyin-number",
+  "name": "HSK 1 Vocabulary",
+  "defaultMode": "standard",
   "cards": [
     {
-      "id": "zh-001",
-      "group": "Pronouns",
-      "unit": "Personal",
+      "id": "hsk1-001",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
       "prompt": "我",
-      "subtitle": "I / me",
+      "subtitle": "I",
       "answers": ["wo3"],
       "weight": 1.0
     },
     {
-      "id": "zh-002",
-      "group": "Pronouns",
-      "unit": "Personal",
+      "id": "hsk1-002",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
+      "prompt": "我们",
+      "subtitle": "we",
+      "answers": ["wo3men"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-003",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
       "prompt": "你",
-      "subtitle": "you (singular)",
+      "subtitle": "you",
       "answers": ["ni3"],
       "weight": 1.0
     },
     {
-      "id": "zh-003",
-      "group": "Pronouns",
-      "unit": "Personal",
+      "id": "hsk1-004",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
       "prompt": "他",
-      "subtitle": "he / him",
+      "subtitle": "he",
       "answers": ["ta1"],
       "weight": 1.0
     },
     {
-      "id": "zh-004",
-      "group": "Pronouns",
-      "unit": "Personal",
+      "id": "hsk1-005",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
       "prompt": "她",
-      "subtitle": "she / her",
+      "subtitle": "she",
       "answers": ["ta1"],
       "weight": 1.0
     },
     {
-      "id": "zh-005",
-      "group": "Pronouns",
-      "unit": "Interrogative",
+      "id": "hsk1-006",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
+      "prompt": "这",
+      "subtitle": "this",
+      "answers": ["zhe4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-007",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
+      "prompt": "那",
+      "subtitle": "that",
+      "answers": ["na4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-008",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
+      "prompt": "哪",
+      "subtitle": "which",
+      "answers": ["na3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-009",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
+      "prompt": "哪儿",
+      "subtitle": "where",
+      "answers": ["nar3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-010",
+      "group": "Words 001-010",
+      "unit": "Unit 01",
       "prompt": "谁",
       "subtitle": "who",
-      "answers": ["shei2", "shui2"],
+      "answers": ["shei2"],
       "weight": 1.0
     },
     {
-      "id": "zh-006",
-      "group": "Pronouns",
-      "unit": "Interrogative",
+      "id": "hsk1-011",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
       "prompt": "什么",
       "subtitle": "what",
-      "answers": ["shen2me", "shen2me5"],
+      "answers": ["shen2me"],
       "weight": 1.0
     },
     {
-      "id": "zh-007",
-      "group": "Numbers",
-      "unit": "1 to 5",
+      "id": "hsk1-012",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
+      "prompt": "多少",
+      "subtitle": "how many",
+      "answers": ["duo1shao"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-013",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
+      "prompt": "几",
+      "subtitle": "how many",
+      "answers": ["ji3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-014",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
+      "prompt": "怎么",
+      "subtitle": "how",
+      "answers": ["zen3me"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-015",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
+      "prompt": "怎么样",
+      "subtitle": "how about",
+      "answers": ["zen3me-yang4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-016",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
       "prompt": "一",
       "subtitle": "one",
       "answers": ["yi1"],
       "weight": 1.0
     },
     {
-      "id": "zh-008",
-      "group": "Numbers",
-      "unit": "1 to 5",
+      "id": "hsk1-017",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
       "prompt": "二",
       "subtitle": "two",
       "answers": ["er4"],
       "weight": 1.0
     },
     {
-      "id": "zh-009",
-      "group": "Numbers",
-      "unit": "1 to 5",
+      "id": "hsk1-018",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
       "prompt": "三",
       "subtitle": "three",
       "answers": ["san1"],
       "weight": 1.0
     },
     {
-      "id": "zh-010",
-      "group": "Numbers",
-      "unit": "1 to 5",
+      "id": "hsk1-019",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
       "prompt": "四",
       "subtitle": "four",
       "answers": ["si4"],
       "weight": 1.0
     },
     {
-      "id": "zh-011",
-      "group": "Numbers",
-      "unit": "1 to 5",
+      "id": "hsk1-020",
+      "group": "Words 011-020",
+      "unit": "Unit 02",
       "prompt": "五",
       "subtitle": "five",
       "answers": ["wu3"],
       "weight": 1.0
     },
     {
-      "id": "zh-012",
-      "group": "Numbers",
-      "unit": "6 to 10",
+      "id": "hsk1-021",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
       "prompt": "六",
       "subtitle": "six",
       "answers": ["liu4"],
       "weight": 1.0
     },
     {
-      "id": "zh-013",
-      "group": "Numbers",
-      "unit": "6 to 10",
+      "id": "hsk1-022",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
       "prompt": "七",
       "subtitle": "seven",
       "answers": ["qi1"],
       "weight": 1.0
     },
     {
-      "id": "zh-014",
-      "group": "Numbers",
-      "unit": "6 to 10",
+      "id": "hsk1-023",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
       "prompt": "八",
       "subtitle": "eight",
       "answers": ["ba1"],
       "weight": 1.0
     },
     {
-      "id": "zh-015",
-      "group": "Numbers",
-      "unit": "6 to 10",
+      "id": "hsk1-024",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
       "prompt": "九",
       "subtitle": "nine",
       "answers": ["jiu3"],
       "weight": 1.0
     },
     {
-      "id": "zh-016",
-      "group": "Numbers",
-      "unit": "6 to 10",
+      "id": "hsk1-025",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
       "prompt": "十",
       "subtitle": "ten",
       "answers": ["shi2"],
       "weight": 1.0
     },
     {
-      "id": "zh-017",
-      "group": "Common Verbs",
-      "unit": "Everyday",
+      "id": "hsk1-026",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
+      "prompt": "个",
+      "subtitle": "piece",
+      "answers": ["ge4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-027",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
+      "prompt": "岁",
+      "subtitle": "years old",
+      "answers": ["sui4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-028",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
+      "prompt": "本",
+      "subtitle": "volume",
+      "answers": ["ben3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-029",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
+      "prompt": "些",
+      "subtitle": "some",
+      "answers": ["xie1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-030",
+      "group": "Words 021-030",
+      "unit": "Unit 03",
+      "prompt": "块",
+      "subtitle": "piece",
+      "answers": ["kuai4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-031",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "不",
+      "subtitle": "not",
+      "answers": ["bu4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-032",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "没",
+      "subtitle": "not",
+      "answers": ["mei2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-033",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "很",
+      "subtitle": "very",
+      "answers": ["hen3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-034",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "太",
+      "subtitle": "too",
+      "answers": ["tai4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-035",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "都",
+      "subtitle": "all",
+      "answers": ["dou1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-036",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "一点儿",
+      "subtitle": "a little",
+      "answers": ["yi1dian3r"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-037",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "和",
+      "subtitle": "and",
+      "answers": ["he2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-038",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "在",
+      "subtitle": "at",
+      "answers": ["zai4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-039",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "的",
+      "subtitle": "of",
+      "answers": ["de"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-040",
+      "group": "Words 031-040",
+      "unit": "Unit 04",
+      "prompt": "了",
+      "subtitle": "completed action",
+      "answers": ["le"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-041",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "吗",
+      "subtitle": "question marker",
+      "answers": ["ma"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-042",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "呢",
+      "subtitle": "how about",
+      "answers": ["ne"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-043",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "喂",
+      "subtitle": "hello",
+      "answers": ["wei4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-044",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "家",
+      "subtitle": "home",
+      "answers": ["jia1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-045",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "学校",
+      "subtitle": "school",
+      "answers": ["xue2xiao4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-046",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "饭店",
+      "subtitle": "restaurant",
+      "answers": ["fan4dian4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-047",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "商店",
+      "subtitle": "store",
+      "answers": ["shang1dian4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-048",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "医院",
+      "subtitle": "hospital",
+      "answers": ["yi1yuan4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-049",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "中国",
+      "subtitle": "China",
+      "answers": ["zhong1guo2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-050",
+      "group": "Words 041-050",
+      "unit": "Unit 05",
+      "prompt": "北京",
+      "subtitle": "Beijing",
+      "answers": ["bei3jing1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-051",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "上",
+      "subtitle": "up",
+      "answers": ["shang4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-052",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "下",
+      "subtitle": "down",
+      "answers": ["xia4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-053",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "前面",
+      "subtitle": "front",
+      "answers": ["qian2mian4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-054",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "后面",
+      "subtitle": "behind",
+      "answers": ["hou4mian4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-055",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "里",
+      "subtitle": "inside",
+      "answers": ["li3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-056",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "今天",
+      "subtitle": "today",
+      "answers": ["jin1tian1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-057",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "明天",
+      "subtitle": "tomorrow",
+      "answers": ["ming2tian1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-058",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "昨天",
+      "subtitle": "yesterday",
+      "answers": ["zuo2tian1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-059",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "上午",
+      "subtitle": "morning",
+      "answers": ["shang4wu3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-060",
+      "group": "Words 051-060",
+      "unit": "Unit 06",
+      "prompt": "中午",
+      "subtitle": "noon",
+      "answers": ["zhong1wu3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-061",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "下午",
+      "subtitle": "afternoon",
+      "answers": ["xia4wu3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-062",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "年",
+      "subtitle": "year",
+      "answers": ["nian2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-063",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "月",
+      "subtitle": "month",
+      "answers": ["yue4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-064",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "号",
+      "subtitle": "date",
+      "answers": ["hao4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-065",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "星期",
+      "subtitle": "week",
+      "answers": ["xing1qi1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-066",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "点",
+      "subtitle": "o'clock",
+      "answers": ["dian3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-067",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "分钟",
+      "subtitle": "minute",
+      "answers": ["fen1zhong1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-068",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "现在",
+      "subtitle": "now",
+      "answers": ["xian4zai4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-069",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "时候",
+      "subtitle": "time",
+      "answers": ["shi2hou"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-070",
+      "group": "Words 061-070",
+      "unit": "Unit 07",
+      "prompt": "爸爸",
+      "subtitle": "father",
+      "answers": ["ba4ba"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-071",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "妈妈",
+      "subtitle": "mother",
+      "answers": ["ma1ma"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-072",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "儿子",
+      "subtitle": "son",
+      "answers": ["er2zi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-073",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "女儿",
+      "subtitle": "daughter",
+      "answers": ["nü3'er2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-074",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "老师",
+      "subtitle": "teacher",
+      "answers": ["lao3shi1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-075",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "学生",
+      "subtitle": "student",
+      "answers": ["xue2sheng"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-076",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "同学",
+      "subtitle": "classmate",
+      "answers": ["tong2xue2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-077",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "朋友",
+      "subtitle": "friend",
+      "answers": ["peng2you"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-078",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "医生",
+      "subtitle": "doctor",
+      "answers": ["yi1sheng1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-079",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "先生",
+      "subtitle": "sir",
+      "answers": ["xian1sheng"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-080",
+      "group": "Words 071-080",
+      "unit": "Unit 08",
+      "prompt": "小姐",
+      "subtitle": "miss",
+      "answers": ["xiao3jie5"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-081",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "衣服",
+      "subtitle": "clothes",
+      "answers": ["yi1fu"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-082",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "水",
+      "subtitle": "water",
+      "answers": ["shui3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-083",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "菜",
+      "subtitle": "dish",
+      "answers": ["cai4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-084",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "米饭",
+      "subtitle": "rice",
+      "answers": ["mi3fan4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-085",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "水果",
+      "subtitle": "fruit",
+      "answers": ["shui3guo3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-086",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "苹果",
+      "subtitle": "apple",
+      "answers": ["ping2guo3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-087",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "茶",
+      "subtitle": "tea",
+      "answers": ["cha2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-088",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "杯子",
+      "subtitle": "cup",
+      "answers": ["bei1zi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-089",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "钱",
+      "subtitle": "money",
+      "answers": ["qian2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-090",
+      "group": "Words 081-090",
+      "unit": "Unit 09",
+      "prompt": "飞机",
+      "subtitle": "airplane",
+      "answers": ["fei1ji1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-091",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "出租车",
+      "subtitle": "taxi",
+      "answers": ["chu1zu1che1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-092",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "电视",
+      "subtitle": "television",
+      "answers": ["dian4shi4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-093",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "电脑",
+      "subtitle": "computer",
+      "answers": ["dian4nao3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-094",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "电影",
+      "subtitle": "movie",
+      "answers": ["dian4ying3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-095",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "天气",
+      "subtitle": "weather",
+      "answers": ["tian1qi4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-096",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "猫",
+      "subtitle": "cat",
+      "answers": ["mao1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-097",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "狗",
+      "subtitle": "dog",
+      "answers": ["gou3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-098",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "东西",
+      "subtitle": "thing",
+      "answers": ["dong1xi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-099",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "人",
+      "subtitle": "person",
+      "answers": ["ren2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-100",
+      "group": "Words 091-100",
+      "unit": "Unit 10",
+      "prompt": "名字",
+      "subtitle": "name",
+      "answers": ["ming2zi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-101",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "书",
+      "subtitle": "book",
+      "answers": ["shu1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-102",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "汉语",
+      "subtitle": "Chinese",
+      "answers": ["han4yu3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-103",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "字",
+      "subtitle": "character",
+      "answers": ["zi4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-104",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "桌子",
+      "subtitle": "table",
+      "answers": ["zhuo1zi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-105",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "椅子",
+      "subtitle": "chair",
+      "answers": ["yi3zi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-106",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "谢谢",
+      "subtitle": "thank",
+      "answers": ["xie4xie"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-107",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "不客气",
+      "subtitle": "welcome",
+      "answers": ["bu4ke4qi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-108",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "再见",
+      "subtitle": "goodbye",
+      "answers": ["zai4jian4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-109",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "请",
+      "subtitle": "please",
+      "answers": ["qing3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-110",
+      "group": "Words 101-110",
+      "unit": "Unit 11",
+      "prompt": "对不起",
+      "subtitle": "sorry",
+      "answers": ["dui4bu4qi3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-111",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
+      "prompt": "没关系",
+      "subtitle": "no problem",
+      "answers": ["mei2guan1xi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-112",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
       "prompt": "是",
-      "subtitle": "to be",
+      "subtitle": "be",
       "answers": ["shi4"],
       "weight": 1.0
     },
     {
-      "id": "zh-018",
-      "group": "Common Verbs",
-      "unit": "Everyday",
+      "id": "hsk1-113",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
       "prompt": "有",
-      "subtitle": "to have",
+      "subtitle": "have",
       "answers": ["you3"],
       "weight": 1.0
     },
     {
-      "id": "zh-019",
-      "group": "Common Verbs",
-      "unit": "Everyday",
+      "id": "hsk1-114",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
       "prompt": "看",
-      "subtitle": "to look / see",
+      "subtitle": "look",
       "answers": ["kan4"],
       "weight": 1.0
     },
     {
-      "id": "zh-020",
-      "group": "Common Verbs",
-      "unit": "Everyday",
+      "id": "hsk1-115",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
+      "prompt": "听",
+      "subtitle": "listen",
+      "answers": ["ting1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-116",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
+      "prompt": "说",
+      "subtitle": "speak",
+      "answers": ["shuo1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-117",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
+      "prompt": "读",
+      "subtitle": "read",
+      "answers": ["du2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-118",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
+      "prompt": "写",
+      "subtitle": "write",
+      "answers": ["xie3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-119",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
+      "prompt": "看见",
+      "subtitle": "see",
+      "answers": ["kan4jian4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-120",
+      "group": "Words 111-120",
+      "unit": "Unit 12",
+      "prompt": "叫",
+      "subtitle": "call",
+      "answers": ["jiao4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-121",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "来",
+      "subtitle": "come",
+      "answers": ["lai2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-122",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "回",
+      "subtitle": "return",
+      "answers": ["hui2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-123",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "去",
+      "subtitle": "go",
+      "answers": ["qu4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-124",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
       "prompt": "吃",
-      "subtitle": "to eat",
+      "subtitle": "eat",
       "answers": ["chi1"],
       "weight": 1.0
     },
     {
-      "id": "zh-021",
-      "group": "Common Verbs",
-      "unit": "Everyday",
+      "id": "hsk1-125",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
       "prompt": "喝",
-      "subtitle": "to drink",
+      "subtitle": "drink",
       "answers": ["he1"],
       "weight": 1.0
     },
     {
-      "id": "zh-022",
-      "group": "Adjectives",
-      "unit": "Basic Descriptors",
+      "id": "hsk1-126",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "睡觉",
+      "subtitle": "sleep",
+      "answers": ["shui4jiao4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-127",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "打电话",
+      "subtitle": "call",
+      "answers": ["da3dian4hua4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-128",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "做",
+      "subtitle": "do",
+      "answers": ["zuo4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-129",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "买",
+      "subtitle": "buy",
+      "answers": ["mai3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-130",
+      "group": "Words 121-130",
+      "unit": "Unit 13",
+      "prompt": "开",
+      "subtitle": "open",
+      "answers": ["kai1"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-131",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "坐",
+      "subtitle": "sit",
+      "answers": ["zuo4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-132",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "住",
+      "subtitle": "live",
+      "answers": ["zhu4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-133",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "学习",
+      "subtitle": "study",
+      "answers": ["xue2xi2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-134",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "工作",
+      "subtitle": "work",
+      "answers": ["gong1zuo4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-135",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "下雨",
+      "subtitle": "rain",
+      "answers": ["xia4yu3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-136",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "爱",
+      "subtitle": "love",
+      "answers": ["ai4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-137",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "喜欢",
+      "subtitle": "like",
+      "answers": ["xi3huan"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-138",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "想",
+      "subtitle": "want",
+      "answers": ["xiang3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-139",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "认识",
+      "subtitle": "know",
+      "answers": ["ren4shi"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-140",
+      "group": "Words 131-140",
+      "unit": "Unit 14",
+      "prompt": "会",
+      "subtitle": "can",
+      "answers": ["hui4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-141",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
+      "prompt": "能",
+      "subtitle": "can",
+      "answers": ["neng2"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-142",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
       "prompt": "好",
       "subtitle": "good",
       "answers": ["hao3"],
       "weight": 1.0
     },
     {
-      "id": "zh-023",
-      "group": "Adjectives",
-      "unit": "Basic Descriptors",
+      "id": "hsk1-143",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
       "prompt": "大",
       "subtitle": "big",
       "answers": ["da4"],
       "weight": 1.0
     },
     {
-      "id": "zh-024",
-      "group": "Adjectives",
-      "unit": "Basic Descriptors",
+      "id": "hsk1-144",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
       "prompt": "小",
       "subtitle": "small",
       "answers": ["xiao3"],
       "weight": 1.0
     },
     {
-      "id": "zh-025",
-      "group": "Adjectives",
-      "unit": "Basic Descriptors",
+      "id": "hsk1-145",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
       "prompt": "多",
-      "subtitle": "many / much",
+      "subtitle": "many",
       "answers": ["duo1"],
       "weight": 1.0
     },
     {
-      "id": "zh-026",
-      "group": "Adjectives",
-      "unit": "Basic Descriptors",
+      "id": "hsk1-146",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
       "prompt": "少",
-      "subtitle": "few / little",
+      "subtitle": "few",
       "answers": ["shao3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-147",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
+      "prompt": "冷",
+      "subtitle": "cold",
+      "answers": ["leng3"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-148",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
+      "prompt": "热",
+      "subtitle": "hot",
+      "answers": ["re4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-149",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
+      "prompt": "高兴",
+      "subtitle": "happy",
+      "answers": ["gao1xing4"],
+      "weight": 1.0
+    },
+    {
+      "id": "hsk1-150",
+      "group": "Words 141-150",
+      "unit": "Unit 15",
+      "prompt": "漂亮",
+      "subtitle": "beautiful",
+      "answers": ["piao4liang"],
       "weight": 1.0
     }
   ]

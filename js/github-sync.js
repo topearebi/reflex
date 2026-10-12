@@ -67,6 +67,31 @@ export class GitHubSync {
     return body.message || `GitHub error ${res.status}`;
   }
 
+  async testConnection(customToken, customRepo) {
+    const token = (customToken || this.config.token || "").trim();
+    const repo = (customRepo || this.config.repo || "").trim();
+    if (!token || !/^[\w.-]+\/[\w.-]+$/.test(repo)) {
+      throw new Error("Provide a valid token and repository in 'owner/repo' format.");
+    }
+    if (typeof navigator !== "undefined" && !navigator.onLine) throw new Error("You're offline.");
+
+    const headers = {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${token}`,
+      "X-GitHub-Api-Version": "2022-11-28"
+    };
+
+    const res = await fetch(`https://api.github.com/repos/${repo}`, { headers, cache: "no-store" });
+    if (!res.ok) throw new Error(await this.#explain(res));
+    const info = await res.json();
+    return {
+      repo: info.full_name,
+      private: Boolean(info.private),
+      branch: info.default_branch || "main",
+      description: info.description || ""
+    };
+  }
+
   async sync(attempt = 0) {
     if (!this.configured) throw new Error("Add a token and repo (owner/repo) first.");
     if (!navigator.onLine) throw new Error("You're offline.");
@@ -108,5 +133,96 @@ export class GitHubSync {
     this.store.state.sync.lastSynced = Date.now();
     this.store.save();
     return this.store.state.sync.lastSynced;
+  }
+
+  /**
+   * Publishes a deck as data/<deckId>.json and registers it in data/manifest.json
+   * on the specified GitHub repository.
+   */
+  async publishDeckToRepo(deck, customToken, customRepo) {
+    const token = (customToken || this.config.token || "").trim();
+    const repo = (customRepo || this.config.repo || "").trim();
+    if (!token || !repo) throw new Error("A GitHub token with Contents write access and repo (owner/repo) are required.");
+    if (!navigator.onLine) throw new Error("You're offline.");
+
+    const headers = {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${token}`,
+      "X-GitHub-Api-Version": "2022-11-28"
+    };
+
+    const filename = `${deck.id}.json`;
+    const deckUrl = `https://api.github.com/repos/${repo}/contents/data/${filename}`;
+    const manifestUrl = `https://api.github.com/repos/${repo}/contents/data/manifest.json`;
+
+    // 1. Get current deck file sha if it exists
+    let deckSha;
+    const deckGet = await fetch(deckUrl, { headers, cache: "no-store" });
+    if (deckGet.ok) {
+      const file = await deckGet.json();
+      deckSha = file.sha;
+    }
+
+    // 2. Prepare clean deck JSON without runtime-only fields
+    const rawCards = deck.rawCards || deck.cards || [];
+    const cleanDeck = {
+      name: deck.name,
+      lang: deck.lang || "",
+      answerLang: deck.answerLang || "",
+      romanization: deck.romanization || "",
+      defaultMode: deck.defaultMode || "standard",
+      cards: rawCards.map((c) => ({
+        id: c.id,
+        group: c.group || "General",
+        unit: c.unit || "General",
+        prompt: c.prompt,
+        subtitle: c.subtitle || "",
+        answer: c.answers?.[0] || c.answer || ""
+      }))
+    };
+
+    // 3. PUT deck file
+    const deckBody = {
+      message: `Publish deck ${deck.name} (${deck.id}) via SpeedRecall`,
+      content: encodeBase64(JSON.stringify(cleanDeck, null, 2))
+    };
+    if (deckSha) deckBody.sha = deckSha;
+
+    const deckPut = await fetch(deckUrl, {
+      method: "PUT",
+      headers: { ...headers, "Content-Type": "application/json" },
+      body: JSON.stringify(deckBody)
+    });
+    if (!deckPut.ok) throw new Error(`Could not publish deck file: ${await this.#explain(deckPut)}`);
+
+    // 4. Update manifest.json
+    const manifestGet = await fetch(manifestUrl, { headers, cache: "no-store" });
+    if (!manifestGet.ok) throw new Error(`Could not fetch data/manifest.json: ${await this.#explain(manifestGet)}`);
+    const manifestFile = await manifestGet.json();
+    const manifestSha = manifestFile.sha;
+    const manifestData = JSON.parse(decodeBase64(manifestFile.content));
+
+    const existingIndex = (manifestData.decks || []).findIndex((d) => d.id === deck.id);
+    const manifestEntry = { id: deck.id, file: `./data/${filename}` };
+    if (existingIndex >= 0) {
+      manifestData.decks[existingIndex] = manifestEntry;
+    } else {
+      (manifestData.decks ||= []).push(manifestEntry);
+    }
+
+    const manifestBody = {
+      message: `Add ${deck.name} to manifest.json via SpeedRecall`,
+      content: encodeBase64(JSON.stringify(manifestData, null, 2)),
+      sha: manifestSha
+    };
+
+    const manifestPut = await fetch(manifestUrl, {
+      method: "PUT",
+      headers: { ...headers, "Content-Type": "application/json" },
+      body: JSON.stringify(manifestBody)
+    });
+    if (!manifestPut.ok) throw new Error(`Could not update manifest.json: ${await this.#explain(manifestPut)}`);
+
+    return true;
   }
 }

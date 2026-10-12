@@ -14,6 +14,66 @@ import { isMatch } from "./normalizer.js";
 const ADVANCE_DELAY = 140;
 const CORRECTION_DELAY = 220;
 
+/** Adapts a card's prompt, answer, and subtitle based on selected Front and Back fields. */
+export function adaptCardRoles(card, frontField = "prompt", backField = "answer", showHints = true) {
+  if (!card) return card;
+
+  // Preserve canonical source fields so repeat adaptations or hint toggles never flip or lose data
+  const sourcePrompt = card.sourcePrompt !== undefined ? card.sourcePrompt : card.prompt;
+  const sourceAnswer = card.sourceAnswer !== undefined
+    ? card.sourceAnswer
+    : (Array.isArray(card.answers) && card.answers.length > 0 ? card.answers[0] : (card.answer || ""));
+  const sourceSubtitle = card.sourceSubtitle !== undefined
+    ? card.sourceSubtitle
+    : (card.subtitle !== undefined ? card.subtitle : "");
+
+  if (card.isCloze) {
+    return {
+      ...card,
+      sourcePrompt,
+      sourceAnswer,
+      sourceSubtitle,
+      canonicalHint: sourceSubtitle,
+      subtitle: showHints ? sourceSubtitle : ""
+    };
+  }
+
+  const getVal = (f) => {
+    if (f === "prompt") return sourcePrompt;
+    if (f === "answer") return sourceAnswer;
+    if (f === "subtitle") return sourceSubtitle;
+    return "";
+  };
+
+  let promptVal = getVal(frontField) || sourcePrompt;
+  const answerVal = getVal(backField) || sourceAnswer;
+
+  // If front is not the target prompt, ensure any highlight or annotation brackets are stripped
+  if (frontField !== "prompt" && typeof promptVal === "string") {
+    promptVal = promptVal.replace(/<[^>]+>/g, "").replace(/\[\[(.*?)\]\]/g, "$1");
+  }
+
+  // Remaining third field becomes the hint
+  const allFields = ["prompt", "answer", "subtitle"];
+  const remainingField = allFields.find((f) => f !== frontField && f !== backField);
+  const canonicalHint = (remainingField ? getVal(remainingField) : sourceSubtitle) || "";
+  const hintVal = showHints ? canonicalHint : "";
+
+  return {
+    ...card,
+    sourcePrompt,
+    sourceAnswer,
+    sourceSubtitle,
+    canonicalHint,
+    prompt: promptVal,
+    answers: [answerVal],
+    subtitle: hintVal,
+    isAdapted: frontField !== "prompt" || backField !== "answer",
+    frontField,
+    backField
+  };
+}
+
 export class RecallEngine extends EventTarget {
   constructor(store) {
     super();
@@ -26,6 +86,17 @@ export class RecallEngine extends EventTarget {
     store.addEventListener("deck-changed", () => this.next());
     store.addEventListener("units-changed", refresh);
     store.addEventListener("deck-updated", refresh);
+    store.addEventListener("fields-changed", () => this.next());
+    store.addEventListener("hints-changed", ({ detail }) => {
+      if (this.card) {
+        const show = detail?.showHints !== undefined ? Boolean(detail.showHints) : this.store.showHints;
+        const canonical = this.card.canonicalHint !== undefined
+          ? this.card.canonicalHint
+          : (this.card.sourceSubtitle !== undefined ? this.card.sourceSubtitle : (this.card.subtitle || ""));
+        this.card.subtitle = show ? canonical : "";
+        this.#emit("hint", { showHints: show });
+      }
+    });
   }
 
   #emit(type, detail = {}) {
@@ -36,15 +107,25 @@ export class RecallEngine extends EventTarget {
   pick() {
     let pool = this.store.pool();
     if (pool.length === 0) return null;
-    if (pool.length > 1 && this.card) pool = pool.filter((c) => c.id !== this.card.id);
+    if (pool.length > 1 && this.card) {
+      const prevId = this.card.sourceId || this.card.id;
+      pool = pool.filter((c) => c.id !== this.card.id && (c.sourceId || c.id) !== prevId);
+      if (pool.length === 0) pool = this.store.pool();
+    }
     const now = Date.now();
     const weights = pool.map((c) => this.store.weight(c, now));
     let r = Math.random() * weights.reduce((a, b) => a + b, 0);
+    let chosen = pool[pool.length - 1];
     for (let i = 0; i < pool.length; i++) {
       r -= weights[i];
-      if (r <= 0) return pool[i];
+      if (r <= 0) {
+        chosen = pool[i];
+        break;
+      }
     }
-    return pool[pool.length - 1];
+
+    if (!chosen) return null;
+    return adaptCardRoles(chosen, this.store.frontField, this.store.backField, this.store.showHints);
   }
 
   next() {
@@ -65,8 +146,10 @@ export class RecallEngine extends EventTarget {
   }
 
   /** Called on every keystroke. */
-  input(value) {
+  input(value, isComposing = false) {
     if (!this.card) return;
+    this.#emit("input", { value });
+    if (isComposing) return;
     if (this.phase === "answering" && this.#matches(value)) {
       this.phase = "advancing";
       this.store.record(this.card, true);

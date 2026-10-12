@@ -94,6 +94,9 @@ function strictKey(str) {
   return base(str).replace(/\s+/g, " ");
 }
 
+export const CJK_REGEX = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u;
+export const hasCJK = (str) => CJK_REGEX.test(String(str ?? ""));
+
 /**
  * Comparison key for a string under a mode. Two strings match when their
  * keys are equal.
@@ -101,7 +104,7 @@ function strictKey(str) {
 export function answerKey(str, mode, deck) {
   const pinyin = deck?.romanization === "pinyin";
   if (mode === Modes.STRICT) return strictKey(str);
-  if (pinyin) {
+  if (pinyin && !hasCJK(str)) {
     const { letters, tones } = parsePinyin(str);
     return mode === Modes.RELAXED ? letters : `${letters}|${tones.join("")}`;
   }

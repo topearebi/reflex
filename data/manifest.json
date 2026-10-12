@@ -4,6 +4,7 @@
     { "id": "zh-hsk1", "file": "./data/zh-hsk1.json" },
     { "id": "zh-radicals", "file": "./data/zh-radicals.json" },
     { "id": "fr-top500", "file": "./data/fr-top500.json" },
-    { "id": "fr-verbs", "file": "./data/fr-verbs.json" }
+    { "id": "fr-verbs", "file": "./data/fr-verbs.json" },
+    { "id": "bilingual-cloze", "file": "./data/bilingual-cloze.json" }
   ]
 }

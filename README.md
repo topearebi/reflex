@@ -68,6 +68,27 @@ Group   Unit    Prompt  Hint    Answer
 
 Add them to the current deck or create a new deck with its own language.
 
+## Cloze sentences & Anki compatibility
+
+Sentences with cloze gaps are automatically drilled as fill-in-the-blank cards:
+
+```
+Je {{suis}} fatigué.                      → answer "suis"
+Je {{suis::être}} fatigué.                → same, with hint "être"
+Hier, j'{{ai}} {{mangé}} une pomme.       → two cards: one per gap, other gap filled in
+```
+
+- **Anki exports supported**: Accepts `{{c1::word}}`, `{{c1::word::hint}}`, and `{{c2::...}}`. HTML tags like `<br>` and `<b>` are scrubbed on import.
+- **Live gap typing**: What you type appears directly inside the underlined slot in the sentence.
+- **Reverse mode (`⇄`)**: Toggles between recognition (French → English) and production (English → French). Cloze cards remain target-sentence completions.
+
+## In-app deck editor
+
+- Tap **Practice → Edit deck** or **+ New deck** to open the fast spreadsheet table.
+- **Keyboard speed**: Type prompt, `Tab` to answer, `Enter` to create the next row. Cloze sentences auto-fill the answer and hint columns.
+- **Split into units of 10**: Auto-groups lists into DJT-style chunks (`1–10`, `11–20`).
+- **Publish to site**: Set your site repository write token in Settings to publish decks directly to `data/<deck>.json` and `data/manifest.json`.
+
 ## Sync and backup
 
 - **Sync with GitHub:** one button. It pulls `speedrecall-data.json` from a repo you own, merges it with this device, and pushes the result. Merging never deletes cards, and for each card the most recent practice wins. Use a fine-grained token limited to that one repo with *Contents: read and write*. The token is stored only in the browser.
@@ -83,4 +104,4 @@ A service worker caches the app and decks. It opens instantly from cache and ref
 node --test tests/*.test.mjs
 ```
 
-Covers answer matching and checks that every built-in card can be answered with and without accents.
+Covers answer matching, cloze parsing, Anki compatibility, unit chunking, reverse mode, and built-in cards.

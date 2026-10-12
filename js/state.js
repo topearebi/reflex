@@ -10,6 +10,7 @@
  */
 
 import { Modes, effectiveMode } from "./normalizer.js";
+import { expandClozeCard } from "./cloze.js";
 
 const STORAGE_KEY = "speedrecall_v3";
 const LEGACY_KEY = "speedrecall_state_v2";
@@ -22,14 +23,33 @@ const MAX_WEIGHT = 6;
 
 export const unitKey = (card) => `${card.group || "General"}::${card.unit || "General"}`;
 
+export function cardContentHash(card) {
+  if (!card) return "";
+  const p = String(card.prompt || "").trim().toLowerCase();
+  const a = (Array.isArray(card.answers) ? card.answers : [card.answer || ""])
+    .map((s) => String(s || "").trim().toLowerCase())
+    .sort()
+    .join("|");
+  const h = String(card.subtitle || card.hint || "").trim().toLowerCase();
+  const str = `${p}:::${a}:::${h}`;
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) + hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
 function emptyState() {
   return {
-    version: 3,
+    version: 4,
     customDecks: {},
     extraCards: {},
+    deckOverrides: {},
     deletedDecks: {},
     progress: {},
-    prefs: { currentDeckId: "", decks: {} },
+    hashIndex: {},
+    prefs: { currentDeckId: "", reverseMode: false, showHints: false, decks: {} },
     sync: { lastSynced: null }
   };
 }
@@ -42,14 +62,43 @@ export function normalizeCard(raw, fallbackId) {
     .filter(Boolean);
   const prompt = String(raw.prompt ?? "").trim();
   if (!prompt || answers.length === 0) return null;
-  return {
+  const subtitle = raw.subtitle ? String(raw.subtitle).trim() : (raw.hint ? String(raw.hint).trim() : "");
+  const card = {
     id: String(raw.id || fallbackId),
     group: String(raw.group || "General").trim(),
     unit: String(raw.unit || "General").trim(),
     prompt,
-    subtitle: raw.subtitle ? String(raw.subtitle).trim() : "",
+    subtitle,
     answers
   };
+  card.hash = raw.hash || cardContentHash(card);
+  return card;
+}
+
+export function getDeckFieldOptions(deck) {
+  if (!deck) {
+    return [
+      { value: "prompt", label: "Target Language" },
+      { value: "answer", label: "Native Language" }
+    ];
+  }
+  const isPinyin = deck.romanization === "pinyin";
+  if (isPinyin) {
+    return [
+      { value: "prompt", label: "Target Language (Hanzi)" },
+      { value: "answer", label: "Hint / Romanization (Pinyin)" },
+      { value: "subtitle", label: "Native Language (English)" }
+    ];
+  }
+  const hasSubtitle = (deck.rawCards || deck.cards || []).some((c) => Boolean(c.subtitle));
+  const fields = [
+    { value: "prompt", label: "Target Language" },
+    { value: "answer", label: "Native Language" }
+  ];
+  if (hasSubtitle) {
+    fields.push({ value: "subtitle", label: "Hint / Notes" });
+  }
+  return fields;
 }
 
 function normalizeDeckMeta(raw = {}) {
@@ -203,11 +252,20 @@ export class Store extends EventTarget {
   getDeck(id = this.currentDeckId) {
     if (this._deckCache.has(id)) return this._deckCache.get(id);
     let deck = null;
-    if (this.builtIn[id]) {
+    if (this.state.deckOverrides?.[id]) {
+      const override = this.state.deckOverrides[id];
+      const rawCards = override.cards || [];
+      const cards = rawCards.flatMap((c) => expandClozeCard(c));
+      deck = { id, ...override, rawCards, cards, builtIn: Boolean(this.builtIn[id]), isOverride: true };
+    } else if (this.builtIn[id]) {
       const extra = this.state.extraCards[id] || [];
-      deck = { id, ...this.builtIn[id], cards: [...this.builtIn[id].cards, ...extra] };
+      const rawCards = [...this.builtIn[id].cards, ...extra];
+      const cards = rawCards.flatMap((c) => expandClozeCard(c));
+      deck = { id, ...this.builtIn[id], rawCards, cards, isOverride: false };
     } else if (this.state.customDecks[id]) {
-      deck = { id, ...this.state.customDecks[id], builtIn: false };
+      const rawCards = this.state.customDecks[id].cards || [];
+      const cards = rawCards.flatMap((c) => expandClozeCard(c));
+      deck = { id, ...this.state.customDecks[id], rawCards, cards, builtIn: false, isOverride: false };
     }
     if (deck) this._deckCache.set(id, deck);
     return deck;
@@ -221,6 +279,48 @@ export class Store extends EventTarget {
     return this.getDeck(this.currentDeckId);
   }
 
+  get frontField() {
+    return this.#deckPrefs().frontField || "prompt";
+  }
+
+  get backField() {
+    return this.#deckPrefs().backField || "answer";
+  }
+
+  setDeckFields(frontField, backField) {
+    const p = this.#deckPrefs();
+    p.frontField = frontField;
+    p.backField = backField;
+    this.save();
+    this.dispatchEvent(new CustomEvent("fields-changed"));
+  }
+
+  swapDeckFields() {
+    const p = this.#deckPrefs();
+    const prevFront = p.frontField || "prompt";
+    const prevBack = p.backField || "answer";
+    p.frontField = prevBack;
+    p.backField = prevFront;
+    this.save();
+    this.dispatchEvent(new CustomEvent("fields-changed"));
+    return { front: p.frontField, back: p.backField };
+  }
+
+  get showHints() {
+    return Boolean(this.state.prefs.showHints);
+  }
+
+  setShowHints(show) {
+    this.state.prefs.showHints = Boolean(show);
+    this.save();
+    this.dispatchEvent(new CustomEvent("hints-changed", { detail: { showHints: this.showHints } }));
+  }
+
+  toggleHints() {
+    this.setShowHints(!this.showHints);
+    return this.showHints;
+  }
+
   setDeck(id) {
     if (!this.decksExists(id) || id === this.currentDeckId) return;
     this.state.prefs.currentDeckId = id;
@@ -231,7 +331,9 @@ export class Store extends EventTarget {
 
   #deckPrefs(id = this.currentDeckId) {
     const p = this.state.prefs.decks;
-    if (!p[id]) p[id] = { mode: null, units: null };
+    if (!p[id]) p[id] = { mode: null, units: null, frontField: "prompt", backField: "answer" };
+    if (!p[id].frontField) p[id].frontField = "prompt";
+    if (!p[id].backField) p[id].backField = "answer";
     return p[id];
   }
 
@@ -290,7 +392,30 @@ export class Store extends EventTarget {
   /* ---------- progress ---------- */
 
   #pkey(card, deckId = this.currentDeckId) {
-    return `${deckId}::${card.id}`;
+    if (!card) return `${deckId}::unknown`;
+    const idKey = `${deckId}::${card.id}`;
+    if (this.state.progress[idKey]) return idKey;
+
+    // Content hash fallback: if card ID was changed or re-indexed externally
+    const cardHash = card.hash || cardContentHash(card);
+    if (cardHash) {
+      this.state.hashIndex ||= {};
+      const mappedId = this.state.hashIndex[`${deckId}::${cardHash}`];
+      if (mappedId && this.state.progress[`${deckId}::${mappedId}`]) {
+        const rec = this.state.progress[`${deckId}::${mappedId}`];
+        this.state.progress[idKey] = rec;
+        this.state.hashIndex[`${deckId}::${cardHash}`] = card.id;
+        return idKey;
+      }
+      for (const [k, rec] of Object.entries(this.state.progress)) {
+        if (k.startsWith(`${deckId}::`) && rec?.hash === cardHash) {
+          this.state.progress[idKey] = rec;
+          this.state.hashIndex[`${deckId}::${cardHash}`] = card.id;
+          return idKey;
+        }
+      }
+    }
+    return idKey;
   }
 
   /** Weight with time decay toward 1.0 (neutral). */
@@ -317,12 +442,18 @@ export class Store extends EventTarget {
     const key = this.#pkey(card);
     const w = this.weight(card);
     const prev = this.state.progress[key] || { n: 0, c: 0 };
+    const hash = card.hash || cardContentHash(card);
     this.state.progress[key] = {
       w: correct ? Math.max(MIN_WEIGHT, w * 0.7) : Math.min(MAX_WEIGHT, w + 1.5),
       n: prev.n + 1,
       c: prev.c + (correct ? 1 : 0),
-      t: Date.now()
+      t: Date.now(),
+      hash
     };
+    if (hash) {
+      this.state.hashIndex ||= {};
+      this.state.hashIndex[`${this.currentDeckId}::${hash}`] = card.id;
+    }
     const s = this.session;
     s.attempts++;
     if (correct) {
@@ -358,6 +489,47 @@ export class Store extends EventTarget {
       prefs.units = [...new Set([...prefs.units, ...cards.map(unitKey)])];
     }
     if (!silent) {
+      this.save();
+      this.dispatchEvent(new CustomEvent("deck-updated"));
+    }
+  }
+
+  updateDeck(id, meta, cards) {
+    if (!this.state.customDecks[id]) return;
+    this.state.customDecks[id] = {
+      ...this.state.customDecks[id],
+      ...normalizeDeckMeta(meta),
+      cards,
+      updated: Date.now()
+    };
+    this._deckCache.clear();
+    const prefs = this.state.prefs.decks[id];
+    if (prefs && Array.isArray(prefs.units)) {
+      prefs.units = [...new Set([...prefs.units, ...cards.map(unitKey)])];
+    }
+    this.save();
+    this.dispatchEvent(new CustomEvent("deck-updated"));
+  }
+
+  overrideBuiltInDeck(id, meta, cards) {
+    (this.state.deckOverrides ||= {})[id] = {
+      ...normalizeDeckMeta(meta),
+      cards,
+      updated: Date.now()
+    };
+    this._deckCache.clear();
+    const prefs = this.state.prefs.decks[id];
+    if (prefs && Array.isArray(prefs.units)) {
+      prefs.units = [...new Set([...prefs.units, ...cards.map(unitKey)])];
+    }
+    this.save();
+    this.dispatchEvent(new CustomEvent("deck-updated"));
+  }
+
+  revertBuiltInDeck(id) {
+    if (this.state.deckOverrides?.[id]) {
+      delete this.state.deckOverrides[id];
+      this._deckCache.clear();
       this.save();
       this.dispatchEvent(new CustomEvent("deck-updated"));
     }
@@ -399,19 +571,155 @@ export class Store extends EventTarget {
 
   /* ---------- backup / sync payload ---------- */
 
+  /* ---------- modular deck import / export ---------- */
+
+  importSingleDeck(deckObj) {
+    if (!deckObj || typeof deckObj !== "object") throw new Error("Invalid deck data.");
+    const id = String(deckObj.id || `deck-${Date.now()}`).trim();
+    const rawCards = Array.isArray(deckObj.cards) ? deckObj.cards : [];
+    const cards = rawCards.map((c, i) => normalizeCard(c, `${id}-${i}`)).filter(Boolean);
+    const meta = normalizeDeckMeta(deckObj);
+    const updated = deckObj.updated || Date.now();
+
+    this.state.customDecks[id] = {
+      id,
+      ...meta,
+      units: deckObj.units || [...new Set(cards.map(unitKey))],
+      cards,
+      updated
+    };
+
+    delete this.state.deletedDecks[id];
+    this._deckCache.delete(id);
+
+    // Index card hashes and re-link any existing progress
+    this.state.hashIndex ||= {};
+    for (const c of cards) {
+      if (c.hash) {
+        this.state.hashIndex[`${id}::${c.hash}`] = c.id;
+        // Check if progress exists under an older card id with this hash
+        for (const [k, rec] of Object.entries(this.state.progress)) {
+          if (k.startsWith(`${id}::`) && rec?.hash === c.hash && k !== `${id}::${c.id}`) {
+            this.state.progress[`${id}::${c.id}`] = rec;
+          }
+        }
+      }
+    }
+
+    if (!this.state.prefs.currentDeckId) {
+      this.state.prefs.currentDeckId = id;
+    }
+    this.save();
+    this.dispatchEvent(new CustomEvent("deck-changed"));
+    this.dispatchEvent(new CustomEvent("deck-updated"));
+    return this.getDeck(id);
+  }
+
+  exportDeck(id = this.currentDeckId) {
+    const deck = this.getDeck(id);
+    if (!deck) throw new Error("Deck not found");
+    return {
+      id: deck.id,
+      name: deck.name,
+      lang: deck.lang || "",
+      answerLang: deck.answerLang || "",
+      romanization: deck.romanization || "",
+      dir: deck.dir || "",
+      defaultMode: deck.defaultMode || Modes.STANDARD,
+      units: deck.units || [...new Set((deck.cards || []).map(unitKey))],
+      updated: deck.updated || Date.now(),
+      cards: (deck.rawCards || deck.cards || []).map((c) => ({
+        id: c.id,
+        group: c.group || "General",
+        unit: c.unit || "General",
+        prompt: c.prompt,
+        subtitle: c.subtitle || "",
+        answers: c.answers,
+        hash: c.hash || cardContentHash(c)
+      }))
+    };
+  }
+
+  exportProgress() {
+    return {
+      app: "speedrecall",
+      type: "progress",
+      version: 4,
+      exported: new Date().toISOString(),
+      progress: this.state.progress,
+      hashIndex: this.state.hashIndex || {},
+      deletedDecks: this.state.deletedDecks,
+      prefs: this.state.prefs
+    };
+  }
+
+  /* ---------- backup / sync payload ---------- */
+
   exportData() {
-    const { customDecks, extraCards, deletedDecks, progress, prefs } = this.state;
-    return { app: "speedrecall", schema: 3, exported: new Date().toISOString(), customDecks, extraCards, deletedDecks, progress, prefs };
+    const { customDecks, extraCards, deckOverrides, deletedDecks, progress, prefs, hashIndex } = this.state;
+    const manifest = {
+      decks: this.deckIds().map((id) => {
+        const d = this.getDeck(id);
+        return {
+          id: d?.id || id,
+          name: d?.name || id,
+          cardCount: (d?.rawCards || d?.cards || []).length,
+          builtIn: Boolean(this.builtIn[id])
+        };
+      })
+    };
+    return {
+      app: "speedrecall",
+      schema: 4,
+      exported: new Date().toISOString(),
+      manifest,
+      customDecks,
+      extraCards,
+      deckOverrides: deckOverrides || {},
+      deletedDecks,
+      progress,
+      hashIndex: hashIndex || {},
+      prefs
+    };
   }
 
   /**
    * Merges a backup/sync payload into local state. Never deletes local cards;
    * for progress, the most recently practised record wins.
-   * Also accepts the old v1/v2 `{ decks: {...} }` format.
+   * Also accepts single-deck exports, decoupled progress files, and legacy formats.
    */
   mergeData(data, { adoptPrefs = false } = {}) {
     if (!data || typeof data !== "object") throw new Error("Not a SpeedRecall backup.");
-    if (data.schema !== 3) {
+
+    // Case 1: Single modular deck file
+    if (data.cards && Array.isArray(data.cards) && (data.name || data.id)) {
+      this.importSingleDeck(data);
+      return;
+    }
+
+    // Case 2: Decoupled progress-only payload
+    if (data.type === "progress" && data.progress) {
+      for (const [k, p] of Object.entries(data.progress)) {
+        if (!p || typeof p.w !== "number") continue;
+        if (!this.state.progress[k] || (p.t || 0) > (this.state.progress[k].t || 0)) {
+          this.state.progress[k] = p;
+        }
+      }
+      if (data.deletedDecks) {
+        for (const [id, t] of Object.entries(data.deletedDecks)) {
+          this.state.deletedDecks[id] = Math.max(this.state.deletedDecks[id] || 0, t);
+        }
+      }
+      if (data.hashIndex) {
+        this.state.hashIndex = Object.assign(this.state.hashIndex || {}, data.hashIndex);
+      }
+      this.save();
+      this.dispatchEvent(new CustomEvent("deck-updated"));
+      return;
+    }
+
+    // Case 3: Legacy format (< schema 3)
+    if (data.schema !== 4 && data.schema !== 3) {
       const legacy = data.decks && typeof data.decks === "object" ? data.decks : data;
       const looksLegacy = Object.values(legacy).some((d) => d && Array.isArray(d.cards));
       if (!looksLegacy) throw new Error("Not a SpeedRecall backup.");
@@ -428,7 +736,7 @@ export class Store extends EventTarget {
       s.deletedDecks[id] = Math.max(s.deletedDecks[id] || 0, t);
     }
 
-    // Custom decks: union; newer `updated` wins metadata; cards merged by id
+    // Custom decks: union; newer `updated` wins metadata; cards merged by id or hash
     for (const [id, remote] of Object.entries(data.customDecks || {})) {
       if (!remote || !Array.isArray(remote.cards)) continue;
       const local = s.customDecks[id];
@@ -437,7 +745,8 @@ export class Store extends EventTarget {
         s.customDecks[id] = { ...normalizeDeckMeta(remote), cards, updated: remote.updated || Date.now() };
       } else {
         const ids = new Set(local.cards.map((c) => c.id));
-        local.cards.push(...cards.filter((c) => !ids.has(c.id)));
+        const hashes = new Set(local.cards.map((c) => c.hash || cardContentHash(c)));
+        local.cards.push(...cards.filter((c) => !ids.has(c.id) && !hashes.has(c.hash)));
         if ((remote.updated || 0) > (local.updated || 0)) {
           Object.assign(local, normalizeDeckMeta(remote), { cards: local.cards, updated: remote.updated });
         }
@@ -457,10 +766,27 @@ export class Store extends EventTarget {
       }
     }
 
+    // Deck overrides on built-in decks: latest updated wins
+    if (data.deckOverrides && typeof data.deckOverrides === "object") {
+      s.deckOverrides ||= {};
+      for (const [id, ovr] of Object.entries(data.deckOverrides)) {
+        if (!ovr || !Array.isArray(ovr.cards)) continue;
+        const local = s.deckOverrides[id];
+        if (!local || (ovr.updated || 0) > (local.updated || 0)) {
+          s.deckOverrides[id] = ovr;
+        }
+      }
+    }
+
     // Progress: latest wins
     for (const [k, p] of Object.entries(data.progress || {})) {
       if (!p || typeof p.w !== "number") continue;
       if (!s.progress[k] || (p.t || 0) > (s.progress[k].t || 0)) s.progress[k] = p;
+    }
+
+    // Hash index
+    if (data.hashIndex) {
+      s.hashIndex = Object.assign(s.hashIndex || {}, data.hashIndex);
     }
 
     // Per-deck prefs: fill gaps (or adopt fully on first sync of a new device)
@@ -469,6 +795,7 @@ export class Store extends EventTarget {
     }
 
     if (!this.decksExists(s.prefs.currentDeckId)) s.prefs.currentDeckId = this.defaultDeckId || this.deckIds()[0];
+    this._deckCache.clear();
     this.save();
     this.dispatchEvent(new CustomEvent("deck-changed"));
   }

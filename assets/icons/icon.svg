@@ -14,14 +14,14 @@
     </linearGradient>
 
     <!-- Baseline Stroke Gradient -->
-    <linearGradient id="barGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="barGradient" gradientUnits="userSpaceOnUse" x1="112" y1="256" x2="384" y2="256">
       <stop offset="0%" stop-color="#1e293b" />
       <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.9" />
       <stop offset="100%" stop-color="#0284c7" />
     </linearGradient>
 
     <!-- Focal Flash Core Glow -->
-    <filter id="coreGlow" x="-30%" y="-30%" width="160%" height="160%">
+    <filter id="coreGlow" filterUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">
       <feGaussianBlur stdDeviation="10" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />

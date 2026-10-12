@@ -1,30 +1,9 @@
 {
-  "version": 4,
   "defaultDeckId": "zh-hsk1",
   "decks": [
-    {
-      "id": "zh-hsk1",
-      "name": "Mandarin (HSK 1 Core)",
-      "file": "./data/zh-hsk1.json",
-      "defaultMode": "standard"
-    },
-    {
-      "id": "fr-verbs",
-      "name": "French (Core Verb Conjugations)",
-      "file": "./data/fr-verbs.json",
-      "defaultMode": "standard"
-    },
-    {
-      "id": "zh-radicals",
-      "name": "Mandarin (Kangxi Radicals 1-214)",
-      "file": "./data/zh-radicals.json",
-      "defaultMode": "standard"
-    },
-    {
-      "id": "fr-top500",
-      "name": "French Top 500 Words",
-      "file": "./data/fr-top500.json",
-      "defaultMode": "standard"
-    }
+    { "id": "zh-hsk1", "file": "./data/zh-hsk1.json" },
+    { "id": "zh-radicals", "file": "./data/zh-radicals.json" },
+    { "id": "fr-top500", "file": "./data/fr-top500.json" },
+    { "id": "fr-verbs", "file": "./data/fr-verbs.json" }
   ]
 }

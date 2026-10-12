@@ -1,48 +1,19 @@
 {
-  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "SpeedRecall",
   "short_name": "SpeedRecall",
-  "description": "Deterministic rapid script and vocabulary recall engine.",
-  "start_url": "./index.html",
+  "description": "Rapid-fire flashcard drilling for any language.",
+  "id": "./",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#090d16",
-  "theme_color": "#090d16",
-  "lang": "en",
-  "dir": "ltr",
-  "categories": [
-    "education",
-    "productivity",
-    "utilities"
-  ],
-  "prefer_related_applications": false,
+  "background_color": "#0b0f17",
+  "theme_color": "#0b0f17",
+  "categories": ["education"],
   "icons": [
-    {
-      "src": "assets/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Quick Practice",
-      "short_name": "Practice",
-      "description": "Jump straight into active review mode",
-      "url": "./index.html?mode=review",
-      "icons": [
-        {
-          "src": "assets/icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    }
+    { "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

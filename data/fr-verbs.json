@@ -1,186 +1,28 @@
 {
-  "name": "French (Core Verb Conjugations)",
-  "defaultMode": "latin-clean",
+  "name": "French · Core verb conjugations",
+  "lang": "fr",
+  "answerLang": "fr",
+  "defaultMode": "standard",
   "cards": [
-    {
-      "id": "fr-001",
-      "group": "Auxiliary: Être",
-      "unit": "Présent",
-      "prompt": "être (je)",
-      "subtitle": "to be — present (I)",
-      "answers": ["suis"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-002",
-      "group": "Auxiliary: Être",
-      "unit": "Présent",
-      "prompt": "être (tu)",
-      "subtitle": "to be — present (you)",
-      "answers": ["es"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-003",
-      "group": "Auxiliary: Être",
-      "unit": "Présent",
-      "prompt": "être (il / elle)",
-      "subtitle": "to be — present (he / she)",
-      "answers": ["est"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-004",
-      "group": "Auxiliary: Être",
-      "unit": "Présent",
-      "prompt": "être (nous)",
-      "subtitle": "to be — present (we)",
-      "answers": ["sommes"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-005",
-      "group": "Auxiliary: Être",
-      "unit": "Présent",
-      "prompt": "être (vous)",
-      "subtitle": "to be — present (you all / formal)",
-      "answers": ["êtes", "etes"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-006",
-      "group": "Auxiliary: Être",
-      "unit": "Présent",
-      "prompt": "être (ils / elles)",
-      "subtitle": "to be — present (they)",
-      "answers": ["sont"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-007",
-      "group": "Auxiliary: Avoir",
-      "unit": "Présent",
-      "prompt": "avoir (j')",
-      "subtitle": "to have — present (I)",
-      "answers": ["ai"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-008",
-      "group": "Auxiliary: Avoir",
-      "unit": "Présent",
-      "prompt": "avoir (tu)",
-      "subtitle": "to have — present (you)",
-      "answers": ["as"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-009",
-      "group": "Auxiliary: Avoir",
-      "unit": "Présent",
-      "prompt": "avoir (il / elle)",
-      "subtitle": "to have — present (he / she)",
-      "answers": ["a"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-010",
-      "group": "Auxiliary: Avoir",
-      "unit": "Présent",
-      "prompt": "avoir (nous)",
-      "subtitle": "to have — present (we)",
-      "answers": ["avons"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-011",
-      "group": "Auxiliary: Avoir",
-      "unit": "Présent",
-      "prompt": "avoir (vous)",
-      "subtitle": "to have — present (you all / formal)",
-      "answers": ["avez"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-012",
-      "group": "Auxiliary: Avoir",
-      "unit": "Présent",
-      "prompt": "avoir (ils / elles)",
-      "subtitle": "to have — present (they)",
-      "answers": ["ont"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-013",
-      "group": "Regular -er: Parler",
-      "unit": "Présent",
-      "prompt": "parler (je)",
-      "subtitle": "to speak — present (I)",
-      "answers": ["parle"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-014",
-      "group": "Regular -er: Parler",
-      "unit": "Présent",
-      "prompt": "parler (nous)",
-      "subtitle": "to speak — present (we)",
-      "answers": ["parlons"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-015",
-      "group": "Regular -er: Parler",
-      "unit": "Présent",
-      "prompt": "parler (vous)",
-      "subtitle": "to speak — present (you all)",
-      "answers": ["parlez"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-016",
-      "group": "Irregular: Faire",
-      "unit": "Présent",
-      "prompt": "faire (je / tu)",
-      "subtitle": "to do / make — present (I / you)",
-      "answers": ["fais"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-017",
-      "group": "Irregular: Faire",
-      "unit": "Présent",
-      "prompt": "faire (il / elle)",
-      "subtitle": "to do / make — present (he / she)",
-      "answers": ["fait"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-018",
-      "group": "Irregular: Faire",
-      "unit": "Présent",
-      "prompt": "faire (nous)",
-      "subtitle": "to do / make — present (we)",
-      "answers": ["faisons"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-019",
-      "group": "Irregular: Faire",
-      "unit": "Présent",
-      "prompt": "faire (vous)",
-      "subtitle": "to do / make — present (you all)",
-      "answers": ["faites"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-020",
-      "group": "Irregular: Faire",
-      "unit": "Présent",
-      "prompt": "faire (ils / elles)",
-      "subtitle": "to do / make — present (they)",
-      "answers": ["font"],
-      "weight": 1.0
-    }
+    {"id": "fr-001", "group": "Auxiliary: Être", "unit": "Présent", "prompt": "être (je)", "subtitle": "to be · present", "answer": "suis"},
+    {"id": "fr-002", "group": "Auxiliary: Être", "unit": "Présent", "prompt": "être (tu)", "subtitle": "to be · present", "answer": "es"},
+    {"id": "fr-003", "group": "Auxiliary: Être", "unit": "Présent", "prompt": "être (il / elle)", "subtitle": "to be · present", "answer": "est"},
+    {"id": "fr-004", "group": "Auxiliary: Être", "unit": "Présent", "prompt": "être (nous)", "subtitle": "to be · present", "answer": "sommes"},
+    {"id": "fr-005", "group": "Auxiliary: Être", "unit": "Présent", "prompt": "être (vous)", "subtitle": "to be · present", "answer": "êtes"},
+    {"id": "fr-006", "group": "Auxiliary: Être", "unit": "Présent", "prompt": "être (ils / elles)", "subtitle": "to be · present", "answer": "sont"},
+    {"id": "fr-007", "group": "Auxiliary: Avoir", "unit": "Présent", "prompt": "avoir (j')", "subtitle": "to have · present", "answer": "ai"},
+    {"id": "fr-008", "group": "Auxiliary: Avoir", "unit": "Présent", "prompt": "avoir (tu)", "subtitle": "to have · present", "answer": "as"},
+    {"id": "fr-009", "group": "Auxiliary: Avoir", "unit": "Présent", "prompt": "avoir (il / elle)", "subtitle": "to have · present", "answer": "a"},
+    {"id": "fr-010", "group": "Auxiliary: Avoir", "unit": "Présent", "prompt": "avoir (nous)", "subtitle": "to have · present", "answer": "avons"},
+    {"id": "fr-011", "group": "Auxiliary: Avoir", "unit": "Présent", "prompt": "avoir (vous)", "subtitle": "to have · present", "answer": "avez"},
+    {"id": "fr-012", "group": "Auxiliary: Avoir", "unit": "Présent", "prompt": "avoir (ils / elles)", "subtitle": "to have · present", "answer": "ont"},
+    {"id": "fr-013", "group": "Regular -er: Parler", "unit": "Présent", "prompt": "parler (je)", "subtitle": "to speak · present", "answer": "parle"},
+    {"id": "fr-014", "group": "Regular -er: Parler", "unit": "Présent", "prompt": "parler (nous)", "subtitle": "to speak · present", "answer": "parlons"},
+    {"id": "fr-015", "group": "Regular -er: Parler", "unit": "Présent", "prompt": "parler (vous)", "subtitle": "to speak · present", "answer": "parlez"},
+    {"id": "fr-016", "group": "Irregular: Faire", "unit": "Présent", "prompt": "faire (je / tu)", "subtitle": "to do / make · present", "answer": "fais"},
+    {"id": "fr-017", "group": "Irregular: Faire", "unit": "Présent", "prompt": "faire (il / elle)", "subtitle": "to do / make · present", "answer": "fait"},
+    {"id": "fr-018", "group": "Irregular: Faire", "unit": "Présent", "prompt": "faire (nous)", "subtitle": "to do / make · present", "answer": "faisons"},
+    {"id": "fr-019", "group": "Irregular: Faire", "unit": "Présent", "prompt": "faire (vous)", "subtitle": "to do / make · present", "answer": "faites"},
+    {"id": "fr-020", "group": "Irregular: Faire", "unit": "Présent", "prompt": "faire (ils / elles)", "subtitle": "to do / make · present", "answer": "font"}
   ]
 }

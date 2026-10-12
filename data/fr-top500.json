@@ -1,4506 +1,508 @@
 {
-  "name": "French Top 500 Words",
+  "name": "French · Top 500 words",
+  "lang": "fr",
+  "answerLang": "en",
   "defaultMode": "standard",
   "cards": [
-    {
-      "id": "fr-001",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "je",
-      "subtitle": "",
-      "answers": ["I"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-002",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "de",
-      "subtitle": "",
-      "answers": ["of"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-003",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "est",
-      "subtitle": "",
-      "answers": ["is"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-004",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "pas",
-      "subtitle": "",
-      "answers": ["not"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-005",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "le",
-      "subtitle": "",
-      "answers": ["the"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-006",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "vous",
-      "subtitle": "",
-      "answers": ["you"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-007",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "la",
-      "subtitle": "",
-      "answers": ["the"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-008",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "tu",
-      "subtitle": "",
-      "answers": ["you"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-009",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "que",
-      "subtitle": "",
-      "answers": ["that"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-010",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "un",
-      "subtitle": "",
-      "answers": ["a"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-011",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "il",
-      "subtitle": "",
-      "answers": ["he"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-012",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "et",
-      "subtitle": "",
-      "answers": ["and"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-013",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "à",
-      "subtitle": "",
-      "answers": ["to"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-014",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "a",
-      "subtitle": "",
-      "answers": ["at"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-015",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "ne",
-      "subtitle": "",
-      "answers": ["not"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-016",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "les",
-      "subtitle": "",
-      "answers": ["the"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-017",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "ce",
-      "subtitle": "",
-      "answers": ["this"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-018",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "en",
-      "subtitle": "",
-      "answers": ["in"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-019",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "on",
-      "subtitle": "",
-      "answers": ["we"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-020",
-      "group": "Words 001-020",
-      "unit": "Unit 01",
-      "prompt": "ça",
-      "subtitle": "",
-      "answers": ["that"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-021",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "une",
-      "subtitle": "",
-      "answers": ["a"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-022",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "ai",
-      "subtitle": "",
-      "answers": ["have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-023",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "pour",
-      "subtitle": "",
-      "answers": ["for"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-024",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "des",
-      "subtitle": "",
-      "answers": ["from"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-025",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "moi",
-      "subtitle": "",
-      "answers": ["me"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-026",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "qui",
-      "subtitle": "",
-      "answers": ["who"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-027",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "nous",
-      "subtitle": "",
-      "answers": ["we"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-028",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "y",
-      "subtitle": "",
-      "answers": ["there"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-029",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "mais",
-      "subtitle": "",
-      "answers": ["but"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-030",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "me",
-      "subtitle": "",
-      "answers": ["me"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-031",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "dans",
-      "subtitle": "",
-      "answers": ["in"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-032",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "du",
-      "subtitle": "",
-      "answers": ["due"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-033",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "bien",
-      "subtitle": "",
-      "answers": ["well"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-034",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "elle",
-      "subtitle": "",
-      "answers": ["she"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-035",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "si",
-      "subtitle": "",
-      "answers": ["if"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-036",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "tout",
-      "subtitle": "",
-      "answers": ["all"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-037",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "plus",
-      "subtitle": "",
-      "answers": ["more"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-038",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "non",
-      "subtitle": "",
-      "answers": ["no"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-039",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "mon",
-      "subtitle": "",
-      "answers": ["my"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-040",
-      "group": "Words 021-040",
-      "unit": "Unit 02",
-      "prompt": "suis",
-      "subtitle": "",
-      "answers": ["am"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-041",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "te",
-      "subtitle": "",
-      "answers": ["you"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-042",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "au",
-      "subtitle": "",
-      "answers": ["the"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-043",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "avec",
-      "subtitle": "",
-      "answers": ["with"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-044",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "va",
-      "subtitle": "",
-      "answers": ["go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-045",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "oui",
-      "subtitle": "",
-      "answers": ["yes"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-046",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "toi",
-      "subtitle": "",
-      "answers": ["you"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-047",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "fait",
-      "subtitle": "",
-      "answers": ["fact"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-048",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "ils",
-      "subtitle": "",
-      "answers": ["they"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-049",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "as",
-      "subtitle": "",
-      "answers": ["ace"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-050",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "être",
-      "subtitle": "",
-      "answers": ["be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-051",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "faire",
-      "subtitle": "",
-      "answers": ["do"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-052",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "se",
-      "subtitle": "",
-      "answers": ["themselves"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-053",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "comme",
-      "subtitle": "",
-      "answers": ["as"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-054",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "était",
-      "subtitle": "",
-      "answers": ["be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-055",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "sur",
-      "subtitle": "",
-      "answers": ["on"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-056",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "quoi",
-      "subtitle": "",
-      "answers": ["what"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-057",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "ici",
-      "subtitle": "",
-      "answers": ["here"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-058",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "sais",
-      "subtitle": "",
-      "answers": ["know"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-059",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "lui",
-      "subtitle": "",
-      "answers": ["him"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-060",
-      "group": "Words 041-060",
-      "unit": "Unit 03",
-      "prompt": "veux",
-      "subtitle": "",
-      "answers": ["want"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-061",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "ma",
-      "subtitle": "",
-      "answers": ["my"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-062",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "là",
-      "subtitle": "",
-      "answers": ["there"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-063",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "rien",
-      "subtitle": "",
-      "answers": ["nothing"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-064",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "dit",
-      "subtitle": "",
-      "answers": ["said"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-065",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "es",
-      "subtitle": "",
-      "answers": ["be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-066",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "où",
-      "subtitle": "",
-      "answers": ["where"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-067",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "votre",
-      "subtitle": "",
-      "answers": ["your"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-068",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "pourquoi",
-      "subtitle": "",
-      "answers": ["why"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-069",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "sont",
-      "subtitle": "",
-      "answers": ["be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-070",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "cette",
-      "subtitle": "",
-      "answers": ["this"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-071",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "quand",
-      "subtitle": "",
-      "answers": ["when"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-072",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "par",
-      "subtitle": "",
-      "answers": ["by"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-073",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "son",
-      "subtitle": "",
-      "answers": ["his"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-074",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "ton",
-      "subtitle": "",
-      "answers": ["your"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-075",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "peux",
-      "subtitle": "",
-      "answers": ["can"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-076",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "vais",
-      "subtitle": "",
-      "answers": ["go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-077",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "dire",
-      "subtitle": "",
-      "answers": ["say"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-078",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "alors",
-      "subtitle": "",
-      "answers": ["then"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-079",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "comment",
-      "subtitle": "",
-      "answers": ["how"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-080",
-      "group": "Words 061-080",
-      "unit": "Unit 04",
-      "prompt": "avez",
-      "subtitle": "",
-      "answers": ["have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-081",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "bon",
-      "subtitle": "",
-      "answers": ["good"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-082",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "ou",
-      "subtitle": "",
-      "answers": ["or"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-083",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "très",
-      "subtitle": "",
-      "answers": ["very"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-084",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "merci",
-      "subtitle": "",
-      "answers": ["thank"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-085",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "ont",
-      "subtitle": "",
-      "answers": ["have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-086",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "même",
-      "subtitle": "",
-      "answers": ["same"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-087",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "jamais",
-      "subtitle": "",
-      "answers": ["never"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-088",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "aussi",
-      "subtitle": "",
-      "answers": ["also"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-089",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "voir",
-      "subtitle": "",
-      "answers": ["see"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-090",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "chose",
-      "subtitle": "",
-      "answers": ["thing"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-091",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "allez",
-      "subtitle": "",
-      "answers": ["go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-092",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "tous",
-      "subtitle": "",
-      "answers": ["all"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-093",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "deux",
-      "subtitle": "",
-      "answers": ["two"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-094",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "ces",
-      "subtitle": "",
-      "answers": ["these"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-095",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "faut",
-      "subtitle": "",
-      "answers": ["must"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-096",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "sa",
-      "subtitle": "",
-      "answers": ["her"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-097",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "êtes",
-      "subtitle": "",
-      "answers": ["be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-098",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "été",
-      "subtitle": "",
-      "answers": ["summer"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-099",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "ta",
-      "subtitle": "",
-      "answers": ["your"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-100",
-      "group": "Words 081-100",
-      "unit": "Unit 05",
-      "prompt": "fais",
-      "subtitle": "",
-      "answers": ["do"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-101",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "avoir",
-      "subtitle": "",
-      "answers": ["have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-102",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "peut",
-      "subtitle": "",
-      "answers": ["can"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-103",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "autre",
-      "subtitle": "",
-      "answers": ["other"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-104",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "m",
-      "subtitle": "",
-      "answers": ["m"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-105",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "encore",
-      "subtitle": "",
-      "answers": ["still"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-106",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "maintenant",
-      "subtitle": "",
-      "answers": ["now"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-107",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "peu",
-      "subtitle": "",
-      "answers": ["little"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-108",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "mes",
-      "subtitle": "",
-      "answers": ["my"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-109",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "vraiment",
-      "subtitle": "",
-      "answers": ["really"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-110",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "temps",
-      "subtitle": "",
-      "answers": ["time"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-111",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "notre",
-      "subtitle": "",
-      "answers": ["our"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-112",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "toujours",
-      "subtitle": "",
-      "answers": ["always"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-113",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "vie",
-      "subtitle": "",
-      "answers": ["life"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-114",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "sans",
-      "subtitle": "",
-      "answers": ["without"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-115",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "juste",
-      "subtitle": "",
-      "answers": ["just"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-116",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "oh",
-      "subtitle": "",
-      "answers": ["oh"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-117",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "avait",
-      "subtitle": "",
-      "answers": ["had"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-118",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "accord",
-      "subtitle": "",
-      "answers": ["agreement"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-119",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "vu",
-      "subtitle": "",
-      "answers": ["seen"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-120",
-      "group": "Words 101-120",
-      "unit": "Unit 06",
-      "prompt": "monde",
-      "subtitle": "",
-      "answers": ["world"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-121",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "quelque",
-      "subtitle": "",
-      "answers": ["some"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-122",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "fois",
-      "subtitle": "",
-      "answers": ["time"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-123",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "aller",
-      "subtitle": "",
-      "answers": ["go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-124",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "trop",
-      "subtitle": "",
-      "answers": ["too"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-125",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "viens",
-      "subtitle": "",
-      "answers": ["come"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-126",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "crois",
-      "subtitle": "",
-      "answers": ["believe"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-127",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "dieu",
-      "subtitle": "",
-      "answers": ["god"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-128",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "dois",
-      "subtitle": "",
-      "answers": ["must"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-129",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "homme",
-      "subtitle": "",
-      "answers": ["man"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-130",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "père",
-      "subtitle": "",
-      "answers": ["father"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-131",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "sûr",
-      "subtitle": "",
-      "answers": ["sure"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-132",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "aux",
-      "subtitle": "",
-      "answers": ["the"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-133",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "leur",
-      "subtitle": "",
-      "answers": ["their"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-134",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "avant",
-      "subtitle": "",
-      "answers": ["before"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-135",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "étais",
-      "subtitle": "",
-      "answers": ["was"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-136",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "besoin",
-      "subtitle": "",
-      "answers": ["need"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-137",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "femme",
-      "subtitle": "",
-      "answers": ["woman"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-138",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "aime",
-      "subtitle": "",
-      "answers": ["love"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-139",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "personne",
-      "subtitle": "",
-      "answers": ["person"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-140",
-      "group": "Words 121-140",
-      "unit": "Unit 07",
-      "prompt": "avais",
-      "subtitle": "",
-      "answers": ["had"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-141",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "chez",
-      "subtitle": "",
-      "answers": ["at"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-142",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "vrai",
-      "subtitle": "",
-      "answers": ["true"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-143",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "ans",
-      "subtitle": "",
-      "answers": ["years"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-144",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "mal",
-      "subtitle": "",
-      "answers": ["bad"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-145",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "ses",
-      "subtitle": "",
-      "answers": ["his"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-146",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "parler",
-      "subtitle": "",
-      "answers": ["speak"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-147",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "vos",
-      "subtitle": "",
-      "answers": ["your"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-148",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "après",
-      "subtitle": "",
-      "answers": ["after"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-149",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "mort",
-      "subtitle": "",
-      "answers": ["dead"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-150",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "veut",
-      "subtitle": "",
-      "answers": ["wants"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-151",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "eu",
-      "subtitle": "",
-      "answers": ["had"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-152",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "sera",
-      "subtitle": "",
-      "answers": ["will be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-153",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "bonne",
-      "subtitle": "",
-      "answers": ["good"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-154",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "parce",
-      "subtitle": "",
-      "answers": ["because"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-155",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "mieux",
-      "subtitle": "",
-      "answers": ["better"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-156",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "petit",
-      "subtitle": "",
-      "answers": ["small"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-157",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "voilà",
-      "subtitle": "",
-      "answers": ["there"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-158",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "tes",
-      "subtitle": "",
-      "answers": ["your"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-159",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "ca",
-      "subtitle": "",
-      "answers": ["that"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-160",
-      "group": "Words 141-160",
-      "unit": "Unit 08",
-      "prompt": "dis",
-      "subtitle": "",
-      "answers": ["say"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-161",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "beaucoup",
-      "subtitle": "",
-      "answers": ["much"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-162",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "depuis",
-      "subtitle": "",
-      "answers": ["since"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-163",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "doit",
-      "subtitle": "",
-      "answers": ["must"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-164",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "vois",
-      "subtitle": "",
-      "answers": ["see"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-165",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "mère",
-      "subtitle": "",
-      "answers": ["mother"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-166",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "vas",
-      "subtitle": "",
-      "answers": ["go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-167",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "monsieur",
-      "subtitle": "",
-      "answers": ["mister"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-168",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "quel",
-      "subtitle": "",
-      "answers": ["what"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-169",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "déjà",
-      "subtitle": "",
-      "answers": ["already"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-170",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "fille",
-      "subtitle": "",
-      "answers": ["girl"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-171",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "gens",
-      "subtitle": "",
-      "answers": ["people"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-172",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "donc",
-      "subtitle": "",
-      "answers": ["therefore"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-173",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "jour",
-      "subtitle": "",
-      "answers": ["day"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-174",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "soir",
-      "subtitle": "",
-      "answers": ["evening"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-175",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "autres",
-      "subtitle": "",
-      "answers": ["others"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-176",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "toute",
-      "subtitle": "",
-      "answers": ["all"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-177",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "bonjour",
-      "subtitle": "",
-      "answers": ["hello"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-178",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "maison",
-      "subtitle": "",
-      "answers": ["house"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-179",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "nom",
-      "subtitle": "",
-      "answers": ["name"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-180",
-      "group": "Words 161-180",
-      "unit": "Unit 09",
-      "prompt": "argent",
-      "subtitle": "",
-      "answers": ["money"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-181",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "nos",
-      "subtitle": "",
-      "answers": ["our"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-182",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "ouais",
-      "subtitle": "",
-      "answers": ["yeah"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-183",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "pense",
-      "subtitle": "",
-      "answers": ["think"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-184",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "merde",
-      "subtitle": "",
-      "answers": ["shit"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-185",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "nuit",
-      "subtitle": "",
-      "answers": ["night"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-186",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "papa",
-      "subtitle": "",
-      "answers": ["dad"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-187",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "cela",
-      "subtitle": "",
-      "answers": ["that"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-188",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "salut",
-      "subtitle": "",
-      "answers": ["hi"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-189",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "cet",
-      "subtitle": "",
-      "answers": ["this"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-190",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "avons",
-      "subtitle": "",
-      "answers": ["have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-191",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "reste",
-      "subtitle": "",
-      "answers": ["rest"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-192",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "désolé",
-      "subtitle": "",
-      "answers": ["sorry"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-193",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "maman",
-      "subtitle": "",
-      "answers": ["mom"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-194",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "peur",
-      "subtitle": "",
-      "answers": ["fear"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-195",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "arrive",
-      "subtitle": "",
-      "answers": ["arrive"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-196",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "seul",
-      "subtitle": "",
-      "answers": ["alone"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-197",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "vite",
-      "subtitle": "",
-      "answers": ["fast"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-198",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "prendre",
-      "subtitle": "",
-      "answers": ["take"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-199",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "regarde",
-      "subtitle": "",
-      "answers": ["look"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-200",
-      "group": "Words 181-200",
-      "unit": "Unit 10",
-      "prompt": "soit",
-      "subtitle": "",
-      "answers": ["either"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-201",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "trois",
-      "subtitle": "",
-      "answers": ["three"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-202",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "quelle",
-      "subtitle": "",
-      "answers": ["what"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-203",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "passé",
-      "subtitle": "",
-      "answers": ["past"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-204",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "savoir",
-      "subtitle": "",
-      "answers": ["know"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-205",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "plaît",
-      "subtitle": "",
-      "answers": ["please"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-206",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "choses",
-      "subtitle": "",
-      "answers": ["things"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-207",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "moins",
-      "subtitle": "",
-      "answers": ["less"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-208",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "fils",
-      "subtitle": "",
-      "answers": ["son"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-209",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "entre",
-      "subtitle": "",
-      "answers": ["between"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-210",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "bas",
-      "subtitle": "",
-      "answers": ["low"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-211",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "appelle",
-      "subtitle": "",
-      "answers": ["call"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-212",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "passe",
-      "subtitle": "",
-      "answers": ["pass"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-213",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "ah",
-      "subtitle": "",
-      "answers": ["ah"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-214",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "tête",
-      "subtitle": "",
-      "answers": ["head"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-215",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "demain",
-      "subtitle": "",
-      "answers": ["tomorrow"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-216",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "grand",
-      "subtitle": "",
-      "answers": ["big"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-217",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "arrête",
-      "subtitle": "",
-      "answers": ["stop"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-218",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "faites",
-      "subtitle": "",
-      "answers": ["make"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-219",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "voulez",
-      "subtitle": "",
-      "answers": ["want"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-220",
-      "group": "Words 201-220",
-      "unit": "Unit 11",
-      "prompt": "hé",
-      "subtitle": "",
-      "answers": ["hey"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-221",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "attends",
-      "subtitle": "",
-      "answers": ["wait"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-222",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "hein",
-      "subtitle": "",
-      "answers": ["huh"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-223",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "enfants",
-      "subtitle": "",
-      "answers": ["children"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-224",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "assez",
-      "subtitle": "",
-      "answers": ["enough"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-225",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "raison",
-      "subtitle": "",
-      "answers": ["reason"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-226",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "aurais",
-      "subtitle": "",
-      "answers": ["had"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-227",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "voulais",
-      "subtitle": "",
-      "answers": ["wanted"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-228",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "elles",
-      "subtitle": "",
-      "answers": ["they"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-229",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "parle",
-      "subtitle": "",
-      "answers": ["speak"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-230",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "jours",
-      "subtitle": "",
-      "answers": ["days"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-231",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "dû",
-      "subtitle": "",
-      "answers": ["due"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-232",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "heure",
-      "subtitle": "",
-      "answers": ["hour"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-233",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "puis",
-      "subtitle": "",
-      "answers": ["then"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-234",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "gars",
-      "subtitle": "",
-      "answers": ["guy"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-235",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "hommes",
-      "subtitle": "",
-      "answers": ["men"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-236",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "amour",
-      "subtitle": "",
-      "answers": ["love"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-237",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "tard",
-      "subtitle": "",
-      "answers": ["late"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-238",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "toutes",
-      "subtitle": "",
-      "answers": ["all"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-239",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "sommes",
-      "subtitle": "",
-      "answers": ["are"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-240",
-      "group": "Words 221-240",
-      "unit": "Unit 12",
-      "prompt": "tuer",
-      "subtitle": "",
-      "answers": ["kill"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-241",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "ami",
-      "subtitle": "",
-      "answers": ["friend"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-242",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "connais",
-      "subtitle": "",
-      "answers": ["know"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-243",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "petite",
-      "subtitle": "",
-      "answers": ["small"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-244",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "aider",
-      "subtitle": "",
-      "answers": ["help"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-245",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "chance",
-      "subtitle": "",
-      "answers": ["luck"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-246",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "savez",
-      "subtitle": "",
-      "answers": ["know"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-247",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "partir",
-      "subtitle": "",
-      "answers": ["leave"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-248",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "sait",
-      "subtitle": "",
-      "answers": ["knows"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-249",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "combien",
-      "subtitle": "",
-      "answers": ["how much"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-250",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "voiture",
-      "subtitle": "",
-      "answers": ["car"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-251",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "tant",
-      "subtitle": "",
-      "answers": ["so"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-252",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "pris",
-      "subtitle": "",
-      "answers": ["taken"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-253",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "problème",
-      "subtitle": "",
-      "answers": ["problem"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-254",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "prends",
-      "subtitle": "",
-      "answers": ["take"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-255",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "porte",
-      "subtitle": "",
-      "answers": ["door"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-256",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "coup",
-      "subtitle": "",
-      "answers": ["blow"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-257",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "serait",
-      "subtitle": "",
-      "answers": ["would be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-258",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "venir",
-      "subtitle": "",
-      "answers": ["come"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-259",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "famille",
-      "subtitle": "",
-      "answers": ["family"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-260",
-      "group": "Words 241-260",
-      "unit": "Unit 13",
-      "prompt": "travail",
-      "subtitle": "",
-      "answers": ["work"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-261",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "pu",
-      "subtitle": "",
-      "answers": ["could"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-262",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "seule",
-      "subtitle": "",
-      "answers": ["alone"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-263",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "sens",
-      "subtitle": "",
-      "answers": ["sense"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-264",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "ni",
-      "subtitle": "",
-      "answers": ["nor"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-265",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "allons",
-      "subtitle": "",
-      "answers": ["go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-266",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "revoir",
-      "subtitle": "",
-      "answers": ["see again"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-267",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "idée",
-      "subtitle": "",
-      "answers": ["idea"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-268",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "putain",
-      "subtitle": "",
-      "answers": ["damn"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-269",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "passer",
-      "subtitle": "",
-      "answers": ["pass"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-270",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "contre",
-      "subtitle": "",
-      "answers": ["against"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-271",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "comprends",
-      "subtitle": "",
-      "answers": ["understand"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-272",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "entendu",
-      "subtitle": "",
-      "answers": ["heard"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-273",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "trouvé",
-      "subtitle": "",
-      "answers": ["found"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-274",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "trouver",
-      "subtitle": "",
-      "answers": ["find"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-275",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "vieux",
-      "subtitle": "",
-      "answers": ["old"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-276",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "vient",
-      "subtitle": "",
-      "answers": ["comes"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-277",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "pendant",
-      "subtitle": "",
-      "answers": ["during"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-278",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "aurait",
-      "subtitle": "",
-      "answers": ["would have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-279",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "quelques",
-      "subtitle": "",
-      "answers": ["some"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-280",
-      "group": "Words 261-280",
-      "unit": "Unit 14",
-      "prompt": "attention",
-      "subtitle": "",
-      "answers": ["attention"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-281",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "demande",
-      "subtitle": "",
-      "answers": ["request"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-282",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "chercher",
-      "subtitle": "",
-      "answers": ["search"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-283",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "sous",
-      "subtitle": "",
-      "answers": ["under"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-284",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "voici",
-      "subtitle": "",
-      "answers": ["here"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-285",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "pourrait",
-      "subtitle": "",
-      "answers": ["could"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-286",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "sang",
-      "subtitle": "",
-      "answers": ["blood"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-287",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "pouvez",
-      "subtitle": "",
-      "answers": ["can"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-288",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "sortir",
-      "subtitle": "",
-      "answers": ["exit"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-289",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "histoire",
-      "subtitle": "",
-      "answers": ["story"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-290",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "amis",
-      "subtitle": "",
-      "answers": ["friends"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-291",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "venez",
-      "subtitle": "",
-      "answers": ["come"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-292",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "frère",
-      "subtitle": "",
-      "answers": ["brother"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-293",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "rester",
-      "subtitle": "",
-      "answers": ["stay"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-294",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "fini",
-      "subtitle": "",
-      "answers": ["finished"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-295",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "ville",
-      "subtitle": "",
-      "answers": ["city"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-296",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "nouveau",
-      "subtitle": "",
-      "answers": ["new"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-297",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "truc",
-      "subtitle": "",
-      "answers": ["thing"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-298",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "tiens",
-      "subtitle": "",
-      "answers": ["hold"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-299",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "mois",
-      "subtitle": "",
-      "answers": ["month"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-300",
-      "group": "Words 281-300",
-      "unit": "Unit 15",
-      "prompt": "eux",
-      "subtitle": "",
-      "answers": ["them"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-301",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "mec",
-      "subtitle": "",
-      "answers": ["guy"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-302",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "yeux",
-      "subtitle": "",
-      "answers": ["eyes"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-303",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "laisse",
-      "subtitle": "",
-      "answers": ["leave"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-304",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "super",
-      "subtitle": "",
-      "answers": ["great"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-305",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "belle",
-      "subtitle": "",
-      "answers": ["beautiful"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-306",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "longtemps",
-      "subtitle": "",
-      "answers": ["longtime"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-307",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "eau",
-      "subtitle": "",
-      "answers": ["water"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-308",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "heures",
-      "subtitle": "",
-      "answers": ["hours"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-309",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "car",
-      "subtitle": "",
-      "answers": ["because"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-310",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "importe",
-      "subtitle": "",
-      "answers": ["matter"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-311",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "cas",
-      "subtitle": "",
-      "answers": ["case"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-312",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "vont",
-      "subtitle": "",
-      "answers": ["go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-313",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "chaque",
-      "subtitle": "",
-      "answers": ["each"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-314",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "terre",
-      "subtitle": "",
-      "answers": ["earth"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-315",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "place",
-      "subtitle": "",
-      "answers": ["place"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-316",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "tué",
-      "subtitle": "",
-      "answers": ["killed"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-317",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "main",
-      "subtitle": "",
-      "answers": ["hand"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-318",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "pardon",
-      "subtitle": "",
-      "answers": ["pardon"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-319",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "ensemble",
-      "subtitle": "",
-      "answers": ["together"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-320",
-      "group": "Words 301-320",
-      "unit": "Unit 16",
-      "prompt": "seulement",
-      "subtitle": "",
-      "answers": ["only"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-321",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "guerre",
-      "subtitle": "",
-      "answers": ["war"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-322",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "beau",
-      "subtitle": "",
-      "answers": ["beautiful"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-323",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "vers",
-      "subtitle": "",
-      "answers": ["towards"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-324",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "mme",
-      "subtitle": "",
-      "answers": ["mrs"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-325",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "prie",
-      "subtitle": "",
-      "answers": ["pray"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-326",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "devant",
-      "subtitle": "",
-      "answers": ["in front"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-327",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "trouve",
-      "subtitle": "",
-      "answers": ["find"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-328",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "partie",
-      "subtitle": "",
-      "answers": ["part"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-329",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "suite",
-      "subtitle": "",
-      "answers": ["continuation"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-330",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "compris",
-      "subtitle": "",
-      "answers": ["understood"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-331",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "matin",
-      "subtitle": "",
-      "answers": ["morning"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-332",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "leurs",
-      "subtitle": "",
-      "answers": ["their"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-333",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "aucun",
-      "subtitle": "",
-      "answers": ["none"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-334",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "arrivé",
-      "subtitle": "",
-      "answers": ["arrived"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-335",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "dessus",
-      "subtitle": "",
-      "answers": ["above"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-336",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "chérie",
-      "subtitle": "",
-      "answers": ["darling"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-337",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "mettre",
-      "subtitle": "",
-      "answers": ["put"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-338",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "aide",
-      "subtitle": "",
-      "answers": ["help"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-339",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "étaient",
-      "subtitle": "",
-      "answers": ["were"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-340",
-      "group": "Words 321-340",
-      "unit": "Unit 17",
-      "prompt": "perdu",
-      "subtitle": "",
-      "answers": ["lost"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-341",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "fin",
-      "subtitle": "",
-      "answers": ["end"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-342",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "sois",
-      "subtitle": "",
-      "answers": ["be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-343",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "premier",
-      "subtitle": "",
-      "answers": ["first"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-344",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "genre",
-      "subtitle": "",
-      "answers": ["kind"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-345",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "aimerais",
-      "subtitle": "",
-      "answers": ["would like"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-346",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "droit",
-      "subtitle": "",
-      "answers": ["right"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-347",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "donne",
-      "subtitle": "",
-      "answers": ["give"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-348",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "attendez",
-      "subtitle": "",
-      "answers": ["wait"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-349",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "jeune",
-      "subtitle": "",
-      "answers": ["young"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-350",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "feu",
-      "subtitle": "",
-      "answers": ["fire"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-351",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "devrais",
-      "subtitle": "",
-      "answers": ["should"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-352",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "enfant",
-      "subtitle": "",
-      "answers": ["child"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-353",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "chambre",
-      "subtitle": "",
-      "answers": ["room"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-354",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "gros",
-      "subtitle": "",
-      "answers": ["big"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-355",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "côté",
-      "subtitle": "",
-      "answers": ["side"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-356",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "venu",
-      "subtitle": "",
-      "answers": ["come"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-357",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "loin",
-      "subtitle": "",
-      "answers": ["far"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-358",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "laisser",
-      "subtitle": "",
-      "answers": ["leave"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-359",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "donner",
-      "subtitle": "",
-      "answers": ["give"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-360",
-      "group": "Words 341-360",
-      "unit": "Unit 18",
-      "prompt": "jouer",
-      "subtitle": "",
-      "answers": ["play"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-361",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "savais",
-      "subtitle": "",
-      "answers": ["knew"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-362",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "compte",
-      "subtitle": "",
-      "answers": ["account"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-363",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "parlé",
-      "subtitle": "",
-      "answers": ["spoken"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-364",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "regardez",
-      "subtitle": "",
-      "answers": ["look"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-365",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "première",
-      "subtitle": "",
-      "answers": ["first"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-366",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "pouvoir",
-      "subtitle": "",
-      "answers": ["power"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-367",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "aura",
-      "subtitle": "",
-      "answers": ["will have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-368",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "mourir",
-      "subtitle": "",
-      "answers": ["die"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-369",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "dernière",
-      "subtitle": "",
-      "answers": ["last"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-370",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "donné",
-      "subtitle": "",
-      "answers": ["given"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-371",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "mari",
-      "subtitle": "",
-      "answers": ["husband"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-372",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "écoute",
-      "subtitle": "",
-      "answers": ["listen"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-373",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "enfin",
-      "subtitle": "",
-      "answers": ["finally"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-374",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "devrait",
-      "subtitle": "",
-      "answers": ["should"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-375",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "mis",
-      "subtitle": "",
-      "answers": ["put"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-376",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "film",
-      "subtitle": "",
-      "answers": ["movie"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-377",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "aucune",
-      "subtitle": "",
-      "answers": ["none"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-378",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "façon",
-      "subtitle": "",
-      "answers": ["way"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-379",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "pays",
-      "subtitle": "",
-      "answers": ["country"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-380",
-      "group": "Words 361-380",
-      "unit": "Unit 19",
-      "prompt": "prêt",
-      "subtitle": "",
-      "answers": ["ready"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-381",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "madame",
-      "subtitle": "",
-      "answers": ["madam"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-382",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "femmes",
-      "subtitle": "",
-      "answers": ["women"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-383",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "affaire",
-      "subtitle": "",
-      "answers": ["business"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-384",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "pourrais",
-      "subtitle": "",
-      "answers": ["could"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-385",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "espère",
-      "subtitle": "",
-      "answers": ["hope"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-386",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "parti",
-      "subtitle": "",
-      "answers": ["party"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-387",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "boulot",
-      "subtitle": "",
-      "answers": ["job"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-388",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "endroit",
-      "subtitle": "",
-      "answers": ["place"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-389",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "fou",
-      "subtitle": "",
-      "answers": ["crazy"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-390",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "corps",
-      "subtitle": "",
-      "answers": ["body"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-391",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "hier",
-      "subtitle": "",
-      "answers": ["yesterday"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-392",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "dont",
-      "subtitle": "",
-      "answers": ["whose"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-393",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "désolée",
-      "subtitle": "",
-      "answers": ["sorry"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-394",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "grande",
-      "subtitle": "",
-      "answers": ["big"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-395",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "cinq",
-      "subtitle": "",
-      "answers": ["five"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-396",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "dehors",
-      "subtitle": "",
-      "answers": ["outside"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-397",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "filles",
-      "subtitle": "",
-      "answers": ["girls"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-398",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "vivre",
-      "subtitle": "",
-      "answers": ["live"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-399",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "près",
-      "subtitle": "",
-      "answers": ["near"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-400",
-      "group": "Words 381-400",
-      "unit": "Unit 20",
-      "prompt": "pensais",
-      "subtitle": "",
-      "answers": ["thought"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-401",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "garçon",
-      "subtitle": "",
-      "answers": ["boy"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-402",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "chef",
-      "subtitle": "",
-      "answers": ["boss"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-403",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "haut",
-      "subtitle": "",
-      "answers": ["high"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-404",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "capitaine",
-      "subtitle": "",
-      "answers": ["captain"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-405",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "dirait",
-      "subtitle": "",
-      "answers": ["would say"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-406",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "bébé",
-      "subtitle": "",
-      "answers": ["baby"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-407",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "celui",
-      "subtitle": "",
-      "answers": ["that"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-408",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "demandé",
-      "subtitle": "",
-      "answers": ["asked"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-409",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "mains",
-      "subtitle": "",
-      "answers": ["hands"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-410",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "ainsi",
-      "subtitle": "",
-      "answers": ["thus"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-411",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "quatre",
-      "subtitle": "",
-      "answers": ["four"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-412",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "nouvelle",
-      "subtitle": "",
-      "answers": ["news"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-413",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "années",
-      "subtitle": "",
-      "answers": ["years"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-414",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "plein",
-      "subtitle": "",
-      "answers": ["full"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-415",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "semaine",
-      "subtitle": "",
-      "answers": ["week"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-416",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "dites",
-      "subtitle": "",
-      "answers": ["say"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-417",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "croire",
-      "subtitle": "",
-      "answers": ["believe"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-418",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "marche",
-      "subtitle": "",
-      "answers": ["walk"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-419",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "tour",
-      "subtitle": "",
-      "answers": ["turn"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-420",
-      "group": "Words 401-420",
-      "unit": "Unit 21",
-      "prompt": "école",
-      "subtitle": "",
-      "answers": ["school"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-421",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "manger",
-      "subtitle": "",
-      "answers": ["eat"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-422",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "plutôt",
-      "subtitle": "",
-      "answers": ["rather"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-423",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "docteur",
-      "subtitle": "",
-      "answers": ["doctor"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-424",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "ceux",
-      "subtitle": "",
-      "answers": ["those"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-425",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "vérité",
-      "subtitle": "",
-      "answers": ["truth"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-426",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "vue",
-      "subtitle": "",
-      "answers": ["view"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-427",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "arrêter",
-      "subtitle": "",
-      "answers": ["stop"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-428",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "essaie",
-      "subtitle": "",
-      "answers": ["try"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-429",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "envie",
-      "subtitle": "",
-      "answers": ["desire"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-430",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "bientôt",
-      "subtitle": "",
-      "answers": ["soon"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-431",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "instant",
-      "subtitle": "",
-      "answers": ["moment"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-432",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "dernier",
-      "subtitle": "",
-      "answers": ["last"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-433",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "affaires",
-      "subtitle": "",
-      "answers": ["business"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-434",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "arriver",
-      "subtitle": "",
-      "answers": ["arrive"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-435",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "demander",
-      "subtitle": "",
-      "answers": ["ask"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-436",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "meilleur",
-      "subtitle": "",
-      "answers": ["best"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-437",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "font",
-      "subtitle": "",
-      "answers": ["make"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-438",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "derrière",
-      "subtitle": "",
-      "answers": ["behind"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-439",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "presque",
-      "subtitle": "",
-      "answers": ["almost"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-440",
-      "group": "Words 421-440",
-      "unit": "Unit 22",
-      "prompt": "tellement",
-      "subtitle": "",
-      "answers": ["so"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-441",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "tomber",
-      "subtitle": "",
-      "answers": ["fall"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-442",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "journée",
-      "subtitle": "",
-      "answers": ["day"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-443",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "voulait",
-      "subtitle": "",
-      "answers": ["wanted"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-444",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "appeler",
-      "subtitle": "",
-      "answers": ["call"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-445",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "bureau",
-      "subtitle": "",
-      "answers": ["office"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-446",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "confiance",
-      "subtitle": "",
-      "answers": ["trust"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-447",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "garde",
-      "subtitle": "",
-      "answers": ["guard"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-448",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "attendre",
-      "subtitle": "",
-      "answers": ["wait"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-449",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "numéro",
-      "subtitle": "",
-      "answers": ["number"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-450",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "serai",
-      "subtitle": "",
-      "answers": ["will be"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-451",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "dur",
-      "subtitle": "",
-      "answers": ["hard"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-452",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "á",
-      "subtitle": "",
-      "answers": ["at"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-453",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "souviens",
-      "subtitle": "",
-      "answers": ["remember"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-454",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "voyez",
-      "subtitle": "",
-      "answers": ["see"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-455",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "cours",
-      "subtitle": "",
-      "answers": ["course"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-456",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "bonsoir",
-      "subtitle": "",
-      "answers": ["good evening"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-457",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "route",
-      "subtitle": "",
-      "answers": ["road"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-458",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "fera",
-      "subtitle": "",
-      "answers": ["will do"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-459",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "prend",
-      "subtitle": "",
-      "answers": ["takes"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-460",
-      "group": "Words 441-460",
-      "unit": "Unit 23",
-      "prompt": "cul",
-      "subtitle": "",
-      "answers": ["ass"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-461",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "abord",
-      "subtitle": "",
-      "answers": ["board"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-462",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "peine",
-      "subtitle": "",
-      "answers": ["trouble"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-463",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "croyais",
-      "subtitle": "",
-      "answers": ["believed"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-464",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "mot",
-      "subtitle": "",
-      "answers": ["word"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-465",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "devez",
-      "subtitle": "",
-      "answers": ["must"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-466",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "suffit",
-      "subtitle": "",
-      "answers": ["enough"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-467",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "ferme",
-      "subtitle": "",
-      "answers": ["farm"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-468",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "plaisir",
-      "subtitle": "",
-      "answers": ["pleasure"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-469",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "chien",
-      "subtitle": "",
-      "answers": ["dog"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-470",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "jeu",
-      "subtitle": "",
-      "answers": ["game"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-471",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "seigneur",
-      "subtitle": "",
-      "answers": ["lord"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-472",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "messieurs",
-      "subtitle": "",
-      "answers": ["gentlemen"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-473",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "calme",
-      "subtitle": "",
-      "answers": ["calm"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-474",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "voudrais",
-      "subtitle": "",
-      "answers": ["would like"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-475",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "heureux",
-      "subtitle": "",
-      "answers": ["happy"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-476",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "prenez",
-      "subtitle": "",
-      "answers": ["take"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-477",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "mariage",
-      "subtitle": "",
-      "answers": ["marriage"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-478",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "voit",
-      "subtitle": "",
-      "answers": ["sees"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-479",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "lls",
-      "subtitle": "",
-      "answers": ["they"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-480",
-      "group": "Words 461-480",
-      "unit": "Unit 24",
-      "prompt": "dedans",
-      "subtitle": "",
-      "answers": ["inside"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-481",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "entrer",
-      "subtitle": "",
-      "answers": ["enter"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-482",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "lit",
-      "subtitle": "",
-      "answers": ["bed"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-483",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "parfait",
-      "subtitle": "",
-      "answers": ["perfect"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-484",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "fous",
-      "subtitle": "",
-      "answers": ["crazy"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-485",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "mlle",
-      "subtitle": "",
-      "answers": ["miss"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-486",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "rentrer",
-      "subtitle": "",
-      "answers": ["return"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-487",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "ait",
-      "subtitle": "",
-      "answers": ["have"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-488",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "musique",
-      "subtitle": "",
-      "answers": ["music"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-489",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "arrêtez",
-      "subtitle": "",
-      "answers": ["stop"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-490",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "autant",
-      "subtitle": "",
-      "answers": ["as much"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-491",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "reviens",
-      "subtitle": "",
-      "answers": ["return"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-492",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "ceci",
-      "subtitle": "",
-      "answers": ["this"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-493",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "drôle",
-      "subtitle": "",
-      "answers": ["funny"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-494",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "attend",
-      "subtitle": "",
-      "answers": ["waits"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-495",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "parfois",
-      "subtitle": "",
-      "answers": ["sometimes"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-496",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "téléphone",
-      "subtitle": "",
-      "answers": ["phone"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-497",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "retour",
-      "subtitle": "",
-      "answers": ["return"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-498",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "ira",
-      "subtitle": "",
-      "answers": ["will go"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-499",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "pauvre",
-      "subtitle": "",
-      "answers": ["poor"],
-      "weight": 1.0
-    },
-    {
-      "id": "fr-500",
-      "group": "Words 481-500",
-      "unit": "Unit 25",
-      "prompt": "verre",
-      "subtitle": "",
-      "answers": ["glass"],
-      "weight": 1.0
-    }
+    {"id": "fr-001", "group": "Words 1–100", "unit": "1–20", "prompt": "je", "answer": "I"},
+    {"id": "fr-002", "group": "Words 1–100", "unit": "1–20", "prompt": "de", "answer": "of"},
+    {"id": "fr-003", "group": "Words 1–100", "unit": "1–20", "prompt": "est", "answer": "is", "subtitle": "être · il/elle"},
+    {"id": "fr-004", "group": "Words 1–100", "unit": "1–20", "prompt": "pas", "answer": "not", "subtitle": "ne … pas"},
+    {"id": "fr-005", "group": "Words 1–100", "unit": "1–20", "prompt": "le", "answer": "the", "subtitle": "masc."},
+    {"id": "fr-006", "group": "Words 1–100", "unit": "1–20", "prompt": "vous", "answer": "you", "subtitle": "formal / plural"},
+    {"id": "fr-007", "group": "Words 1–100", "unit": "1–20", "prompt": "la", "answer": "the", "subtitle": "fem."},
+    {"id": "fr-008", "group": "Words 1–100", "unit": "1–20", "prompt": "tu", "answer": "you", "subtitle": "informal"},
+    {"id": "fr-009", "group": "Words 1–100", "unit": "1–20", "prompt": "que", "answer": "that", "subtitle": "conjunction"},
+    {"id": "fr-010", "group": "Words 1–100", "unit": "1–20", "prompt": "un", "answer": "a", "subtitle": "masc."},
+    {"id": "fr-011", "group": "Words 1–100", "unit": "1–20", "prompt": "il", "answer": "he"},
+    {"id": "fr-012", "group": "Words 1–100", "unit": "1–20", "prompt": "et", "answer": "and"},
+    {"id": "fr-013", "group": "Words 1–100", "unit": "1–20", "prompt": "à", "answer": "to"},
+    {"id": "fr-014", "group": "Words 1–100", "unit": "1–20", "prompt": "a", "answer": "has", "subtitle": "avoir · il/elle"},
+    {"id": "fr-015", "group": "Words 1–100", "unit": "1–20", "prompt": "ne", "answer": "not", "subtitle": "ne … pas"},
+    {"id": "fr-016", "group": "Words 1–100", "unit": "1–20", "prompt": "les", "answer": "the", "subtitle": "plural"},
+    {"id": "fr-017", "group": "Words 1–100", "unit": "1–20", "prompt": "ce", "answer": "this", "subtitle": "masc."},
+    {"id": "fr-018", "group": "Words 1–100", "unit": "1–20", "prompt": "en", "answer": "in"},
+    {"id": "fr-019", "group": "Words 1–100", "unit": "1–20", "prompt": "on", "answer": "we", "subtitle": "informal \"we\""},
+    {"id": "fr-020", "group": "Words 1–100", "unit": "1–20", "prompt": "ça", "answer": "that", "subtitle": "informal"},
+    {"id": "fr-021", "group": "Words 1–100", "unit": "21–40", "prompt": "une", "answer": "a", "subtitle": "fem."},
+    {"id": "fr-022", "group": "Words 1–100", "unit": "21–40", "prompt": "ai", "answer": "have", "subtitle": "avoir · je"},
+    {"id": "fr-023", "group": "Words 1–100", "unit": "21–40", "prompt": "pour", "answer": "for"},
+    {"id": "fr-024", "group": "Words 1–100", "unit": "21–40", "prompt": "des", "answer": "some", "subtitle": "plural"},
+    {"id": "fr-025", "group": "Words 1–100", "unit": "21–40", "prompt": "moi", "answer": "me", "subtitle": "stressed pronoun"},
+    {"id": "fr-026", "group": "Words 1–100", "unit": "21–40", "prompt": "qui", "answer": "who"},
+    {"id": "fr-027", "group": "Words 1–100", "unit": "21–40", "prompt": "nous", "answer": "we"},
+    {"id": "fr-028", "group": "Words 1–100", "unit": "21–40", "prompt": "y", "answer": "there"},
+    {"id": "fr-029", "group": "Words 1–100", "unit": "21–40", "prompt": "mais", "answer": "but"},
+    {"id": "fr-030", "group": "Words 1–100", "unit": "21–40", "prompt": "me", "answer": "me", "subtitle": "object pronoun"},
+    {"id": "fr-031", "group": "Words 1–100", "unit": "21–40", "prompt": "dans", "answer": "in", "subtitle": "inside"},
+    {"id": "fr-032", "group": "Words 1–100", "unit": "21–40", "prompt": "du", "answer": "some", "subtitle": "partitive, masc."},
+    {"id": "fr-033", "group": "Words 1–100", "unit": "21–40", "prompt": "bien", "answer": "well"},
+    {"id": "fr-034", "group": "Words 1–100", "unit": "21–40", "prompt": "elle", "answer": "she"},
+    {"id": "fr-035", "group": "Words 1–100", "unit": "21–40", "prompt": "si", "answer": "if"},
+    {"id": "fr-036", "group": "Words 1–100", "unit": "21–40", "prompt": "tout", "answer": "all", "subtitle": "masc."},
+    {"id": "fr-037", "group": "Words 1–100", "unit": "21–40", "prompt": "plus", "answer": "more"},
+    {"id": "fr-038", "group": "Words 1–100", "unit": "21–40", "prompt": "non", "answer": "no"},
+    {"id": "fr-039", "group": "Words 1–100", "unit": "21–40", "prompt": "mon", "answer": "my", "subtitle": "masc."},
+    {"id": "fr-040", "group": "Words 1–100", "unit": "21–40", "prompt": "suis", "answer": "am", "subtitle": "être · je"},
+    {"id": "fr-041", "group": "Words 1–100", "unit": "41–60", "prompt": "te", "answer": "you", "subtitle": "object, informal"},
+    {"id": "fr-042", "group": "Words 1–100", "unit": "41–60", "prompt": "au", "answer": "to the", "subtitle": "à + le"},
+    {"id": "fr-043", "group": "Words 1–100", "unit": "41–60", "prompt": "avec", "answer": "with"},
+    {"id": "fr-044", "group": "Words 1–100", "unit": "41–60", "prompt": "va", "answer": "goes", "subtitle": "aller · il/elle"},
+    {"id": "fr-045", "group": "Words 1–100", "unit": "41–60", "prompt": "oui", "answer": "yes"},
+    {"id": "fr-046", "group": "Words 1–100", "unit": "41–60", "prompt": "toi", "answer": "you", "subtitle": "stressed, informal"},
+    {"id": "fr-047", "group": "Words 1–100", "unit": "41–60", "prompt": "fait", "answer": "does", "subtitle": "faire · il/elle"},
+    {"id": "fr-048", "group": "Words 1–100", "unit": "41–60", "prompt": "ils", "answer": "they", "subtitle": "masc."},
+    {"id": "fr-049", "group": "Words 1–100", "unit": "41–60", "prompt": "as", "answer": "have", "subtitle": "avoir · tu"},
+    {"id": "fr-050", "group": "Words 1–100", "unit": "41–60", "prompt": "être", "answer": "to be"},
+    {"id": "fr-051", "group": "Words 1–100", "unit": "41–60", "prompt": "faire", "answer": "to do"},
+    {"id": "fr-052", "group": "Words 1–100", "unit": "41–60", "prompt": "se", "answer": "oneself", "subtitle": "reflexive"},
+    {"id": "fr-053", "group": "Words 1–100", "unit": "41–60", "prompt": "comme", "answer": "like", "subtitle": "comparison"},
+    {"id": "fr-054", "group": "Words 1–100", "unit": "41–60", "prompt": "était", "answer": "was", "subtitle": "être · il/elle"},
+    {"id": "fr-055", "group": "Words 1–100", "unit": "41–60", "prompt": "sur", "answer": "on"},
+    {"id": "fr-056", "group": "Words 1–100", "unit": "41–60", "prompt": "quoi", "answer": "what"},
+    {"id": "fr-057", "group": "Words 1–100", "unit": "41–60", "prompt": "ici", "answer": "here"},
+    {"id": "fr-058", "group": "Words 1–100", "unit": "41–60", "prompt": "sais", "answer": "know", "subtitle": "savoir · je/tu"},
+    {"id": "fr-059", "group": "Words 1–100", "unit": "41–60", "prompt": "lui", "answer": "him"},
+    {"id": "fr-060", "group": "Words 1–100", "unit": "41–60", "prompt": "veux", "answer": "want", "subtitle": "vouloir · je/tu"},
+    {"id": "fr-061", "group": "Words 1–100", "unit": "61–80", "prompt": "ma", "answer": "my", "subtitle": "fem."},
+    {"id": "fr-062", "group": "Words 1–100", "unit": "61–80", "prompt": "là", "answer": "there"},
+    {"id": "fr-063", "group": "Words 1–100", "unit": "61–80", "prompt": "rien", "answer": "nothing"},
+    {"id": "fr-064", "group": "Words 1–100", "unit": "61–80", "prompt": "dit", "answer": "said", "subtitle": "dire · past participle"},
+    {"id": "fr-065", "group": "Words 1–100", "unit": "61–80", "prompt": "es", "answer": "are", "subtitle": "être · tu"},
+    {"id": "fr-066", "group": "Words 1–100", "unit": "61–80", "prompt": "où", "answer": "where"},
+    {"id": "fr-067", "group": "Words 1–100", "unit": "61–80", "prompt": "votre", "answer": "your", "subtitle": "formal"},
+    {"id": "fr-068", "group": "Words 1–100", "unit": "61–80", "prompt": "pourquoi", "answer": "why"},
+    {"id": "fr-069", "group": "Words 1–100", "unit": "61–80", "prompt": "sont", "answer": "are", "subtitle": "être · ils/elles"},
+    {"id": "fr-070", "group": "Words 1–100", "unit": "61–80", "prompt": "cette", "answer": "this", "subtitle": "fem."},
+    {"id": "fr-071", "group": "Words 1–100", "unit": "61–80", "prompt": "quand", "answer": "when"},
+    {"id": "fr-072", "group": "Words 1–100", "unit": "61–80", "prompt": "par", "answer": "by"},
+    {"id": "fr-073", "group": "Words 1–100", "unit": "61–80", "prompt": "son", "answer": "his", "subtitle": "masc. noun · also \"her\""},
+    {"id": "fr-074", "group": "Words 1–100", "unit": "61–80", "prompt": "ton", "answer": "your", "subtitle": "informal, masc."},
+    {"id": "fr-075", "group": "Words 1–100", "unit": "61–80", "prompt": "peux", "answer": "can", "subtitle": "pouvoir · je/tu"},
+    {"id": "fr-076", "group": "Words 1–100", "unit": "61–80", "prompt": "vais", "answer": "go", "subtitle": "aller · je"},
+    {"id": "fr-077", "group": "Words 1–100", "unit": "61–80", "prompt": "dire", "answer": "to say"},
+    {"id": "fr-078", "group": "Words 1–100", "unit": "61–80", "prompt": "alors", "answer": "then"},
+    {"id": "fr-079", "group": "Words 1–100", "unit": "61–80", "prompt": "comment", "answer": "how"},
+    {"id": "fr-080", "group": "Words 1–100", "unit": "61–80", "prompt": "avez", "answer": "have", "subtitle": "avoir · vous"},
+    {"id": "fr-081", "group": "Words 1–100", "unit": "81–100", "prompt": "bon", "answer": "good", "subtitle": "masc."},
+    {"id": "fr-082", "group": "Words 1–100", "unit": "81–100", "prompt": "ou", "answer": "or"},
+    {"id": "fr-083", "group": "Words 1–100", "unit": "81–100", "prompt": "très", "answer": "very"},
+    {"id": "fr-084", "group": "Words 1–100", "unit": "81–100", "prompt": "merci", "answer": "thanks"},
+    {"id": "fr-085", "group": "Words 1–100", "unit": "81–100", "prompt": "ont", "answer": "have", "subtitle": "avoir · ils/elles"},
+    {"id": "fr-086", "group": "Words 1–100", "unit": "81–100", "prompt": "même", "answer": "same"},
+    {"id": "fr-087", "group": "Words 1–100", "unit": "81–100", "prompt": "jamais", "answer": "never"},
+    {"id": "fr-088", "group": "Words 1–100", "unit": "81–100", "prompt": "aussi", "answer": "also"},
+    {"id": "fr-089", "group": "Words 1–100", "unit": "81–100", "prompt": "voir", "answer": "to see"},
+    {"id": "fr-090", "group": "Words 1–100", "unit": "81–100", "prompt": "chose", "answer": "thing"},
+    {"id": "fr-091", "group": "Words 1–100", "unit": "81–100", "prompt": "allez", "answer": "go", "subtitle": "aller · vous"},
+    {"id": "fr-092", "group": "Words 1–100", "unit": "81–100", "prompt": "tous", "answer": "all", "subtitle": "plural masc."},
+    {"id": "fr-093", "group": "Words 1–100", "unit": "81–100", "prompt": "deux", "answer": "two"},
+    {"id": "fr-094", "group": "Words 1–100", "unit": "81–100", "prompt": "ces", "answer": "these"},
+    {"id": "fr-095", "group": "Words 1–100", "unit": "81–100", "prompt": "faut", "answer": "must", "subtitle": "il faut"},
+    {"id": "fr-096", "group": "Words 1–100", "unit": "81–100", "prompt": "sa", "answer": "her", "subtitle": "fem. noun · also \"his\""},
+    {"id": "fr-097", "group": "Words 1–100", "unit": "81–100", "prompt": "êtes", "answer": "are", "subtitle": "être · vous"},
+    {"id": "fr-098", "group": "Words 1–100", "unit": "81–100", "prompt": "été", "answer": "been", "subtitle": "être · past participle"},
+    {"id": "fr-099", "group": "Words 1–100", "unit": "81–100", "prompt": "ta", "answer": "your", "subtitle": "informal, fem."},
+    {"id": "fr-100", "group": "Words 1–100", "unit": "81–100", "prompt": "fais", "answer": "do", "subtitle": "faire · je/tu"},
+    {"id": "fr-101", "group": "Words 101–200", "unit": "101–120", "prompt": "avoir", "answer": "to have"},
+    {"id": "fr-102", "group": "Words 101–200", "unit": "101–120", "prompt": "peut", "answer": "can", "subtitle": "pouvoir · il/elle"},
+    {"id": "fr-103", "group": "Words 101–200", "unit": "101–120", "prompt": "autre", "answer": "other"},
+    {"id": "fr-104", "group": "Words 101–200", "unit": "101–120", "prompt": "aujourd'hui", "answer": "today"},
+    {"id": "fr-105", "group": "Words 101–200", "unit": "101–120", "prompt": "encore", "answer": "again"},
+    {"id": "fr-106", "group": "Words 101–200", "unit": "101–120", "prompt": "maintenant", "answer": "now"},
+    {"id": "fr-107", "group": "Words 101–200", "unit": "101–120", "prompt": "peu", "answer": "little"},
+    {"id": "fr-108", "group": "Words 101–200", "unit": "101–120", "prompt": "mes", "answer": "my", "subtitle": "plural"},
+    {"id": "fr-109", "group": "Words 101–200", "unit": "101–120", "prompt": "vraiment", "answer": "really"},
+    {"id": "fr-110", "group": "Words 101–200", "unit": "101–120", "prompt": "temps", "answer": "time", "subtitle": "duration"},
+    {"id": "fr-111", "group": "Words 101–200", "unit": "101–120", "prompt": "notre", "answer": "our"},
+    {"id": "fr-112", "group": "Words 101–200", "unit": "101–120", "prompt": "toujours", "answer": "always"},
+    {"id": "fr-113", "group": "Words 101–200", "unit": "101–120", "prompt": "vie", "answer": "life"},
+    {"id": "fr-114", "group": "Words 101–200", "unit": "101–120", "prompt": "sans", "answer": "without"},
+    {"id": "fr-115", "group": "Words 101–200", "unit": "101–120", "prompt": "juste", "answer": "just"},
+    {"id": "fr-116", "group": "Words 101–200", "unit": "101–120", "prompt": "lettre", "answer": "letter"},
+    {"id": "fr-117", "group": "Words 101–200", "unit": "101–120", "prompt": "avait", "answer": "had", "subtitle": "avoir · il/elle"},
+    {"id": "fr-118", "group": "Words 101–200", "unit": "101–120", "prompt": "d'accord", "answer": "okay"},
+    {"id": "fr-119", "group": "Words 101–200", "unit": "101–120", "prompt": "vu", "answer": "seen", "subtitle": "voir · past participle"},
+    {"id": "fr-120", "group": "Words 101–200", "unit": "101–120", "prompt": "monde", "answer": "world"},
+    {"id": "fr-121", "group": "Words 101–200", "unit": "121–140", "prompt": "quelque", "answer": "some"},
+    {"id": "fr-122", "group": "Words 101–200", "unit": "121–140", "prompt": "fois", "answer": "time", "subtitle": "occurrence: \"three times\""},
+    {"id": "fr-123", "group": "Words 101–200", "unit": "121–140", "prompt": "aller", "answer": "to go"},
+    {"id": "fr-124", "group": "Words 101–200", "unit": "121–140", "prompt": "trop", "answer": "too", "subtitle": "too much"},
+    {"id": "fr-125", "group": "Words 101–200", "unit": "121–140", "prompt": "viens", "answer": "come", "subtitle": "venir · je/tu"},
+    {"id": "fr-126", "group": "Words 101–200", "unit": "121–140", "prompt": "crois", "answer": "believe", "subtitle": "croire · je/tu"},
+    {"id": "fr-127", "group": "Words 101–200", "unit": "121–140", "prompt": "dieu", "answer": "god"},
+    {"id": "fr-128", "group": "Words 101–200", "unit": "121–140", "prompt": "dois", "answer": "must", "subtitle": "devoir · je/tu"},
+    {"id": "fr-129", "group": "Words 101–200", "unit": "121–140", "prompt": "homme", "answer": "man"},
+    {"id": "fr-130", "group": "Words 101–200", "unit": "121–140", "prompt": "père", "answer": "father"},
+    {"id": "fr-131", "group": "Words 101–200", "unit": "121–140", "prompt": "sûr", "answer": "sure"},
+    {"id": "fr-132", "group": "Words 101–200", "unit": "121–140", "prompt": "aux", "answer": "to the", "subtitle": "à + les"},
+    {"id": "fr-133", "group": "Words 101–200", "unit": "121–140", "prompt": "leur", "answer": "their"},
+    {"id": "fr-134", "group": "Words 101–200", "unit": "121–140", "prompt": "avant", "answer": "before"},
+    {"id": "fr-135", "group": "Words 101–200", "unit": "121–140", "prompt": "étais", "answer": "was", "subtitle": "être · je/tu"},
+    {"id": "fr-136", "group": "Words 101–200", "unit": "121–140", "prompt": "besoin", "answer": "need", "subtitle": "noun"},
+    {"id": "fr-137", "group": "Words 101–200", "unit": "121–140", "prompt": "femme", "answer": "woman"},
+    {"id": "fr-138", "group": "Words 101–200", "unit": "121–140", "prompt": "aime", "answer": "love", "subtitle": "aimer · je/il/elle"},
+    {"id": "fr-139", "group": "Words 101–200", "unit": "121–140", "prompt": "personne", "answer": "person"},
+    {"id": "fr-140", "group": "Words 101–200", "unit": "121–140", "prompt": "avais", "answer": "had", "subtitle": "avoir · je/tu"},
+    {"id": "fr-141", "group": "Words 101–200", "unit": "141–160", "prompt": "chez", "answer": "at", "subtitle": "at someone's place"},
+    {"id": "fr-142", "group": "Words 101–200", "unit": "141–160", "prompt": "vrai", "answer": "true"},
+    {"id": "fr-143", "group": "Words 101–200", "unit": "141–160", "prompt": "ans", "answer": "years", "subtitle": "of age"},
+    {"id": "fr-144", "group": "Words 101–200", "unit": "141–160", "prompt": "mal", "answer": "bad"},
+    {"id": "fr-145", "group": "Words 101–200", "unit": "141–160", "prompt": "ses", "answer": "his", "subtitle": "plural · also \"her\""},
+    {"id": "fr-146", "group": "Words 101–200", "unit": "141–160", "prompt": "parler", "answer": "to speak"},
+    {"id": "fr-147", "group": "Words 101–200", "unit": "141–160", "prompt": "vos", "answer": "your", "subtitle": "plural, formal"},
+    {"id": "fr-148", "group": "Words 101–200", "unit": "141–160", "prompt": "après", "answer": "after"},
+    {"id": "fr-149", "group": "Words 101–200", "unit": "141–160", "prompt": "mort", "answer": "dead"},
+    {"id": "fr-150", "group": "Words 101–200", "unit": "141–160", "prompt": "veut", "answer": "wants", "subtitle": "vouloir · il/elle"},
+    {"id": "fr-151", "group": "Words 101–200", "unit": "141–160", "prompt": "eu", "answer": "had", "subtitle": "avoir · past participle"},
+    {"id": "fr-152", "group": "Words 101–200", "unit": "141–160", "prompt": "sera", "answer": "will be", "subtitle": "être · il/elle"},
+    {"id": "fr-153", "group": "Words 101–200", "unit": "141–160", "prompt": "bonne", "answer": "good", "subtitle": "fem."},
+    {"id": "fr-154", "group": "Words 101–200", "unit": "141–160", "prompt": "parce que", "answer": "because"},
+    {"id": "fr-155", "group": "Words 101–200", "unit": "141–160", "prompt": "mieux", "answer": "better", "subtitle": "adverb"},
+    {"id": "fr-156", "group": "Words 101–200", "unit": "141–160", "prompt": "petit", "answer": "small", "subtitle": "masc."},
+    {"id": "fr-157", "group": "Words 101–200", "unit": "141–160", "prompt": "voilà", "answer": "there is"},
+    {"id": "fr-158", "group": "Words 101–200", "unit": "141–160", "prompt": "tes", "answer": "your", "subtitle": "informal, plural"},
+    {"id": "fr-159", "group": "Words 101–200", "unit": "141–160", "prompt": "cœur", "answer": "heart"},
+    {"id": "fr-160", "group": "Words 101–200", "unit": "141–160", "prompt": "dis", "answer": "say", "subtitle": "dire · je/tu"},
+    {"id": "fr-161", "group": "Words 101–200", "unit": "161–180", "prompt": "beaucoup", "answer": "a lot"},
+    {"id": "fr-162", "group": "Words 101–200", "unit": "161–180", "prompt": "depuis", "answer": "since"},
+    {"id": "fr-163", "group": "Words 101–200", "unit": "161–180", "prompt": "doit", "answer": "must", "subtitle": "devoir · il/elle"},
+    {"id": "fr-164", "group": "Words 101–200", "unit": "161–180", "prompt": "vois", "answer": "see", "subtitle": "voir · je/tu"},
+    {"id": "fr-165", "group": "Words 101–200", "unit": "161–180", "prompt": "mère", "answer": "mother"},
+    {"id": "fr-166", "group": "Words 101–200", "unit": "161–180", "prompt": "vas", "answer": "go", "subtitle": "aller · tu"},
+    {"id": "fr-167", "group": "Words 101–200", "unit": "161–180", "prompt": "monsieur", "answer": "sir"},
+    {"id": "fr-168", "group": "Words 101–200", "unit": "161–180", "prompt": "quel", "answer": "which", "subtitle": "masc."},
+    {"id": "fr-169", "group": "Words 101–200", "unit": "161–180", "prompt": "déjà", "answer": "already"},
+    {"id": "fr-170", "group": "Words 101–200", "unit": "161–180", "prompt": "fille", "answer": "girl"},
+    {"id": "fr-171", "group": "Words 101–200", "unit": "161–180", "prompt": "gens", "answer": "people"},
+    {"id": "fr-172", "group": "Words 101–200", "unit": "161–180", "prompt": "donc", "answer": "so", "subtitle": "therefore"},
+    {"id": "fr-173", "group": "Words 101–200", "unit": "161–180", "prompt": "jour", "answer": "day"},
+    {"id": "fr-174", "group": "Words 101–200", "unit": "161–180", "prompt": "soir", "answer": "evening"},
+    {"id": "fr-175", "group": "Words 101–200", "unit": "161–180", "prompt": "autres", "answer": "others"},
+    {"id": "fr-176", "group": "Words 101–200", "unit": "161–180", "prompt": "toute", "answer": "all", "subtitle": "fem."},
+    {"id": "fr-177", "group": "Words 101–200", "unit": "161–180", "prompt": "bonjour", "answer": "hello"},
+    {"id": "fr-178", "group": "Words 101–200", "unit": "161–180", "prompt": "maison", "answer": "house"},
+    {"id": "fr-179", "group": "Words 101–200", "unit": "161–180", "prompt": "nom", "answer": "name"},
+    {"id": "fr-180", "group": "Words 101–200", "unit": "161–180", "prompt": "argent", "answer": "money"},
+    {"id": "fr-181", "group": "Words 101–200", "unit": "181–200", "prompt": "nos", "answer": "our", "subtitle": "plural"},
+    {"id": "fr-182", "group": "Words 101–200", "unit": "181–200", "prompt": "ouais", "answer": "yeah"},
+    {"id": "fr-183", "group": "Words 101–200", "unit": "181–200", "prompt": "pense", "answer": "think", "subtitle": "penser · je/il/elle"},
+    {"id": "fr-184", "group": "Words 101–200", "unit": "181–200", "prompt": "merde", "answer": "shit", "subtitle": "vulgar"},
+    {"id": "fr-185", "group": "Words 101–200", "unit": "181–200", "prompt": "nuit", "answer": "night"},
+    {"id": "fr-186", "group": "Words 101–200", "unit": "181–200", "prompt": "papa", "answer": "dad"},
+    {"id": "fr-187", "group": "Words 101–200", "unit": "181–200", "prompt": "cela", "answer": "that", "subtitle": "formal"},
+    {"id": "fr-188", "group": "Words 101–200", "unit": "181–200", "prompt": "salut", "answer": "hi"},
+    {"id": "fr-189", "group": "Words 101–200", "unit": "181–200", "prompt": "cet", "answer": "this", "subtitle": "masc., before a vowel"},
+    {"id": "fr-190", "group": "Words 101–200", "unit": "181–200", "prompt": "avons", "answer": "have", "subtitle": "avoir · nous"},
+    {"id": "fr-191", "group": "Words 101–200", "unit": "181–200", "prompt": "reste", "answer": "stay", "subtitle": "rester · je/il/elle"},
+    {"id": "fr-192", "group": "Words 101–200", "unit": "181–200", "prompt": "désolé", "answer": "sorry", "subtitle": "masc."},
+    {"id": "fr-193", "group": "Words 101–200", "unit": "181–200", "prompt": "maman", "answer": "mum"},
+    {"id": "fr-194", "group": "Words 101–200", "unit": "181–200", "prompt": "peur", "answer": "fear"},
+    {"id": "fr-195", "group": "Words 101–200", "unit": "181–200", "prompt": "arrive", "answer": "arrive", "subtitle": "arriver · je/il/elle"},
+    {"id": "fr-196", "group": "Words 101–200", "unit": "181–200", "prompt": "seul", "answer": "alone", "subtitle": "masc."},
+    {"id": "fr-197", "group": "Words 101–200", "unit": "181–200", "prompt": "vite", "answer": "quickly"},
+    {"id": "fr-198", "group": "Words 101–200", "unit": "181–200", "prompt": "prendre", "answer": "to take"},
+    {"id": "fr-199", "group": "Words 101–200", "unit": "181–200", "prompt": "regarde", "answer": "look", "subtitle": "regarder · je/il/elle"},
+    {"id": "fr-200", "group": "Words 101–200", "unit": "181–200", "prompt": "soit", "answer": "be", "subtitle": "être · subjunctive, il/elle"},
+    {"id": "fr-201", "group": "Words 201–300", "unit": "201–220", "prompt": "trois", "answer": "three"},
+    {"id": "fr-202", "group": "Words 201–300", "unit": "201–220", "prompt": "quelle", "answer": "which", "subtitle": "fem."},
+    {"id": "fr-203", "group": "Words 201–300", "unit": "201–220", "prompt": "passé", "answer": "past"},
+    {"id": "fr-204", "group": "Words 201–300", "unit": "201–220", "prompt": "savoir", "answer": "to know", "subtitle": "a fact"},
+    {"id": "fr-205", "group": "Words 201–300", "unit": "201–220", "prompt": "s'il vous plaît", "answer": "please"},
+    {"id": "fr-206", "group": "Words 201–300", "unit": "201–220", "prompt": "choses", "answer": "things"},
+    {"id": "fr-207", "group": "Words 201–300", "unit": "201–220", "prompt": "moins", "answer": "less"},
+    {"id": "fr-208", "group": "Words 201–300", "unit": "201–220", "prompt": "fils", "answer": "son"},
+    {"id": "fr-209", "group": "Words 201–300", "unit": "201–220", "prompt": "entre", "answer": "between"},
+    {"id": "fr-210", "group": "Words 201–300", "unit": "201–220", "prompt": "bas", "answer": "low"},
+    {"id": "fr-211", "group": "Words 201–300", "unit": "201–220", "prompt": "appelle", "answer": "call", "subtitle": "appeler · je/il/elle"},
+    {"id": "fr-212", "group": "Words 201–300", "unit": "201–220", "prompt": "passe", "answer": "pass", "subtitle": "passer · je/il/elle"},
+    {"id": "fr-213", "group": "Words 201–300", "unit": "201–220", "prompt": "faim", "answer": "hunger"},
+    {"id": "fr-214", "group": "Words 201–300", "unit": "201–220", "prompt": "tête", "answer": "head"},
+    {"id": "fr-215", "group": "Words 201–300", "unit": "201–220", "prompt": "demain", "answer": "tomorrow"},
+    {"id": "fr-216", "group": "Words 201–300", "unit": "201–220", "prompt": "grand", "answer": "big", "subtitle": "masc."},
+    {"id": "fr-217", "group": "Words 201–300", "unit": "201–220", "prompt": "arrête", "answer": "stop", "subtitle": "arrêter · je/il/elle"},
+    {"id": "fr-218", "group": "Words 201–300", "unit": "201–220", "prompt": "faites", "answer": "do", "subtitle": "faire · vous"},
+    {"id": "fr-219", "group": "Words 201–300", "unit": "201–220", "prompt": "voulez", "answer": "want", "subtitle": "vouloir · vous"},
+    {"id": "fr-220", "group": "Words 201–300", "unit": "201–220", "prompt": "hé", "answer": "hey"},
+    {"id": "fr-221", "group": "Words 201–300", "unit": "221–240", "prompt": "attends", "answer": "wait", "subtitle": "attendre · je/tu"},
+    {"id": "fr-222", "group": "Words 201–300", "unit": "221–240", "prompt": "rue", "answer": "street"},
+    {"id": "fr-223", "group": "Words 201–300", "unit": "221–240", "prompt": "enfants", "answer": "children"},
+    {"id": "fr-224", "group": "Words 201–300", "unit": "221–240", "prompt": "assez", "answer": "enough"},
+    {"id": "fr-225", "group": "Words 201–300", "unit": "221–240", "prompt": "raison", "answer": "reason"},
+    {"id": "fr-226", "group": "Words 201–300", "unit": "221–240", "prompt": "aurais", "answer": "would have", "subtitle": "avoir · je/tu"},
+    {"id": "fr-227", "group": "Words 201–300", "unit": "221–240", "prompt": "voulais", "answer": "wanted", "subtitle": "vouloir · je/tu"},
+    {"id": "fr-228", "group": "Words 201–300", "unit": "221–240", "prompt": "elles", "answer": "they", "subtitle": "fem."},
+    {"id": "fr-229", "group": "Words 201–300", "unit": "221–240", "prompt": "parle", "answer": "speak", "subtitle": "parler · je/il/elle"},
+    {"id": "fr-230", "group": "Words 201–300", "unit": "221–240", "prompt": "jours", "answer": "days"},
+    {"id": "fr-231", "group": "Words 201–300", "unit": "221–240", "prompt": "dû", "answer": "had to", "subtitle": "devoir · past participle"},
+    {"id": "fr-232", "group": "Words 201–300", "unit": "221–240", "prompt": "heure", "answer": "hour"},
+    {"id": "fr-233", "group": "Words 201–300", "unit": "221–240", "prompt": "puis", "answer": "then", "subtitle": "and then"},
+    {"id": "fr-234", "group": "Words 201–300", "unit": "221–240", "prompt": "gars", "answer": "guy"},
+    {"id": "fr-235", "group": "Words 201–300", "unit": "221–240", "prompt": "hommes", "answer": "men"},
+    {"id": "fr-236", "group": "Words 201–300", "unit": "221–240", "prompt": "amour", "answer": "love", "subtitle": "noun"},
+    {"id": "fr-237", "group": "Words 201–300", "unit": "221–240", "prompt": "tard", "answer": "late"},
+    {"id": "fr-238", "group": "Words 201–300", "unit": "221–240", "prompt": "toutes", "answer": "all", "subtitle": "plural fem."},
+    {"id": "fr-239", "group": "Words 201–300", "unit": "221–240", "prompt": "sommes", "answer": "are", "subtitle": "être · nous"},
+    {"id": "fr-240", "group": "Words 201–300", "unit": "221–240", "prompt": "tuer", "answer": "to kill"},
+    {"id": "fr-241", "group": "Words 201–300", "unit": "241–260", "prompt": "ami", "answer": "friend", "subtitle": "masc."},
+    {"id": "fr-242", "group": "Words 201–300", "unit": "241–260", "prompt": "connais", "answer": "know", "subtitle": "connaître · je/tu"},
+    {"id": "fr-243", "group": "Words 201–300", "unit": "241–260", "prompt": "petite", "answer": "small", "subtitle": "fem."},
+    {"id": "fr-244", "group": "Words 201–300", "unit": "241–260", "prompt": "aider", "answer": "to help"},
+    {"id": "fr-245", "group": "Words 201–300", "unit": "241–260", "prompt": "chance", "answer": "luck"},
+    {"id": "fr-246", "group": "Words 201–300", "unit": "241–260", "prompt": "savez", "answer": "know", "subtitle": "savoir · vous"},
+    {"id": "fr-247", "group": "Words 201–300", "unit": "241–260", "prompt": "partir", "answer": "to leave"},
+    {"id": "fr-248", "group": "Words 201–300", "unit": "241–260", "prompt": "sait", "answer": "knows", "subtitle": "savoir · il/elle"},
+    {"id": "fr-249", "group": "Words 201–300", "unit": "241–260", "prompt": "combien", "answer": "how much"},
+    {"id": "fr-250", "group": "Words 201–300", "unit": "241–260", "prompt": "voiture", "answer": "car"},
+    {"id": "fr-251", "group": "Words 201–300", "unit": "241–260", "prompt": "tant", "answer": "so much"},
+    {"id": "fr-252", "group": "Words 201–300", "unit": "241–260", "prompt": "pris", "answer": "taken", "subtitle": "prendre · past participle"},
+    {"id": "fr-253", "group": "Words 201–300", "unit": "241–260", "prompt": "problème", "answer": "problem"},
+    {"id": "fr-254", "group": "Words 201–300", "unit": "241–260", "prompt": "prends", "answer": "take", "subtitle": "prendre · je/tu"},
+    {"id": "fr-255", "group": "Words 201–300", "unit": "241–260", "prompt": "porte", "answer": "door"},
+    {"id": "fr-256", "group": "Words 201–300", "unit": "241–260", "prompt": "coup", "answer": "hit", "subtitle": "noun"},
+    {"id": "fr-257", "group": "Words 201–300", "unit": "241–260", "prompt": "serait", "answer": "would be", "subtitle": "être · il/elle"},
+    {"id": "fr-258", "group": "Words 201–300", "unit": "241–260", "prompt": "venir", "answer": "to come"},
+    {"id": "fr-259", "group": "Words 201–300", "unit": "241–260", "prompt": "famille", "answer": "family"},
+    {"id": "fr-260", "group": "Words 201–300", "unit": "241–260", "prompt": "travail", "answer": "work", "subtitle": "noun"},
+    {"id": "fr-261", "group": "Words 201–300", "unit": "261–280", "prompt": "pu", "answer": "could", "subtitle": "pouvoir · past participle"},
+    {"id": "fr-262", "group": "Words 201–300", "unit": "261–280", "prompt": "seule", "answer": "alone", "subtitle": "fem."},
+    {"id": "fr-263", "group": "Words 201–300", "unit": "261–280", "prompt": "sens", "answer": "sense"},
+    {"id": "fr-264", "group": "Words 201–300", "unit": "261–280", "prompt": "ni", "answer": "nor"},
+    {"id": "fr-265", "group": "Words 201–300", "unit": "261–280", "prompt": "allons", "answer": "go", "subtitle": "aller · nous"},
+    {"id": "fr-266", "group": "Words 201–300", "unit": "261–280", "prompt": "au revoir", "answer": "goodbye"},
+    {"id": "fr-267", "group": "Words 201–300", "unit": "261–280", "prompt": "idée", "answer": "idea"},
+    {"id": "fr-268", "group": "Words 201–300", "unit": "261–280", "prompt": "putain", "answer": "damn", "subtitle": "vulgar"},
+    {"id": "fr-269", "group": "Words 201–300", "unit": "261–280", "prompt": "passer", "answer": "to pass"},
+    {"id": "fr-270", "group": "Words 201–300", "unit": "261–280", "prompt": "contre", "answer": "against"},
+    {"id": "fr-271", "group": "Words 201–300", "unit": "261–280", "prompt": "comprends", "answer": "understand", "subtitle": "comprendre · je/tu"},
+    {"id": "fr-272", "group": "Words 201–300", "unit": "261–280", "prompt": "entendu", "answer": "heard", "subtitle": "entendre · past participle"},
+    {"id": "fr-273", "group": "Words 201–300", "unit": "261–280", "prompt": "trouvé", "answer": "found", "subtitle": "trouver · past participle"},
+    {"id": "fr-274", "group": "Words 201–300", "unit": "261–280", "prompt": "trouver", "answer": "to find"},
+    {"id": "fr-275", "group": "Words 201–300", "unit": "261–280", "prompt": "vieux", "answer": "old", "subtitle": "masc."},
+    {"id": "fr-276", "group": "Words 201–300", "unit": "261–280", "prompt": "vient", "answer": "comes", "subtitle": "venir · il/elle"},
+    {"id": "fr-277", "group": "Words 201–300", "unit": "261–280", "prompt": "pendant", "answer": "during"},
+    {"id": "fr-278", "group": "Words 201–300", "unit": "261–280", "prompt": "aurait", "answer": "would have", "subtitle": "avoir · il/elle"},
+    {"id": "fr-279", "group": "Words 201–300", "unit": "261–280", "prompt": "quelques", "answer": "a few"},
+    {"id": "fr-280", "group": "Words 201–300", "unit": "261–280", "prompt": "attention", "answer": "attention"},
+    {"id": "fr-281", "group": "Words 201–300", "unit": "281–300", "prompt": "demande", "answer": "ask", "subtitle": "demander · je/il/elle"},
+    {"id": "fr-282", "group": "Words 201–300", "unit": "281–300", "prompt": "chercher", "answer": "to look for"},
+    {"id": "fr-283", "group": "Words 201–300", "unit": "281–300", "prompt": "sous", "answer": "under"},
+    {"id": "fr-284", "group": "Words 201–300", "unit": "281–300", "prompt": "voici", "answer": "here is"},
+    {"id": "fr-285", "group": "Words 201–300", "unit": "281–300", "prompt": "pourrait", "answer": "could", "subtitle": "pouvoir · il/elle"},
+    {"id": "fr-286", "group": "Words 201–300", "unit": "281–300", "prompt": "sang", "answer": "blood"},
+    {"id": "fr-287", "group": "Words 201–300", "unit": "281–300", "prompt": "pouvez", "answer": "can", "subtitle": "pouvoir · vous"},
+    {"id": "fr-288", "group": "Words 201–300", "unit": "281–300", "prompt": "sortir", "answer": "to go out"},
+    {"id": "fr-289", "group": "Words 201–300", "unit": "281–300", "prompt": "histoire", "answer": "story"},
+    {"id": "fr-290", "group": "Words 201–300", "unit": "281–300", "prompt": "amis", "answer": "friends"},
+    {"id": "fr-291", "group": "Words 201–300", "unit": "281–300", "prompt": "venez", "answer": "come", "subtitle": "venir · vous"},
+    {"id": "fr-292", "group": "Words 201–300", "unit": "281–300", "prompt": "frère", "answer": "brother"},
+    {"id": "fr-293", "group": "Words 201–300", "unit": "281–300", "prompt": "rester", "answer": "to stay"},
+    {"id": "fr-294", "group": "Words 201–300", "unit": "281–300", "prompt": "fini", "answer": "finished"},
+    {"id": "fr-295", "group": "Words 201–300", "unit": "281–300", "prompt": "ville", "answer": "city"},
+    {"id": "fr-296", "group": "Words 201–300", "unit": "281–300", "prompt": "nouveau", "answer": "new", "subtitle": "masc."},
+    {"id": "fr-297", "group": "Words 201–300", "unit": "281–300", "prompt": "truc", "answer": "thing", "subtitle": "informal"},
+    {"id": "fr-298", "group": "Words 201–300", "unit": "281–300", "prompt": "tiens", "answer": "hold", "subtitle": "tenir · je/tu"},
+    {"id": "fr-299", "group": "Words 201–300", "unit": "281–300", "prompt": "mois", "answer": "month"},
+    {"id": "fr-300", "group": "Words 201–300", "unit": "281–300", "prompt": "eux", "answer": "them", "subtitle": "masc."},
+    {"id": "fr-301", "group": "Words 301–400", "unit": "301–320", "prompt": "mec", "answer": "guy", "subtitle": "slang"},
+    {"id": "fr-302", "group": "Words 301–400", "unit": "301–320", "prompt": "yeux", "answer": "eyes"},
+    {"id": "fr-303", "group": "Words 301–400", "unit": "301–320", "prompt": "laisse", "answer": "let", "subtitle": "laisser · je/il/elle"},
+    {"id": "fr-304", "group": "Words 301–400", "unit": "301–320", "prompt": "super", "answer": "great"},
+    {"id": "fr-305", "group": "Words 301–400", "unit": "301–320", "prompt": "belle", "answer": "beautiful", "subtitle": "fem."},
+    {"id": "fr-306", "group": "Words 301–400", "unit": "301–320", "prompt": "longtemps", "answer": "a long time"},
+    {"id": "fr-307", "group": "Words 301–400", "unit": "301–320", "prompt": "eau", "answer": "water"},
+    {"id": "fr-308", "group": "Words 301–400", "unit": "301–320", "prompt": "heures", "answer": "hours"},
+    {"id": "fr-309", "group": "Words 301–400", "unit": "301–320", "prompt": "car", "answer": "because", "subtitle": "formal"},
+    {"id": "fr-310", "group": "Words 301–400", "unit": "301–320", "prompt": "n'importe quoi", "answer": "anything"},
+    {"id": "fr-311", "group": "Words 301–400", "unit": "301–320", "prompt": "cas", "answer": "case"},
+    {"id": "fr-312", "group": "Words 301–400", "unit": "301–320", "prompt": "vont", "answer": "go", "subtitle": "aller · ils/elles"},
+    {"id": "fr-313", "group": "Words 301–400", "unit": "301–320", "prompt": "chaque", "answer": "each"},
+    {"id": "fr-314", "group": "Words 301–400", "unit": "301–320", "prompt": "terre", "answer": "earth"},
+    {"id": "fr-315", "group": "Words 301–400", "unit": "301–320", "prompt": "place", "answer": "square", "subtitle": "town square"},
+    {"id": "fr-316", "group": "Words 301–400", "unit": "301–320", "prompt": "tué", "answer": "killed"},
+    {"id": "fr-317", "group": "Words 301–400", "unit": "301–320", "prompt": "main", "answer": "hand"},
+    {"id": "fr-318", "group": "Words 301–400", "unit": "301–320", "prompt": "pardon", "answer": "excuse me"},
+    {"id": "fr-319", "group": "Words 301–400", "unit": "301–320", "prompt": "ensemble", "answer": "together"},
+    {"id": "fr-320", "group": "Words 301–400", "unit": "301–320", "prompt": "seulement", "answer": "only"},
+    {"id": "fr-321", "group": "Words 301–400", "unit": "321–340", "prompt": "guerre", "answer": "war"},
+    {"id": "fr-322", "group": "Words 301–400", "unit": "321–340", "prompt": "beau", "answer": "handsome", "subtitle": "masc."},
+    {"id": "fr-323", "group": "Words 301–400", "unit": "321–340", "prompt": "vers", "answer": "towards"},
+    {"id": "fr-324", "group": "Words 301–400", "unit": "321–340", "prompt": "minute", "answer": "minute"},
+    {"id": "fr-325", "group": "Words 301–400", "unit": "321–340", "prompt": "prie", "answer": "pray", "subtitle": "prier · je/il/elle"},
+    {"id": "fr-326", "group": "Words 301–400", "unit": "321–340", "prompt": "devant", "answer": "in front of"},
+    {"id": "fr-327", "group": "Words 301–400", "unit": "321–340", "prompt": "trouve", "answer": "find", "subtitle": "trouver · je/il/elle"},
+    {"id": "fr-328", "group": "Words 301–400", "unit": "321–340", "prompt": "partie", "answer": "part"},
+    {"id": "fr-329", "group": "Words 301–400", "unit": "321–340", "prompt": "tout de suite", "answer": "right away"},
+    {"id": "fr-330", "group": "Words 301–400", "unit": "321–340", "prompt": "compris", "answer": "understood", "subtitle": "comprendre · past participle"},
+    {"id": "fr-331", "group": "Words 301–400", "unit": "321–340", "prompt": "matin", "answer": "morning"},
+    {"id": "fr-332", "group": "Words 301–400", "unit": "321–340", "prompt": "leurs", "answer": "their", "subtitle": "plural"},
+    {"id": "fr-333", "group": "Words 301–400", "unit": "321–340", "prompt": "aucun", "answer": "none", "subtitle": "masc."},
+    {"id": "fr-334", "group": "Words 301–400", "unit": "321–340", "prompt": "arrivé", "answer": "arrived"},
+    {"id": "fr-335", "group": "Words 301–400", "unit": "321–340", "prompt": "dessus", "answer": "on top"},
+    {"id": "fr-336", "group": "Words 301–400", "unit": "321–340", "prompt": "chérie", "answer": "darling", "subtitle": "fem."},
+    {"id": "fr-337", "group": "Words 301–400", "unit": "321–340", "prompt": "mettre", "answer": "to put"},
+    {"id": "fr-338", "group": "Words 301–400", "unit": "321–340", "prompt": "aide", "answer": "help", "subtitle": "noun"},
+    {"id": "fr-339", "group": "Words 301–400", "unit": "321–340", "prompt": "étaient", "answer": "were", "subtitle": "être · ils/elles"},
+    {"id": "fr-340", "group": "Words 301–400", "unit": "321–340", "prompt": "perdu", "answer": "lost"},
+    {"id": "fr-341", "group": "Words 301–400", "unit": "341–360", "prompt": "fin", "answer": "end"},
+    {"id": "fr-342", "group": "Words 301–400", "unit": "341–360", "prompt": "sois", "answer": "be", "subtitle": "être · imperative, tu"},
+    {"id": "fr-343", "group": "Words 301–400", "unit": "341–360", "prompt": "premier", "answer": "first", "subtitle": "masc."},
+    {"id": "fr-344", "group": "Words 301–400", "unit": "341–360", "prompt": "genre", "answer": "kind", "subtitle": "type"},
+    {"id": "fr-345", "group": "Words 301–400", "unit": "341–360", "prompt": "aimerais", "answer": "would like", "subtitle": "aimer · je/tu"},
+    {"id": "fr-346", "group": "Words 301–400", "unit": "341–360", "prompt": "droit", "answer": "right", "subtitle": "a right"},
+    {"id": "fr-347", "group": "Words 301–400", "unit": "341–360", "prompt": "donne", "answer": "give", "subtitle": "donner · je/il/elle"},
+    {"id": "fr-348", "group": "Words 301–400", "unit": "341–360", "prompt": "attendez", "answer": "wait", "subtitle": "attendre · vous"},
+    {"id": "fr-349", "group": "Words 301–400", "unit": "341–360", "prompt": "jeune", "answer": "young"},
+    {"id": "fr-350", "group": "Words 301–400", "unit": "341–360", "prompt": "feu", "answer": "fire"},
+    {"id": "fr-351", "group": "Words 301–400", "unit": "341–360", "prompt": "devrais", "answer": "should", "subtitle": "devoir · je/tu"},
+    {"id": "fr-352", "group": "Words 301–400", "unit": "341–360", "prompt": "enfant", "answer": "child"},
+    {"id": "fr-353", "group": "Words 301–400", "unit": "341–360", "prompt": "chambre", "answer": "bedroom"},
+    {"id": "fr-354", "group": "Words 301–400", "unit": "341–360", "prompt": "gros", "answer": "fat"},
+    {"id": "fr-355", "group": "Words 301–400", "unit": "341–360", "prompt": "côté", "answer": "side"},
+    {"id": "fr-356", "group": "Words 301–400", "unit": "341–360", "prompt": "venu", "answer": "come", "subtitle": "venir · past participle"},
+    {"id": "fr-357", "group": "Words 301–400", "unit": "341–360", "prompt": "loin", "answer": "far"},
+    {"id": "fr-358", "group": "Words 301–400", "unit": "341–360", "prompt": "laisser", "answer": "to let"},
+    {"id": "fr-359", "group": "Words 301–400", "unit": "341–360", "prompt": "donner", "answer": "to give"},
+    {"id": "fr-360", "group": "Words 301–400", "unit": "341–360", "prompt": "jouer", "answer": "to play"},
+    {"id": "fr-361", "group": "Words 301–400", "unit": "361–380", "prompt": "savais", "answer": "knew", "subtitle": "savoir · je/tu"},
+    {"id": "fr-362", "group": "Words 301–400", "unit": "361–380", "prompt": "compte", "answer": "account"},
+    {"id": "fr-363", "group": "Words 301–400", "unit": "361–380", "prompt": "parlé", "answer": "spoken", "subtitle": "parler · past participle"},
+    {"id": "fr-364", "group": "Words 301–400", "unit": "361–380", "prompt": "regardez", "answer": "look", "subtitle": "regarder · vous"},
+    {"id": "fr-365", "group": "Words 301–400", "unit": "361–380", "prompt": "première", "answer": "first", "subtitle": "fem."},
+    {"id": "fr-366", "group": "Words 301–400", "unit": "361–380", "prompt": "pouvoir", "answer": "to be able", "subtitle": "verb"},
+    {"id": "fr-367", "group": "Words 301–400", "unit": "361–380", "prompt": "aura", "answer": "will have", "subtitle": "avoir · il/elle"},
+    {"id": "fr-368", "group": "Words 301–400", "unit": "361–380", "prompt": "mourir", "answer": "to die"},
+    {"id": "fr-369", "group": "Words 301–400", "unit": "361–380", "prompt": "dernière", "answer": "last", "subtitle": "fem."},
+    {"id": "fr-370", "group": "Words 301–400", "unit": "361–380", "prompt": "donné", "answer": "given", "subtitle": "donner · past participle"},
+    {"id": "fr-371", "group": "Words 301–400", "unit": "361–380", "prompt": "mari", "answer": "husband"},
+    {"id": "fr-372", "group": "Words 301–400", "unit": "361–380", "prompt": "écoute", "answer": "listen", "subtitle": "écouter · je/il/elle"},
+    {"id": "fr-373", "group": "Words 301–400", "unit": "361–380", "prompt": "enfin", "answer": "finally"},
+    {"id": "fr-374", "group": "Words 301–400", "unit": "361–380", "prompt": "devrait", "answer": "should", "subtitle": "devoir · il/elle"},
+    {"id": "fr-375", "group": "Words 301–400", "unit": "361–380", "prompt": "mis", "answer": "put", "subtitle": "mettre · past participle"},
+    {"id": "fr-376", "group": "Words 301–400", "unit": "361–380", "prompt": "film", "answer": "film"},
+    {"id": "fr-377", "group": "Words 301–400", "unit": "361–380", "prompt": "aucune", "answer": "none", "subtitle": "fem."},
+    {"id": "fr-378", "group": "Words 301–400", "unit": "361–380", "prompt": "façon", "answer": "way"},
+    {"id": "fr-379", "group": "Words 301–400", "unit": "361–380", "prompt": "pays", "answer": "country"},
+    {"id": "fr-380", "group": "Words 301–400", "unit": "361–380", "prompt": "prêt", "answer": "ready", "subtitle": "masc."},
+    {"id": "fr-381", "group": "Words 301–400", "unit": "381–400", "prompt": "madame", "answer": "madam"},
+    {"id": "fr-382", "group": "Words 301–400", "unit": "381–400", "prompt": "femmes", "answer": "women"},
+    {"id": "fr-383", "group": "Words 301–400", "unit": "381–400", "prompt": "affaire", "answer": "business"},
+    {"id": "fr-384", "group": "Words 301–400", "unit": "381–400", "prompt": "pourrais", "answer": "could", "subtitle": "pouvoir · je/tu"},
+    {"id": "fr-385", "group": "Words 301–400", "unit": "381–400", "prompt": "espère", "answer": "hope", "subtitle": "espérer · je/il/elle"},
+    {"id": "fr-386", "group": "Words 301–400", "unit": "381–400", "prompt": "parti", "answer": "left", "subtitle": "partir · past participle"},
+    {"id": "fr-387", "group": "Words 301–400", "unit": "381–400", "prompt": "boulot", "answer": "job", "subtitle": "informal"},
+    {"id": "fr-388", "group": "Words 301–400", "unit": "381–400", "prompt": "endroit", "answer": "place"},
+    {"id": "fr-389", "group": "Words 301–400", "unit": "381–400", "prompt": "fou", "answer": "crazy", "subtitle": "masc."},
+    {"id": "fr-390", "group": "Words 301–400", "unit": "381–400", "prompt": "corps", "answer": "body"},
+    {"id": "fr-391", "group": "Words 301–400", "unit": "381–400", "prompt": "hier", "answer": "yesterday"},
+    {"id": "fr-392", "group": "Words 301–400", "unit": "381–400", "prompt": "dont", "answer": "whose"},
+    {"id": "fr-393", "group": "Words 301–400", "unit": "381–400", "prompt": "désolée", "answer": "sorry", "subtitle": "fem."},
+    {"id": "fr-394", "group": "Words 301–400", "unit": "381–400", "prompt": "grande", "answer": "big", "subtitle": "fem."},
+    {"id": "fr-395", "group": "Words 301–400", "unit": "381–400", "prompt": "cinq", "answer": "five"},
+    {"id": "fr-396", "group": "Words 301–400", "unit": "381–400", "prompt": "dehors", "answer": "outside"},
+    {"id": "fr-397", "group": "Words 301–400", "unit": "381–400", "prompt": "filles", "answer": "girls"},
+    {"id": "fr-398", "group": "Words 301–400", "unit": "381–400", "prompt": "vivre", "answer": "to live"},
+    {"id": "fr-399", "group": "Words 301–400", "unit": "381–400", "prompt": "près", "answer": "near"},
+    {"id": "fr-400", "group": "Words 301–400", "unit": "381–400", "prompt": "pensais", "answer": "thought", "subtitle": "penser · je/tu"},
+    {"id": "fr-401", "group": "Words 401–500", "unit": "401–420", "prompt": "garçon", "answer": "boy"},
+    {"id": "fr-402", "group": "Words 401–500", "unit": "401–420", "prompt": "chef", "answer": "boss"},
+    {"id": "fr-403", "group": "Words 401–500", "unit": "401–420", "prompt": "haut", "answer": "high"},
+    {"id": "fr-404", "group": "Words 401–500", "unit": "401–420", "prompt": "capitaine", "answer": "captain"},
+    {"id": "fr-405", "group": "Words 401–500", "unit": "401–420", "prompt": "dirait", "answer": "would say", "subtitle": "dire · il/elle"},
+    {"id": "fr-406", "group": "Words 401–500", "unit": "401–420", "prompt": "bébé", "answer": "baby"},
+    {"id": "fr-407", "group": "Words 401–500", "unit": "401–420", "prompt": "celui", "answer": "the one", "subtitle": "masc."},
+    {"id": "fr-408", "group": "Words 401–500", "unit": "401–420", "prompt": "demandé", "answer": "asked", "subtitle": "demander · past participle"},
+    {"id": "fr-409", "group": "Words 401–500", "unit": "401–420", "prompt": "mains", "answer": "hands"},
+    {"id": "fr-410", "group": "Words 401–500", "unit": "401–420", "prompt": "ainsi", "answer": "thus"},
+    {"id": "fr-411", "group": "Words 401–500", "unit": "401–420", "prompt": "quatre", "answer": "four"},
+    {"id": "fr-412", "group": "Words 401–500", "unit": "401–420", "prompt": "nouvelle", "answer": "news", "subtitle": "noun"},
+    {"id": "fr-413", "group": "Words 401–500", "unit": "401–420", "prompt": "années", "answer": "years", "subtitle": "duration"},
+    {"id": "fr-414", "group": "Words 401–500", "unit": "401–420", "prompt": "plein", "answer": "full"},
+    {"id": "fr-415", "group": "Words 401–500", "unit": "401–420", "prompt": "semaine", "answer": "week"},
+    {"id": "fr-416", "group": "Words 401–500", "unit": "401–420", "prompt": "dites", "answer": "say", "subtitle": "dire · vous"},
+    {"id": "fr-417", "group": "Words 401–500", "unit": "401–420", "prompt": "croire", "answer": "to believe"},
+    {"id": "fr-418", "group": "Words 401–500", "unit": "401–420", "prompt": "marche", "answer": "walk", "subtitle": "marcher · je/il/elle"},
+    {"id": "fr-419", "group": "Words 401–500", "unit": "401–420", "prompt": "tour", "answer": "turn"},
+    {"id": "fr-420", "group": "Words 401–500", "unit": "401–420", "prompt": "école", "answer": "school"},
+    {"id": "fr-421", "group": "Words 401–500", "unit": "421–440", "prompt": "manger", "answer": "to eat"},
+    {"id": "fr-422", "group": "Words 401–500", "unit": "421–440", "prompt": "plutôt", "answer": "rather"},
+    {"id": "fr-423", "group": "Words 401–500", "unit": "421–440", "prompt": "docteur", "answer": "doctor"},
+    {"id": "fr-424", "group": "Words 401–500", "unit": "421–440", "prompt": "ceux", "answer": "those", "subtitle": "masc."},
+    {"id": "fr-425", "group": "Words 401–500", "unit": "421–440", "prompt": "vérité", "answer": "truth"},
+    {"id": "fr-426", "group": "Words 401–500", "unit": "421–440", "prompt": "vue", "answer": "view"},
+    {"id": "fr-427", "group": "Words 401–500", "unit": "421–440", "prompt": "arrêter", "answer": "to stop"},
+    {"id": "fr-428", "group": "Words 401–500", "unit": "421–440", "prompt": "essaie", "answer": "try", "subtitle": "essayer · je/il/elle"},
+    {"id": "fr-429", "group": "Words 401–500", "unit": "421–440", "prompt": "envie", "answer": "desire"},
+    {"id": "fr-430", "group": "Words 401–500", "unit": "421–440", "prompt": "bientôt", "answer": "soon"},
+    {"id": "fr-431", "group": "Words 401–500", "unit": "421–440", "prompt": "instant", "answer": "moment"},
+    {"id": "fr-432", "group": "Words 401–500", "unit": "421–440", "prompt": "dernier", "answer": "last", "subtitle": "masc."},
+    {"id": "fr-433", "group": "Words 401–500", "unit": "421–440", "prompt": "affaires", "answer": "things", "subtitle": "belongings"},
+    {"id": "fr-434", "group": "Words 401–500", "unit": "421–440", "prompt": "arriver", "answer": "to arrive"},
+    {"id": "fr-435", "group": "Words 401–500", "unit": "421–440", "prompt": "demander", "answer": "to ask"},
+    {"id": "fr-436", "group": "Words 401–500", "unit": "421–440", "prompt": "meilleur", "answer": "best"},
+    {"id": "fr-437", "group": "Words 401–500", "unit": "421–440", "prompt": "font", "answer": "do", "subtitle": "faire · ils/elles"},
+    {"id": "fr-438", "group": "Words 401–500", "unit": "421–440", "prompt": "derrière", "answer": "behind"},
+    {"id": "fr-439", "group": "Words 401–500", "unit": "421–440", "prompt": "presque", "answer": "almost"},
+    {"id": "fr-440", "group": "Words 401–500", "unit": "421–440", "prompt": "tellement", "answer": "so", "subtitle": "intensifier"},
+    {"id": "fr-441", "group": "Words 401–500", "unit": "441–460", "prompt": "tomber", "answer": "to fall"},
+    {"id": "fr-442", "group": "Words 401–500", "unit": "441–460", "prompt": "journée", "answer": "day", "subtitle": "the whole day"},
+    {"id": "fr-443", "group": "Words 401–500", "unit": "441–460", "prompt": "voulait", "answer": "wanted", "subtitle": "vouloir · il/elle"},
+    {"id": "fr-444", "group": "Words 401–500", "unit": "441–460", "prompt": "appeler", "answer": "to call"},
+    {"id": "fr-445", "group": "Words 401–500", "unit": "441–460", "prompt": "bureau", "answer": "office"},
+    {"id": "fr-446", "group": "Words 401–500", "unit": "441–460", "prompt": "confiance", "answer": "trust"},
+    {"id": "fr-447", "group": "Words 401–500", "unit": "441–460", "prompt": "garde", "answer": "guard"},
+    {"id": "fr-448", "group": "Words 401–500", "unit": "441–460", "prompt": "attendre", "answer": "to wait"},
+    {"id": "fr-449", "group": "Words 401–500", "unit": "441–460", "prompt": "numéro", "answer": "number"},
+    {"id": "fr-450", "group": "Words 401–500", "unit": "441–460", "prompt": "serai", "answer": "will be", "subtitle": "être · je"},
+    {"id": "fr-451", "group": "Words 401–500", "unit": "441–460", "prompt": "dur", "answer": "hard"},
+    {"id": "fr-452", "group": "Words 401–500", "unit": "441–460", "prompt": "livre", "answer": "book"},
+    {"id": "fr-453", "group": "Words 401–500", "unit": "441–460", "prompt": "souviens", "answer": "remember", "subtitle": "se souvenir · je/tu"},
+    {"id": "fr-454", "group": "Words 401–500", "unit": "441–460", "prompt": "voyez", "answer": "see", "subtitle": "voir · vous"},
+    {"id": "fr-455", "group": "Words 401–500", "unit": "441–460", "prompt": "cours", "answer": "class", "subtitle": "lesson"},
+    {"id": "fr-456", "group": "Words 401–500", "unit": "441–460", "prompt": "bonsoir", "answer": "good evening"},
+    {"id": "fr-457", "group": "Words 401–500", "unit": "441–460", "prompt": "route", "answer": "road"},
+    {"id": "fr-458", "group": "Words 401–500", "unit": "441–460", "prompt": "fera", "answer": "will do", "subtitle": "faire · il/elle"},
+    {"id": "fr-459", "group": "Words 401–500", "unit": "441–460", "prompt": "prend", "answer": "takes", "subtitle": "prendre · il/elle"},
+    {"id": "fr-460", "group": "Words 401–500", "unit": "441–460", "prompt": "cul", "answer": "arse", "subtitle": "vulgar"},
+    {"id": "fr-461", "group": "Words 401–500", "unit": "461–480", "prompt": "d'abord", "answer": "first", "subtitle": "first of all"},
+    {"id": "fr-462", "group": "Words 401–500", "unit": "461–480", "prompt": "peine", "answer": "trouble"},
+    {"id": "fr-463", "group": "Words 401–500", "unit": "461–480", "prompt": "croyais", "answer": "believed", "subtitle": "croire · je/tu"},
+    {"id": "fr-464", "group": "Words 401–500", "unit": "461–480", "prompt": "mot", "answer": "word"},
+    {"id": "fr-465", "group": "Words 401–500", "unit": "461–480", "prompt": "devez", "answer": "must", "subtitle": "devoir · vous"},
+    {"id": "fr-466", "group": "Words 401–500", "unit": "461–480", "prompt": "suffit", "answer": "enough", "subtitle": "ça suffit"},
+    {"id": "fr-467", "group": "Words 401–500", "unit": "461–480", "prompt": "ferme", "answer": "farm", "subtitle": "noun"},
+    {"id": "fr-468", "group": "Words 401–500", "unit": "461–480", "prompt": "plaisir", "answer": "pleasure"},
+    {"id": "fr-469", "group": "Words 401–500", "unit": "461–480", "prompt": "chien", "answer": "dog"},
+    {"id": "fr-470", "group": "Words 401–500", "unit": "461–480", "prompt": "jeu", "answer": "game"},
+    {"id": "fr-471", "group": "Words 401–500", "unit": "461–480", "prompt": "seigneur", "answer": "lord"},
+    {"id": "fr-472", "group": "Words 401–500", "unit": "461–480", "prompt": "messieurs", "answer": "gentlemen"},
+    {"id": "fr-473", "group": "Words 401–500", "unit": "461–480", "prompt": "calme", "answer": "calm"},
+    {"id": "fr-474", "group": "Words 401–500", "unit": "461–480", "prompt": "voudrais", "answer": "would like", "subtitle": "vouloir · je/tu"},
+    {"id": "fr-475", "group": "Words 401–500", "unit": "461–480", "prompt": "heureux", "answer": "happy", "subtitle": "masc."},
+    {"id": "fr-476", "group": "Words 401–500", "unit": "461–480", "prompt": "prenez", "answer": "take", "subtitle": "prendre · vous"},
+    {"id": "fr-477", "group": "Words 401–500", "unit": "461–480", "prompt": "mariage", "answer": "wedding"},
+    {"id": "fr-478", "group": "Words 401–500", "unit": "461–480", "prompt": "voit", "answer": "sees", "subtitle": "voir · il/elle"},
+    {"id": "fr-479", "group": "Words 401–500", "unit": "461–480", "prompt": "ouvrir", "answer": "to open"},
+    {"id": "fr-480", "group": "Words 401–500", "unit": "461–480", "prompt": "dedans", "answer": "inside"},
+    {"id": "fr-481", "group": "Words 401–500", "unit": "481–500", "prompt": "entrer", "answer": "to enter"},
+    {"id": "fr-482", "group": "Words 401–500", "unit": "481–500", "prompt": "lit", "answer": "bed"},
+    {"id": "fr-483", "group": "Words 401–500", "unit": "481–500", "prompt": "parfait", "answer": "perfect"},
+    {"id": "fr-484", "group": "Words 401–500", "unit": "481–500", "prompt": "fous", "answer": "crazy", "subtitle": "masc. plural"},
+    {"id": "fr-485", "group": "Words 401–500", "unit": "481–500", "prompt": "mademoiselle", "answer": "miss"},
+    {"id": "fr-486", "group": "Words 401–500", "unit": "481–500", "prompt": "rentrer", "answer": "to go home"},
+    {"id": "fr-487", "group": "Words 401–500", "unit": "481–500", "prompt": "ait", "answer": "has", "subtitle": "avoir · subjunctive, il/elle"},
+    {"id": "fr-488", "group": "Words 401–500", "unit": "481–500", "prompt": "musique", "answer": "music"},
+    {"id": "fr-489", "group": "Words 401–500", "unit": "481–500", "prompt": "arrêtez", "answer": "stop", "subtitle": "arrêter · vous"},
+    {"id": "fr-490", "group": "Words 401–500", "unit": "481–500", "prompt": "autant", "answer": "as much"},
+    {"id": "fr-491", "group": "Words 401–500", "unit": "481–500", "prompt": "reviens", "answer": "come back", "subtitle": "revenir · je/tu"},
+    {"id": "fr-492", "group": "Words 401–500", "unit": "481–500", "prompt": "ceci", "answer": "this", "subtitle": "pronoun"},
+    {"id": "fr-493", "group": "Words 401–500", "unit": "481–500", "prompt": "drôle", "answer": "funny"},
+    {"id": "fr-494", "group": "Words 401–500", "unit": "481–500", "prompt": "attend", "answer": "waits", "subtitle": "attendre · il/elle"},
+    {"id": "fr-495", "group": "Words 401–500", "unit": "481–500", "prompt": "parfois", "answer": "sometimes"},
+    {"id": "fr-496", "group": "Words 401–500", "unit": "481–500", "prompt": "téléphone", "answer": "phone"},
+    {"id": "fr-497", "group": "Words 401–500", "unit": "481–500", "prompt": "retour", "answer": "return", "subtitle": "noun"},
+    {"id": "fr-498", "group": "Words 401–500", "unit": "481–500", "prompt": "ira", "answer": "will go", "subtitle": "aller · il/elle"},
+    {"id": "fr-499", "group": "Words 401–500", "unit": "481–500", "prompt": "pauvre", "answer": "poor"},
+    {"id": "fr-500", "group": "Words 401–500", "unit": "481–500", "prompt": "verre", "answer": "glass"}
   ]
 }

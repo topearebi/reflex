@@ -1,130 +1,122 @@
 /**
- * js/normalizer.js - Universal Evaluation & String Transformation Core
- * 
- * Consolidates evaluation into 3 cross-language tiers:
- *  - STANDARD: Frictionless recall. Strips accents/diacritics, maps standard
- *              keyboard approximations (ü -> v), retains structural numbers.
- *  - RELAXED:  Maximum speed. Drops numbers, diacritics, accents, and punctuation.
- *  - STRICT:   Literal orthography. Preserves exact accents, tone marks, and digits.
+ * js/normalizer.js — answer matching.
+ *
+ * Every card has one canonical answer. Matching never accepts a *different*
+ * answer; it only forgives how the canonical one is typed:
+ *
+ *   standard  Accents/vowel marks optional, punctuation and spaces ignored.
+ *             Pinyin decks: tones required, as numbers (ni3hao3) or marks (nǐhǎo).
+ *   relaxed   Pinyin decks only: tones optional too. (Same as standard elsewhere.)
+ *   strict    Exactly as written, accents and tones included (case-insensitive).
  */
 
-export const EvaluationModes = Object.freeze({
-  STANDARD: "standard", // Smart friction-free (default)
-  RELAXED: "relaxed",   // Pure speed (toneless, unaccented)
-  STRICT: "strict"      // Exact orthography
+export const Modes = Object.freeze({
+  STANDARD: "standard",
+  RELAXED: "relaxed",
+  STRICT: "strict"
 });
 
-export class Normalizer {
-  /**
-   * Primary entry point comparing candidate input with an expected target answer.
-   * 
-   * @param {string} userInput - Raw string from user input
-   * @param {string} targetAnswer - Canonical answer stored in the card model
-   * @param {string} mode - One of EvaluationModes (default: STANDARD)
-   * @returns {boolean}
-   */
-  static isMatch(userInput, targetAnswer, mode = EvaluationModes.STANDARD) {
-    if (!userInput || !targetAnswer) return false;
+/** Modes offered in the UI for a given deck. */
+export function modesForDeck(deck) {
+  const pinyin = deck?.romanization === "pinyin";
+  return pinyin
+    ? [
+        { value: Modes.STANDARD, label: "Tones required" },
+        { value: Modes.RELAXED, label: "Tones optional" },
+        { value: Modes.STRICT, label: "Exact spelling" }
+      ]
+    : [
+        { value: Modes.STANDARD, label: "Accents optional" },
+        { value: Modes.STRICT, label: "Accents required" }
+      ];
+}
 
-    switch (mode) {
-      case EvaluationModes.RELAXED:
-        return this.toRelaxed(userInput) === this.toRelaxed(targetAnswer);
+// Tone-marked vowel -> [base letter, tone]
+const TONE_MARKS = {
+  ā: ["a", 1], á: ["a", 2], ǎ: ["a", 3], à: ["a", 4],
+  ē: ["e", 1], é: ["e", 2], ě: ["e", 3], è: ["e", 4],
+  ī: ["i", 1], í: ["i", 2], ǐ: ["i", 3], ì: ["i", 4],
+  ō: ["o", 1], ó: ["o", 2], ǒ: ["o", 3], ò: ["o", 4],
+  ū: ["u", 1], ú: ["u", 2], ǔ: ["u", 3], ù: ["u", 4],
+  ǖ: ["v", 1], ǘ: ["v", 2], ǚ: ["v", 3], ǜ: ["v", 4],
+  ü: ["v", 0],
+  // Rare but valid: tone-marked m/n/ê (ḿ, ň ...). Treat as base letter.
+  ḿ: ["m", 2], ń: ["n", 2], ň: ["n", 3], ǹ: ["n", 4]
+};
 
-      case EvaluationModes.STRICT:
-        return this.toStrict(userInput) === this.toStrict(targetAnswer);
+// Combining marks that "accents optional" may ignore: Latin/Greek/Cyrillic
+// diacritics, Arabic harakat, Hebrew niqqud. Deliberately excludes the kana
+// (han)dakuten (U+3099/309A), which change the sound.
+const OPTIONAL_MARKS = /[\u0300-\u036f\u064b-\u065f\u0670\u0591-\u05c7]/g;
+const IGNORABLE = /[\s\p{P}\p{S}]/gu;
 
-      case EvaluationModes.STANDARD:
-      default:
-        return this.toStandard(userInput) === this.toStandard(targetAnswer);
+function base(str) {
+  return String(str ?? "")
+    .normalize("NFC")
+    .toLowerCase()
+    .replace(/[\u2018\u2019\u02bc`´]/g, "'")
+    .trim();
+}
+
+function latinKey(str) {
+  return base(str)
+    .replace(/œ/g, "oe")
+    .replace(/æ/g, "ae")
+    .replace(/ß/g, "ss")
+    .normalize("NFD")
+    .replace(OPTIONAL_MARKS, "")
+    .normalize("NFC")
+    .replace(IGNORABLE, "");
+}
+
+/** Splits pinyin (numbers, marks or a mix) into letters + tone sequence. */
+export function parsePinyin(str) {
+  const s = base(str).replace(/u:/g, "v");
+  let letters = "";
+  const tones = [];
+  for (const ch of s) {
+    const mark = TONE_MARKS[ch];
+    if (mark) {
+      letters += mark[0];
+      if (mark[1]) tones.push(mark[1]);
+    } else if (ch >= "1" && ch <= "5") {
+      tones.push(Number(ch));
+    } else if (/\p{L}/u.test(ch)) {
+      letters += ch;
     }
+    // spaces, apostrophes, hyphens, tone 0 etc. are dropped
   }
+  // Neutral tone is optional: "ba4ba5" == "ba4ba"
+  return { letters, tones: tones.filter((t) => t !== 5) };
+}
 
-  /**
-   * Standard Mode: Frictionless Typing
-   * - Lowercases and trims outer whitespace
-   * - Collapses internal whitespace sequences into a single space
-   * - Replaces 'ü' and 'ǖ'/'ǘ'/'ǚ'/'ǜ' with 'v' for standard keyboard input
-   * - Normalizes diacritics to numeric tone digits if tone marks were entered
-   * - Strips residual Latin accents (é -> e, ç -> c, ñ -> n) via NFD decomposition
-   * - Normalizes neutral tone 5 to empty string so 'ba4ba5' equals 'ba4ba'
-   */
-  static toStandard(str) {
-    let s = str.trim().toLowerCase();
+function strictKey(str) {
+  return base(str).replace(/\s+/g, " ");
+}
 
-    // Map explicit ü variants to v before decomposition
-    s = s.replace(/[üǖǘǚǜ]/g, "v");
-
-    // Convert diacritic pinyin to tone numbers if diacritics were used
-    s = this.diacriticPinyinToNumeric(s);
-
-    // Strip remaining Latin diacritics (é -> e, etc.)
-    s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-    // Normalize whitespace & tone 5 representation
-    return s
-      .replace(/\s+/g, "")
-      .replace(/5/g, "");
+/**
+ * Comparison key for a string under a mode. Two strings match when their
+ * keys are equal.
+ */
+export function answerKey(str, mode, deck) {
+  const pinyin = deck?.romanization === "pinyin";
+  if (mode === Modes.STRICT) return strictKey(str);
+  if (pinyin) {
+    const { letters, tones } = parsePinyin(str);
+    return mode === Modes.RELAXED ? letters : `${letters}|${tones.join("")}`;
   }
+  return latinKey(str);
+}
 
-  /**
-   * Relaxed Mode: Pure Rapid Recall
-   * - Passes through the standard normalization pipeline
-   * - Strips all tone numbers (1-5)
-   * - Strips common punctuation
-   */
-  static toRelaxed(str) {
-    return this.toStandard(str)
-      .replace(/[1-5]/g, "")
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "");
-  }
+/** True when `input` is an acceptable way of typing any of the card's answers. */
+export function isMatch(input, answers, mode, deck) {
+  const key = answerKey(input, mode, deck);
+  if (!key || key === "|") return false;
+  return answers.some((a) => answerKey(a, mode, deck) === key);
+}
 
-  /**
-   * Strict Mode: Exact Orthography
-   * - Lowercases and trims edges
-   * - Collapses multiple spaces to a single standard space
-   * - Preserves all accents, diacritics, and tone numbers exactly as authored
-   */
-  static toStrict(str) {
-    return str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .normalize("NFC");
-  }
-
-  /**
-   * Utility helper: Converts tone-marked vowels into standard trailing number pinyin.
-   * e.g., 'hǎo' -> 'hao3', 'xué' -> 'xue2', 'lǜ' -> 'lv4'
-   */
-  static diacriticPinyinToNumeric(str) {
-    const toneMap = {
-      // First tone (Macron)
-      'ā': 'a1', 'ē': 'e1', 'ī': 'i1', 'ō': 'o1', 'ū': 'u1', 'ǖ': 'v1',
-      // Second tone (Acute)
-      'á': 'a2', 'é': 'e2', 'í': 'i2', 'ó': 'o2', 'ú': 'u2', 'ǘ': 'v2',
-      // Third tone (Caron)
-      'ǎ': 'a3', 'ě': 'e3', 'ǐ': 'i3', 'ǒ': 'o3', 'ǔ': 'u3', 'ǚ': 'v3',
-      // Fourth tone (Grave)
-      'à': 'a4', 'è': 'e4', 'ì': 'i4', 'ò': 'o4', 'ù': 'u4', 'ǜ': 'v4'
-    };
-
-    let result = str;
-    let detectedTone = "";
-
-    // Search for accented vowels and swap with their base letter + tone number
-    for (const [accented, replacement] of Object.entries(toneMap)) {
-      if (result.includes(accented)) {
-        const baseChar = replacement[0];
-        detectedTone = replacement[1];
-        result = result.replace(new RegExp(accented, "g"), baseChar);
-      }
-    }
-
-    // If a diacritic was converted and no explicit number is present at the end, append it
-    if (detectedTone && !/[1-5]/.test(result)) {
-      result += detectedTone;
-    }
-
-    return result;
-  }
+/** The mode actually used for a deck (relaxed only exists for pinyin decks). */
+export function effectiveMode(mode, deck) {
+  const allowed = modesForDeck(deck).map((m) => m.value);
+  return allowed.includes(mode) ? mode : Modes.STANDARD;
 }

@@ -1,0 +1,29 @@
+{
+  "name": "Yoruba · Core 20",
+  "lang": "yo",
+  "answerLang": "yo-Latn-toned",
+  "romanization": "yoruba-numeric",
+  "defaultMode": "standard",
+  "cards": [
+    {"id": "yo-001", "group": "Words 1–20", "unit": "1–10", "prompt": "Báwo", "subtitle": "hello / how", "answer": "ba1wo"},
+    {"id": "yo-002", "group": "Words 1–20", "unit": "1–10", "prompt": "Bẹ́ẹ̀ni", "subtitle": "yes", "answer": "be1e1ni"},
+    {"id": "yo-003", "group": "Words 1–20", "unit": "1–10", "prompt": "Rárá", "subtitle": "no", "answer": "ra1ra1"},
+    {"id": "yo-004", "group": "Words 1–20", "unit": "1–10", "prompt": "Ẹṣé", "subtitle": "thank you", "answer": "e1se1"},
+    {"id": "yo-005", "group": "Words 1–20", "unit": "1–10", "prompt": "Ẹ̀ jọ̀ọ́", "subtitle": "please / excuse me", "answer": "e2jo2o1"},
+    {"id": "yo-006", "group": "Words 1–20", "unit": "1–10", "prompt": "Àlàáfíà", "subtitle": "peace / wellness", "answer": "a2la1a1fi1a2"},
+    {"id": "yo-007", "group": "Words 1–20", "unit": "1–10", "prompt": "O dábọ̀", "subtitle": "goodbye", "answer": "oda1bo2"},
+    {"id": "yo-008", "group": "Words 1–20", "unit": "1–10", "prompt": "Èmi", "subtitle": "I / me (emphatic)", "answer": "e2mi"},
+    {"id": "yo-009", "group": "Words 1–20", "unit": "1–10", "prompt": "Ìwọ", "subtitle": "you (singular, informal)", "answer": "i2wo"},
+    {"id": "yo-010", "group": "Words 1–20", "unit": "1–10", "prompt": "Òun", "subtitle": "he / she / it", "answer": "o2un"},
+    {"id": "yo-011", "group": "Words 1–20", "unit": "11–20", "prompt": "Àwa", "subtitle": "we / us", "answer": "a2wa"},
+    {"id": "yo-012", "group": "Words 1–20", "unit": "11–20", "prompt": "Ẹ̀yin", "subtitle": "you (plural / formal)", "answer": "e2yin"},
+    {"id": "yo-013", "group": "Words 1–20", "unit": "11–20", "prompt": "Àwọn", "subtitle": "they / them", "answer": "a2won"},
+    {"id": "yo-014", "group": "Words 1–20", "unit": "11–20", "prompt": "Ọ̀rẹ́", "subtitle": "friend", "answer": "o2re1"},
+    {"id": "yo-015", "group": "Words 1–20", "unit": "11–20", "prompt": "Omi", "subtitle": "water", "answer": "omi"},
+    {"id": "yo-016", "group": "Words 1–20", "unit": "11–20", "prompt": "Oúnjẹ", "subtitle": "food", "answer": "o1unje"},
+    {"id": "yo-017", "group": "Words 1–20", "unit": "11–20", "prompt": "Ilé", "subtitle": "house / home", "answer": "ile1"},
+    {"id": "yo-018", "group": "Words 1–20", "unit": "11–20", "prompt": "Owó", "subtitle": "money", "answer": "owo1"},
+    {"id": "yo-019", "group": "Words 1–20", "unit": "11–20", "prompt": "Ọmọ", "subtitle": "child", "answer": "omo"},
+    {"id": "yo-020", "group": "Words 1–20", "unit": "11–20", "prompt": "Ayọ̀", "subtitle": "joy", "answer": "ayo2"}
+  ]
+}

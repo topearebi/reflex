@@ -1,0 +1,93 @@
+{
+  "name": "Audio Cascade & Fallback Matrix (Test)",
+  "lang": "fr-FR",
+  "answerLang": "fr-FR",
+  "defaultMode": "standard",
+  "cards": [
+    {
+      "id": "test-aud-001",
+      "group": "Audio Cascade",
+      "unit": "Tier 1: Base64 Audio",
+      "script": null,
+      "phonetic": "bonjour",
+      "gloss": "hello / good day",
+      "prompt": "bonjour",
+      "answer": "bonjour",
+      "subtitle": "hello / good day",
+      "aliases": ["salut"],
+      "lang": "fr-FR",
+      "audio": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    },
+    {
+      "id": "test-aud-002",
+      "group": "Audio Cascade",
+      "unit": "Tier 1: Relative Path",
+      "script": null,
+      "phonetic": "merci",
+      "gloss": "thank you",
+      "prompt": "merci",
+      "answer": "merci",
+      "subtitle": "thank you",
+      "aliases": ["remerciement"],
+      "lang": "fr-FR",
+      "audio": "./assets/audio/test-sample.opus"
+    },
+    {
+      "id": "test-aud-003",
+      "group": "Audio Cascade",
+      "unit": "Tier 2: Speech Synthesis",
+      "script": null,
+      "phonetic": "salut",
+      "gloss": "hi / bye",
+      "prompt": "salut",
+      "answer": "salut",
+      "subtitle": "hi / bye",
+      "aliases": ["bonjour"],
+      "lang": "fr-FR",
+      "audio": null
+    },
+    {
+      "id": "test-aud-004",
+      "group": "Audio Cascade",
+      "unit": "Tier 3: Silent Unsupported Fallback",
+      "script": null,
+      "phonetic": "au revoir",
+      "gloss": "goodbye",
+      "prompt": "au revoir",
+      "answer": "au revoir",
+      "subtitle": "goodbye",
+      "aliases": ["aurevoir"],
+      "lang": "xx-ZZ",
+      "audio": null
+    },
+    {
+      "id": "test-aud-005",
+      "group": "Audio Cascade",
+      "unit": "Multilingual: Japanese Speech",
+      "script": "こんにちは",
+      "phonetic": "konnichiwa",
+      "gloss": "hello",
+      "prompt": "こんにちは",
+      "answer": "konnichiwa",
+      "subtitle": "hello",
+      "aliases": ["konniciwa"],
+      "lang": "ja-JP",
+      "audio": null
+    },
+    {
+      "id": "test-aud-006",
+      "group": "Audio Cascade",
+      "unit": "Multilingual: Chinese Base64",
+      "script": "谢谢",
+      "phonetic": "xie4xie",
+      "gloss": "thank you",
+      "prompt": "谢谢",
+      "answer": "xie4xie",
+      "subtitle": "thank you",
+      "aliases": ["xiexie", "xièxie"],
+      "lang": "zh-CN",
+      "audio": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    }
+  ]
+}
+

@@ -1,0 +1,162 @@
+{
+  "name": "Yorùbá · Tonal Diacritics & Sensory Mode (Test)",
+  "lang": "yo-NG",
+  "answerLang": "yo-NG",
+  "defaultMode": "standard",
+  "cards": [
+    {
+      "id": "test-yo-001",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "olùkọ́",
+      "gloss": "teacher",
+      "prompt": "olùkọ́",
+      "answer": "olùkọ́",
+      "subtitle": "teacher",
+      "aliases": [
+        "olùkọ"
+      ],
+      "lang": "yo-NG",
+      "audio": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    },
+    {
+      "id": "test-yo-002",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "ẹwà",
+      "gloss": "beauty / beans",
+      "prompt": "ẹwà",
+      "answer": "ẹwà",
+      "subtitle": "beauty / beans",
+      "aliases": [
+        "ẹwa"
+      ],
+      "lang": "yo-NG",
+      "audio": "./assets/audio/test-sample.opus"
+    },
+    {
+      "id": "test-yo-003",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "ọ̀rẹ́",
+      "gloss": "friend",
+      "prompt": "ọ̀rẹ́",
+      "answer": "ọ̀rẹ́",
+      "subtitle": "friend",
+      "aliases": [
+        "ọ̀rẹ"
+      ],
+      "lang": "yo-NG",
+      "audio": null
+    },
+    {
+      "id": "test-yo-004",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "àlàáfíà",
+      "gloss": "peace / good health",
+      "prompt": "àlàáfíà",
+      "answer": "àlàáfíà",
+      "subtitle": "peace / good health",
+      "aliases": [
+        "àlaáfíà"
+      ],
+      "lang": "yo-NG",
+      "audio": null
+    },
+    {
+      "id": "test-yo-005",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "bàbá",
+      "gloss": "father",
+      "prompt": "bàbá",
+      "answer": "bàbá",
+      "subtitle": "father",
+      "aliases": [
+        "bàba"
+      ],
+      "lang": "yo-NG",
+      "audio": null
+    },
+    {
+      "id": "test-yo-006",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "ìyá",
+      "gloss": "mother",
+      "prompt": "ìyá",
+      "answer": "ìyá",
+      "subtitle": "mother",
+      "aliases": [
+        "ìya"
+      ],
+      "lang": "yo-NG",
+      "audio": null
+    },
+    {
+      "id": "test-yo-007",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "ṣàngó",
+      "gloss": "deity of thunder",
+      "prompt": "ṣàngó",
+      "answer": "ṣàngó",
+      "subtitle": "deity of thunder",
+      "aliases": [
+        "ṣango"
+      ],
+      "lang": "yo-NG",
+      "audio": null
+    },
+    {
+      "id": "test-yo-008",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "omi",
+      "gloss": "water",
+      "prompt": "omi",
+      "answer": "omi",
+      "subtitle": "water",
+      "aliases": [],
+      "lang": "yo-NG",
+      "audio": null
+    },
+    {
+      "id": "test-yo-009",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "ilé",
+      "gloss": "house / home",
+      "prompt": "ilé",
+      "answer": "ilé",
+      "subtitle": "house / home",
+      "aliases": [],
+      "lang": "yo-NG",
+      "audio": null
+    },
+    {
+      "id": "test-yo-010",
+      "group": "Tonal Vocabulary",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "owó",
+      "gloss": "money",
+      "prompt": "owó",
+      "answer": "owó",
+      "subtitle": "money",
+      "aliases": [],
+      "lang": "yo-NG",
+      "audio": null
+    }
+  ]
+}

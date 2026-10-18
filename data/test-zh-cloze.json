@@ -1,0 +1,160 @@
+{
+  "name": "Mandarin · Space-Delimited Sentences Cloze (Test)",
+  "lang": "zh-CN",
+  "answerLang": "zh-Hans",
+  "defaultMode": "standard",
+  "cards": [
+    {
+      "id": "test-zh-cloze-001",
+      "group": "Contextual Sentences",
+      "unit": "Unit 1",
+      "script": "我 是 老师 。",
+      "phonetic": "wǒ shì lǎoshī .",
+      "gloss": "I am a teacher.",
+      "prompt": "我 是 老师 。",
+      "answer": "老师",
+      "subtitle": "I am a teacher.",
+      "aliases": [
+        "lao3shi1",
+        "laoshi",
+        "lǎoshī"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    },
+    {
+      "id": "test-zh-cloze-002",
+      "group": "Contextual Sentences",
+      "unit": "Unit 1",
+      "script": "我们 在 学校 学习 汉语 。",
+      "phonetic": "wǒmen zài xuéxiào xuéxí hànyǔ .",
+      "gloss": "We study Chinese at school.",
+      "prompt": "我们 在 学校 学习 汉语 。",
+      "answer": "学校",
+      "subtitle": "We study Chinese at school.",
+      "aliases": [
+        "xue2xiao4",
+        "xuexiao",
+        "xuéxiào"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": "./assets/audio/test-sample.opus"
+    },
+    {
+      "id": "test-zh-cloze-003",
+      "group": "Contextual Sentences",
+      "unit": "Unit 1",
+      "script": "今天 天气 很 好 ， 我们 去 公园 。",
+      "phonetic": "jīntiān tiānqì hěn hǎo , wǒmen qù gōngyuán .",
+      "gloss": "The weather is very good today, we go to the park.",
+      "prompt": "今天 天气 很 好 ， 我们 去 公园 。",
+      "answer": "公园",
+      "subtitle": "The weather is very good today, we go to the park.",
+      "aliases": [
+        "gong1yuan2",
+        "gongyuan",
+        "gōngyuán"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-zh-cloze-004",
+      "group": "Contextual Sentences",
+      "unit": "Unit 1",
+      "script": "老师 喜欢 在 早上 喝 茶 。",
+      "phonetic": "lǎoshī xǐhuan zài zǎoshang hē chá .",
+      "gloss": "The teacher likes to drink tea in the morning.",
+      "prompt": "老师 喜欢 在 早上 喝 茶 。",
+      "answer": "茶",
+      "subtitle": "The teacher likes to drink tea in the morning.",
+      "aliases": [
+        "cha2",
+        "cha",
+        "chá"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-zh-cloze-005",
+      "group": "Contextual Sentences",
+      "unit": "Unit 2",
+      "script": "她 昨天 买 了 一 本 新 书 。",
+      "phonetic": "tā zuótiān mǎi le yī běn xīn shū .",
+      "gloss": "She bought a new book yesterday.",
+      "prompt": "她 昨天 买 了 一 本 新 书 。",
+      "answer": "书",
+      "subtitle": "She bought a new book yesterday.",
+      "aliases": [
+        "shu1",
+        "shu",
+        "shū"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-zh-cloze-006",
+      "group": "Contextual Sentences",
+      "unit": "Unit 2",
+      "script": "医生 在 医院 帮助 病人 。",
+      "phonetic": "yīshēng zài yīyuàn bāngzhù bìngrén .",
+      "gloss": "The doctor helps patients in the hospital.",
+      "prompt": "医生 在 医院 帮助 病人 。",
+      "answer": "医生",
+      "subtitle": "The doctor helps patients in the hospital.",
+      "aliases": [
+        "yi1sheng",
+        "yisheng",
+        "yīshēng"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-zh-cloze-007",
+      "group": "Contextual Sentences",
+      "unit": "Unit 2",
+      "script": "我 的 朋友 想 吃 中国 菜 。",
+      "phonetic": "wǒ de péngyou xiǎng chī zhōngguó cài .",
+      "gloss": "My friend wants to eat Chinese food.",
+      "prompt": "我 的 朋友 想 吃 中国 菜 。",
+      "answer": "朋友",
+      "subtitle": "My friend wants to eat Chinese food.",
+      "aliases": [
+        "peng2you",
+        "pengyou",
+        "péngyou"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-zh-cloze-008",
+      "group": "Contextual Sentences",
+      "unit": "Unit 2",
+      "script": "哥哥 在 房间 听 音乐 。",
+      "phonetic": "gēge zài fángjiān tīng yīnyuè .",
+      "gloss": "Older brother is listening to music in the room.",
+      "prompt": "哥哥 在 房间 听 音乐 。",
+      "answer": "音乐",
+      "subtitle": "Older brother is listening to music in the room.",
+      "aliases": [
+        "yin1yue4",
+        "yinyue",
+        "yīnyuè"
+      ],
+      "lang": "zh-CN",
+      "isCloze": true,
+      "audio": null
+    }
+  ]
+}

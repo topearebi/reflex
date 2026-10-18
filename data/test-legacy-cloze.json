@@ -1,0 +1,93 @@
+{
+  "name": "Legacy Cloze Syntax Compatibility (Test)",
+  "lang": "en-US",
+  "answerLang": "en-US",
+  "defaultMode": "standard",
+  "cards": [
+    {
+      "id": "test-leg-001",
+      "group": "Legacy Syntax",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "quick",
+      "gloss": "fast / nimble",
+      "prompt": "The {{c1::quick}} brown fox jumps over the lazy dog .",
+      "answer": "quick",
+      "subtitle": "fast / nimble",
+      "aliases": ["fast", "nimble"],
+      "lang": "en-US",
+      "audio": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    },
+    {
+      "id": "test-leg-002",
+      "group": "Legacy Syntax",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "study",
+      "gloss": "prepare / learn",
+      "prompt": "She decided to {{c1::study::learn}} Spanish before traveling to Madrid .",
+      "answer": "study",
+      "subtitle": "prepare / learn",
+      "aliases": ["learn", "revise"],
+      "lang": "en-US",
+      "audio": "./assets/audio/test-sample.opus"
+    },
+    {
+      "id": "test-leg-003",
+      "group": "Legacy Syntax",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "power",
+      "gloss": "strength / ability",
+      "prompt": "Knowledge is {{c1::power}} in the modern world .",
+      "answer": "power",
+      "subtitle": "strength / ability",
+      "aliases": ["strength", "might"],
+      "lang": "en-US",
+      "audio": null
+    },
+    {
+      "id": "test-leg-004",
+      "group": "Legacy Syntax",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "step",
+      "gloss": "stride / movement",
+      "prompt": "A journey of a thousand miles begins with a single {{c1::step}} .",
+      "answer": "step",
+      "subtitle": "stride / movement",
+      "aliases": ["stride"],
+      "lang": "en-US",
+      "audio": null
+    },
+    {
+      "id": "test-leg-005",
+      "group": "Legacy Syntax",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "perfect",
+      "gloss": "flawless / mastery",
+      "prompt": "Practice makes {{c1::perfect}} when done consistently .",
+      "answer": "perfect",
+      "subtitle": "flawless / mastery",
+      "aliases": ["flawless"],
+      "lang": "en-US",
+      "audio": null
+    },
+    {
+      "id": "test-leg-006",
+      "group": "Legacy Syntax",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "tide",
+      "gloss": "current / season",
+      "prompt": "Time and {{c1::tide}} wait for no man .",
+      "answer": "tide",
+      "subtitle": "current / season",
+      "aliases": ["season"],
+      "lang": "en-US",
+      "audio": null
+    }
+  ]
+}
+

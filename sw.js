@@ -16,12 +16,18 @@ const CORE = [
   "./js/state.js",
   "./js/engine.js",
   "./js/normalizer.js",
+  "./js/cloze.js",
+  "./js/audio.js",
+  "./js/routes.js",
   "./js/importer.js",
+
   "./js/github-sync.js",
   "./data/manifest.json",
+  "./data/bilingual-cloze.json",
   "./assets/icons/icon.svg",
   "./assets/icons/icon-192.png",
-  "./assets/icons/icon-512.png"
+  "./assets/icons/icon-512.png",
+  "./assets/audio/test-sample.opus"
 ];
 
 self.addEventListener("install", (event) => {

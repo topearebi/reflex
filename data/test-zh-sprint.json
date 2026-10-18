@@ -1,0 +1,179 @@
+{
+  "name": "Mandarin · Reflex Sprint & Native IME (Test)",
+  "lang": "zh-CN",
+  "answerLang": "zh-Latn-pinyin",
+  "romanization": "pinyin",
+  "defaultMode": "standard",
+  "cards": [
+    {
+      "id": "test-zh-sprint-001",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 1",
+      "script": "老师",
+      "phonetic": "lao3shi1",
+      "gloss": "teacher",
+      "prompt": "老师",
+      "answer": "lao3shi1",
+      "subtitle": "teacher",
+      "aliases": [
+        "laoshi",
+        "lǎoshī"
+      ],
+      "lang": "zh-CN",
+      "audio": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    },
+    {
+      "id": "test-zh-sprint-002",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 1",
+      "script": "学生",
+      "phonetic": "xue2sheng",
+      "gloss": "student",
+      "prompt": "学生",
+      "answer": "xue2sheng",
+      "subtitle": "student",
+      "aliases": [
+        "xuesheng",
+        "xuéshēng"
+      ],
+      "lang": "zh-CN",
+      "audio": "./assets/audio/test-sample.opus"
+    },
+    {
+      "id": "test-zh-sprint-003",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 1",
+      "script": "中国",
+      "phonetic": "zhong1guo2",
+      "gloss": "China",
+      "prompt": "中国",
+      "answer": "zhong1guo2",
+      "subtitle": "China",
+      "aliases": [
+        "zhongguo",
+        "zhōngguó"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    },
+    {
+      "id": "test-zh-sprint-004",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 1",
+      "script": "水",
+      "phonetic": "shui3",
+      "gloss": "water",
+      "prompt": "水",
+      "answer": "shui3",
+      "subtitle": "water",
+      "aliases": [
+        "shui",
+        "shuǐ"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    },
+    {
+      "id": "test-zh-sprint-005",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 1",
+      "script": "朋友",
+      "phonetic": "peng2you",
+      "gloss": "friend",
+      "prompt": "朋友",
+      "answer": "peng2you",
+      "subtitle": "friend",
+      "aliases": [
+        "pengyou",
+        "péngyou"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    },
+    {
+      "id": "test-zh-sprint-006",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 2",
+      "script": "电脑",
+      "phonetic": "dian4nao3",
+      "gloss": "computer",
+      "prompt": "电脑",
+      "answer": "dian4nao3",
+      "subtitle": "computer",
+      "aliases": [
+        "diannao",
+        "diànnǎo"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    },
+    {
+      "id": "test-zh-sprint-007",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 2",
+      "script": "你好",
+      "phonetic": "ni3hao3",
+      "gloss": "hello",
+      "prompt": "你好",
+      "answer": "ni3hao3",
+      "subtitle": "hello",
+      "aliases": [
+        "nihao",
+        "nǐhǎo"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    },
+    {
+      "id": "test-zh-sprint-008",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 2",
+      "script": "再见",
+      "phonetic": "zai4jian4",
+      "gloss": "goodbye",
+      "prompt": "再见",
+      "answer": "zai4jian4",
+      "subtitle": "goodbye",
+      "aliases": [
+        "zaijian",
+        "zàijiàn"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    },
+    {
+      "id": "test-zh-sprint-009",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 2",
+      "script": "医生",
+      "phonetic": "yi1sheng",
+      "gloss": "doctor",
+      "prompt": "医生",
+      "answer": "yi1sheng",
+      "subtitle": "doctor",
+      "aliases": [
+        "yisheng",
+        "yīshēng"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    },
+    {
+      "id": "test-zh-sprint-010",
+      "group": "Reflex Vocabulary",
+      "unit": "Unit 2",
+      "script": "茶",
+      "phonetic": "cha2",
+      "gloss": "tea",
+      "prompt": "茶",
+      "answer": "cha2",
+      "subtitle": "tea",
+      "aliases": [
+        "cha",
+        "chá"
+      ],
+      "lang": "zh-CN",
+      "audio": null
+    }
+  ]
+}

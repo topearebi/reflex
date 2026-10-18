@@ -1,0 +1,184 @@
+{
+  "name": "French · Elisions, Compounds & Synonyms (Test)",
+  "lang": "fr-FR",
+  "answerLang": "fr-FR",
+  "defaultMode": "standard",
+  "cards": [
+    {
+      "id": "test-fr-001",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "C'est l'eau fraîche de la source .",
+      "gloss": "It is fresh water from the spring.",
+      "prompt": "C'est l'eau fraîche de la source .",
+      "answer": "l'eau",
+      "subtitle": "fresh water",
+      "aliases": [
+        "eau",
+        "l’eau"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    },
+    {
+      "id": "test-fr-002",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "J'ai un rendez-vous très important .",
+      "gloss": "I have a very important appointment.",
+      "prompt": "J'ai un rendez-vous très important .",
+      "answer": "rendez-vous",
+      "subtitle": "appointment / meeting",
+      "aliases": [
+        "rencontre"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": "./assets/audio/test-sample.opus"
+    },
+    {
+      "id": "test-fr-003",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "Il est peut-être déjà arrivé à l'école .",
+      "gloss": "He has perhaps already arrived at school.",
+      "prompt": "Il est peut-être déjà arrivé à l'école .",
+      "answer": "peut-être",
+      "subtitle": "perhaps / maybe",
+      "aliases": [
+        "probablement"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-fr-004",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "L'homme cherche son travail chaque matin .",
+      "gloss": "The man looks for his work every morning.",
+      "prompt": "L'homme cherche son travail chaque matin .",
+      "answer": "travail",
+      "subtitle": "work / job",
+      "aliases": [
+        "boulot",
+        "emploi"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-fr-005",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 1",
+      "script": null,
+      "phonetic": "Nous voulons boire un café ensemble .",
+      "gloss": "We want to drink a coffee together.",
+      "prompt": "Nous voulons boire un café ensemble .",
+      "answer": "boire",
+      "subtitle": "to drink",
+      "aliases": [
+        "prendre"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-fr-006",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "L'élève commence à étudier la leçon .",
+      "gloss": "The student begins to study the lesson.",
+      "prompt": "L'élève commence à étudier la leçon .",
+      "answer": "commence",
+      "subtitle": "begins / starts",
+      "aliases": [
+        "débute",
+        "entame"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-fr-007",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "Il conduit une belle voiture bleue .",
+      "gloss": "He drives a beautiful blue car.",
+      "prompt": "Il conduit une belle voiture bleue .",
+      "answer": "voiture",
+      "subtitle": "car / automobile",
+      "aliases": [
+        "auto",
+        "véhicule"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-fr-008",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "Qu'il vienne nous rejoindre demain .",
+      "gloss": "May he come join us tomorrow.",
+      "prompt": "Qu'il vienne nous rejoindre demain .",
+      "answer": "Qu'il",
+      "subtitle": "that he / may he",
+      "aliases": [
+        "qu'il",
+        "qu’il"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-fr-009",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "Elle regarde par la fenêtre ouverte .",
+      "gloss": "She looks through the open window.",
+      "prompt": "Elle regarde par la fenêtre ouverte .",
+      "answer": "fenêtre",
+      "subtitle": "window",
+      "aliases": [
+        "fenetre"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    },
+    {
+      "id": "test-fr-010",
+      "group": "Elisions & Compounds",
+      "unit": "Unit 2",
+      "script": null,
+      "phonetic": "Les randonneurs traversent la grande forêt .",
+      "gloss": "The hikers cross the large forest.",
+      "prompt": "Les randonneurs traversent la grande forêt .",
+      "answer": "forêt",
+      "subtitle": "forest / woods",
+      "aliases": [
+        "foret",
+        "bois"
+      ],
+      "lang": "fr-FR",
+      "isCloze": true,
+      "audio": null
+    }
+  ]
+}

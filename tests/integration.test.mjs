@@ -101,3 +101,81 @@ test("state immutability and sync isolation during a 50-card drill sprint", asyn
   );
 });
 
+test("service worker cache busting, lifecycle claim, and asset versioning", () => {
+  const swContent = readFileSync(new URL("../sw.js", import.meta.url), "utf-8");
+  const htmlContent = readFileSync(new URL("../index.html", import.meta.url), "utf-8");
+
+  // 1. Verify cache name in sw.js is updated to speedrecall-v3
+  assert.match(
+    swContent,
+    /const\s+CACHE_NAME\s*=\s*["']speedrecall-v3["']/,
+    "sw.js must define CACHE_NAME as speedrecall-v3"
+  );
+
+  // 2. Verify new modules are included in pre-cache list
+  assert.ok(swContent.includes('"./js/routes.js"'), "CORE cache must include routes.js");
+  assert.ok(swContent.includes('"./js/audio.js"'), "CORE cache must include audio.js");
+  assert.ok(swContent.includes('"./js/cloze.js"'), "CORE cache must include cloze.js");
+  assert.ok(swContent.includes('"./css/app.css"'), "CORE cache must include app.css");
+
+  // 3. Verify self.skipWaiting() in install phase
+  assert.ok(
+    swContent.includes("self.skipWaiting()"),
+    "sw.js install event must invoke self.skipWaiting()"
+  );
+
+  // 4. Verify stale cache purging in activate phase
+  assert.ok(
+    swContent.includes("caches.keys()") && swContent.includes("caches.delete"),
+    "sw.js activate event must purge stale caches"
+  );
+  assert.ok(
+    swContent.includes("key !== CACHE_NAME"),
+    "sw.js activate event must delete all caches not matching CACHE_NAME"
+  );
+
+  // 5. Verify self.clients.claim() in activate phase
+  assert.ok(
+    swContent.includes("self.clients.claim()"),
+    "sw.js activate event must invoke self.clients.claim()"
+  );
+
+  // 6. Verify index.html cache-busted entry points
+  assert.match(
+    htmlContent,
+    /<link[^>]+href=["']css\/app\.css\?v=3["']/,
+    "index.html must reference css/app.css?v=3"
+  );
+  assert.match(
+    htmlContent,
+    /<script[^>]+src=["']js\/app\.js\?v=3["']/,
+    "index.html must reference js/app.js?v=3"
+  );
+  assert.match(
+    htmlContent,
+    /navigator\.serviceWorker\.register\(["']\.\/sw\.js\?v=3["']\)/,
+    "index.html must register sw.js with ?v=3 query parameter"
+  );
+
+  // 7. Verify js/app.js handles controllerchange lifecycle updates
+  const appContent = readFileSync(new URL("../js/app.js", import.meta.url), "utf-8");
+  assert.ok(
+    appContent.includes("bindServiceWorker"),
+    "js/app.js must declare and initialize bindServiceWorker()"
+  );
+  assert.match(
+    appContent,
+    /navigator\.serviceWorker\.register\(["']\.\/sw\.js\?v=3["']\)/,
+    "js/app.js must register sw.js with ?v=3 query parameter"
+  );
+  assert.match(
+    appContent,
+    /navigator\.serviceWorker\.addEventListener\(\s*["']controllerchange["']/,
+    "js/app.js must listen for controllerchange event"
+  );
+  assert.ok(
+    appContent.includes("this.toast") && appContent.includes("this.store.init"),
+    "js/app.js controllerchange handler must notify UI and refresh active data references"
+  );
+});
+

@@ -1,6 +1,6 @@
-# SpeedRecall
+# Reflex
 
-Rapid-fire flashcard drilling for any language, in the style of DJT Kana. One prompt, one definite answer, type it and the next card appears the instant you're right.
+Rapid active recall and reflex flashcard drilling for any language, in the style of DJT Kana. One prompt, one definite answer, type it and the next card appears the instant you're right.
 
 Plain HTML, CSS and JavaScript modules. No build step: push to GitHub Pages and it runs.
 

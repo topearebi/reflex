@@ -1469,5 +1469,269 @@ body[data-route="strict-production"] .answer-input.is-composing {
   letter-spacing: 0.05em;
 }
 
+/* ---------- Module 3: In-Drill Header Toggles ---------- */
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
+/* Route 4 Sensory Mode Suppression Guardrail */
+body[data-route="sensory-flash"] .topbar,
+.route-sensory .topbar {
+  display: none !important;
+  pointer-events: none !important;
+}
 
+/* ---------- Module 1: The 4-Tab Settings Hub ---------- */
+.settings-nav {
+  margin-bottom: 16px;
+}
+
+.tablist {
+  display: flex;
+  gap: 6px;
+  background: var(--bg-surface, #1e1e22);
+  padding: 4px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: calc(var(--radius) - 2px);
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.tab-button:hover {
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-button.is-active,
+.tab-button[aria-selected="true"] {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.tab-panel[hidden] {
+  display: none !important;
+}
+
+.deck-summary-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.deck-summary-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.deck-summary-card__title {
+  font-size: 1rem;
+  font-weight: 650;
+  margin: 0;
+}
+
+.deck-summary-card__metrics {
+  font-size: 0.85rem;
+  color: var(--dim);
+  margin: 0;
+}
+
+.deck-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.backup-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.metric-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metric-card__label {
+  font-size: 0.74rem;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric-card__value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.metric-card__sub {
+  font-size: 0.74rem;
+  color: var(--dim);
+}
+
+.danger-zone {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  background: rgba(239, 68, 68, 0.03) !important;
+}
+
+.danger-text {
+  color: var(--error, #ef4444) !important;
+}
+
+/* ---------- Module 2: Role Matrix in Practice Modal ---------- */
+.role-matrix-group {
+  margin-top: 10px;
+}
+
+.role-matrix {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.role-field {
+  flex: 1;
+}
+
+.role-swap-btn {
+  align-self: flex-end;
+  margin-bottom: 2px;
+  width: 44px;
+  height: 44px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.role-swap-btn:hover {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.session-hint-check {
+  margin-top: 10px;
+}
+
+/* ---------- Module 4: Tabular Deck Builder Modal ---------- */
+.sheet--deck-builder .sheet__inner--wide {
+  max-width: 920px;
+  width: 95vw;
+}
+
+.grid-actions-ribbon {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.grid-paste-area {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.deck-grid-container {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 8px;
+  background: var(--bg);
+}
+
+.deck-grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.deck-grid-table th {
+  background: var(--bg-surface, #1e1e22);
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.deck-grid-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.deck-grid-table input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 0.88rem;
+  background: var(--bg);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--fg);
+  font-family: inherit;
+}
+
+.deck-grid-table input:focus {
+  border-color: var(--accent);
+  outline: none;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.deck-grid-table .btn-delete-row {
+  background: transparent;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.deck-grid-table .btn-delete-row:hover {
+  color: var(--error, #ef4444);
+  background: rgba(239, 68, 68, 0.12);
+}

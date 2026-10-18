@@ -1,8 +1,8 @@
 {
-  "name": "speedrecall",
+  "name": "reflex",
   "version": "1.0.0",
   "type": "module",
-  "description": "Rapid-fire flashcard drilling for any language.",
+  "description": "Rapid active recall and reflex drilling for any language.",
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",

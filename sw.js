@@ -6,7 +6,8 @@
  * new deploy is picked up on the next launch. No cache names to bump by hand.
  */
 
-const CACHE = "speedrecall";
+const CACHE_NAME = "speedrecall-v3";
+const CACHE = CACHE_NAME;
 const CORE = [
   "./",
   "./index.html",
@@ -20,7 +21,6 @@ const CORE = [
   "./js/audio.js",
   "./js/routes.js",
   "./js/importer.js",
-
   "./js/github-sync.js",
   "./data/manifest.json",
   "./data/bilingual-cloze.json",
@@ -31,9 +31,10 @@ const CORE = [
 ];
 
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
   event.waitUntil(
     (async () => {
-      const cache = await caches.open(CACHE);
+      const cache = await caches.open(CACHE_NAME);
       // Add individually so one missing file can't block installation
       await Promise.all(CORE.map((url) => cache.add(new Request(url, { cache: "reload" })).catch(() => {})));
       // Pre-cache deck files listed in the manifest
@@ -43,7 +44,6 @@ self.addEventListener("install", (event) => {
       } catch {
         /* offline during install — decks get cached on first use */
       }
-      await self.skipWaiting();
     })()
   );
 });
@@ -51,7 +51,14 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
-      for (const key of await caches.keys()) if (key !== CACHE) await caches.delete(key);
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
       await self.clients.claim();
     })()
   );

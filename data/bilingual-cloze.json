@@ -1,208 +1,49 @@
 {
-  "name": "Bilingual Cloze · French & Mandarin",
-  "lang": "fr",
-  "answerLang": "fr",
+  "name": "Bilingual Cloze Test Deck",
+  "lang": "en",
+  "answerLang": "en",
   "defaultMode": "standard",
   "cards": [
     {
-      "id": "fr-cloze-01",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Bonjour, je {{suis}} enchanté de faire votre connaissance.",
-      "subtitle": "I am delighted to meet you",
-      "answer": "suis"
+      "id": "bilingual-001",
+      "group": "Bilingual Sentences",
+      "unit": "Unit 1",
+      "prompt": "The {{c1::quick}} brown fox jumps over the lazy dog.",
+      "answer": "quick",
+      "subtitle": "fast / nimble"
     },
     {
-      "id": "fr-cloze-02",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Tu {{as::avoir}} quel âge ?",
-      "subtitle": "How old are you?",
-      "answer": "as"
+      "id": "bilingual-002",
+      "group": "Bilingual Sentences",
+      "unit": "Unit 1",
+      "prompt": "She decided to {{c1::study::learn}} Spanish before traveling to Madrid.",
+      "answer": "study",
+      "subtitle": "prepare / learn"
     },
     {
-      "id": "fr-cloze-03",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Il {{habite::habiter}} à Paris depuis deux ans.",
-      "subtitle": "He has been living in Paris for two years",
-      "answer": "habite"
+      "id": "bilingual-003",
+      "group": "Bilingual Sentences",
+      "unit": "Unit 1",
+      "prompt": "Knowledge is {{c1::power}} in the modern world.",
+      "answer": "power",
+      "subtitle": "strength / ability"
     },
     {
-      "id": "fr-cloze-04",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Nous {{allons::aller}} au restaurant ce soir.",
-      "subtitle": "We are going to the restaurant tonight",
-      "answer": "allons"
+      "id": "bilingual-004",
+      "group": "Space Delimited Sentences",
+      "unit": "Unit 2",
+      "prompt": "El sol brilla en el cielo azul.",
+      "answer": "sol",
+      "subtitle": "sun"
     },
     {
-      "id": "fr-cloze-05",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Vous {{parlez::parler}} très bien français.",
-      "subtitle": "You speak French very well",
-      "answer": "parlez"
-    },
-    {
-      "id": "fr-cloze-06",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Elle {{veut::vouloir}} apprendre une nouvelle langue.",
-      "subtitle": "She wants to learn a new language",
-      "answer": "veut"
-    },
-    {
-      "id": "fr-cloze-07",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Je ne {{peux::pouvoir}} pas venir demain.",
-      "subtitle": "I cannot come tomorrow",
-      "answer": "peux"
-    },
-    {
-      "id": "fr-cloze-08",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Ils {{font::faire}} du sport tous les matins.",
-      "subtitle": "They do sports every morning",
-      "answer": "font"
-    },
-    {
-      "id": "fr-cloze-09",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Le train {{part::partir}} à huit heures précises.",
-      "subtitle": "The train leaves at eight o'clock sharp",
-      "answer": "part"
-    },
-    {
-      "id": "fr-cloze-10",
-      "group": "French Basics",
-      "unit": "1–10",
-      "prompt": "Merci beaucoup pour {{votre}} aide précieuse.",
-      "subtitle": "Thank you very much for your help",
-      "answer": "votre"
-    },
-    {
-      "id": "fr-cloze-11",
-      "group": "French Multi-gap",
-      "unit": "11–20",
-      "prompt": "Hier, j'{{c1::ai}} {{c2::mangé::manger}} une délicieuse pomme.",
-      "subtitle": "Yesterday I ate a delicious apple",
-      "answer": "ai"
-    },
-    {
-      "id": "fr-cloze-12",
-      "group": "French Multi-gap",
-      "unit": "11–20",
-      "prompt": "Nous {{c1::sommes}} {{c2::allés::aller}} au cinéma ensemble.",
-      "subtitle": "We went to the cinema together",
-      "answer": "sommes"
-    },
-    {
-      "id": "fr-cloze-13",
-      "group": "French Multi-gap",
-      "unit": "11–20",
-      "prompt": "Elle {{c1::a}} déjà {{c2::fini::finir}} ses devoirs.",
-      "subtitle": "She has already finished her homework",
-      "answer": "a"
-    },
-    {
-      "id": "fr-cloze-14",
-      "group": "French Multi-gap",
-      "unit": "11–20",
-      "prompt": "Si tu {{c1::veux::vouloir}}, nous {{c2::pouvons::pouvoir}} partir maintenant.",
-      "subtitle": "If you want, we can leave now",
-      "answer": "veux"
-    },
-    {
-      "id": "fr-cloze-15",
-      "group": "French Multi-gap",
-      "unit": "11–20",
-      "prompt": "J'espère que vous {{c1::avez}} bien {{c2::dormi::dormir}}.",
-      "subtitle": "I hope you slept well",
-      "answer": "avez"
-    },
-    {
-      "id": "zh-cloze-01",
-      "group": "Mandarin Everyday",
-      "unit": "21–30",
-      "prompt": "我{{是}}语言学校的学生。",
-      "subtitle": "I am a student at the language school",
-      "answer": "是"
-    },
-    {
-      "id": "zh-cloze-02",
-      "group": "Mandarin Everyday",
-      "unit": "21–30",
-      "prompt": "他现在在一家公司{{工作}}。",
-      "subtitle": "He is working at a company now",
-      "answer": "工作"
-    },
-    {
-      "id": "zh-cloze-03",
-      "group": "Mandarin Everyday",
-      "unit": "21–30",
-      "prompt": "你{{喜欢::like}}喝茶还是咖啡？",
-      "subtitle": "Do you like to drink tea or coffee?",
-      "answer": "喜欢"
-    },
-    {
-      "id": "zh-cloze-04",
-      "group": "Mandarin Everyday",
-      "unit": "21–30",
-      "prompt": "今天的天气非常{{好}}。",
-      "subtitle": "The weather today is very good",
-      "answer": "好"
-    },
-    {
-      "id": "zh-cloze-05",
-      "group": "Mandarin Everyday",
-      "unit": "21–30",
-      "prompt": "请问图书馆在{{哪儿::where}}？",
-      "subtitle": "Excuse me, where is the library?",
-      "answer": "哪儿"
-    },
-    {
-      "id": "zh-cloze-06",
-      "group": "Mandarin Everyday",
-      "unit": "21–30",
-      "prompt": "我们明天一起去{{买}}东西吧。",
-      "subtitle": "Let's go shopping together tomorrow",
-      "answer": "买"
-    },
-    {
-      "id": "zh-cloze-07",
-      "group": "Mandarin Everyday",
-      "unit": "21–30",
-      "prompt": "这个汉字我不太{{认识}}。",
-      "subtitle": "I don't really recognize this character",
-      "answer": "认识"
-    },
-    {
-      "id": "zh-cloze-08",
-      "group": "Mandarin Multi-gap",
-      "unit": "31–40",
-      "prompt": "今天天气{{c1::很}}好，我们{{c2::去::go}}公园吧。",
-      "subtitle": "The weather is very nice today, let's go to the park",
-      "answer": "很"
-    },
-    {
-      "id": "zh-cloze-09",
-      "group": "Mandarin Multi-gap",
-      "unit": "31–40",
-      "prompt": "你{{c1::想::would like}}什么时候{{c2::见::to meet}}朋友？",
-      "subtitle": "When do you want to meet your friend?",
-      "answer": "想"
-    },
-    {
-      "id": "zh-cloze-10",
-      "group": "Mandarin Multi-gap",
-      "unit": "31–40",
-      "prompt": "我{{c1::在::at}}北京{{c2::住::to live}}了三年。",
-      "subtitle": "I lived in Beijing for three years",
-      "answer": "在"
+      "id": "bilingual-005",
+      "group": "Space Delimited Sentences",
+      "unit": "Unit 2",
+      "prompt": "Nous apprenons une nouvelle langue chaque jour.",
+      "answer": "langue",
+      "subtitle": "language"
     }
   ]
 }
+

@@ -2,12 +2,16 @@
  * js/app.js — binds the UI to the store and drill engine.
  */
 
-import { Store, unitKey, getDeckFieldOptions } from "./state.js";
+import { Store, unitKey } from "./state.js";
 import { RecallEngine } from "./engine.js";
 import { modesForDeck } from "./normalizer.js";
-import { parseTSV, parseRowsForEditor, readJSONFile, downloadJSON } from "./importer.js";
+import { parseTSV, readJSONFile, downloadJSON } from "./importer.js";
 import { GitHubSync } from "./github-sync.js";
-import { hasCloze, autoExtractCloze, chunkCardsIntoUnits } from "./cloze.js";
+import { AudioController } from "./audio.js";
+import { renderCloze } from "./cloze.js";
+import { Routes, RouteController, ROUTE_LABELS, isNativeTypingCompatible, routesForDeck } from "./routes.js";
+
+
 
 const RTL = new Set(["ar", "he", "fa", "ur", "yi", "ps"]);
 const LANGS = [
@@ -20,81 +24,93 @@ const LANGS = [
 const PREVIEW_TOKENS = 10;
 const $ = (id) => document.getElementById(id);
 
-function escapeHtml(str) {
-  return String(str ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
 class App {
   constructor() {
     this.store = new Store();
     this.engine = new RecallEngine(this.store);
     this.sync = new GitHubSync(this.store);
+    this.audio = new AudioController();
     this.missCount = 0;
-    this.isComposing = false;
-    this.currentClozeSlot = null;
-    this.currentClozeInner = null;
-    this.editingDeckId = null;
-
-    this.sitePublishConfig = {
-      token: localStorage.getItem("speedrecall_site_token") || "",
-      repo: localStorage.getItem("speedrecall_site_repo") || ""
-    };
 
     this.el = {
       deckName: $("deckName"), deckMeta: $("deckMeta"),
-      btnPractice: $("btnPractice"), btnToggleHint: $("btnToggleHint"), btnSwapTop: $("btnSwapTop"), btnSettings: $("btnSettings"),
+      btnPractice: $("btnPractice"), btnSettings: $("btnSettings"),
+      btnHintToggle: $("btnHintToggle"), btnRoleFlip: $("btnRoleFlip"),
       stage: $("stage"), card: $("card"), cardBadge: $("cardBadge"),
       prompt: $("cardPrompt"), hint: $("cardHint"), reveal: $("cardReveal"), answer: $("cardAnswer"),
       input: $("answerInput"), btnReveal: $("btnReveal"), helpLine: $("helpLine"),
       statStreak: $("statStreak"), statAccuracy: $("statAccuracy"), statPool: $("statPool"),
-      practice: $("practiceSheet"), settings: $("settingsSheet"),
-      deckSelect: $("deckSelect"), modeSelect: $("modeSelect"),
-      frontFieldSelect: $("frontFieldSelect"), backFieldSelect: $("backFieldSelect"), btnSwapFields: $("btnSwapFields"),
-      checkShowHints: $("checkShowHints"),
-      btnEditDeck: $("btnEditDeck"), btnNewDeck: $("btnNewDeck"), btnRevertDeck: $("btnRevertDeck"),
-      unitList: $("unitList"), btnAll: $("btnAllUnits"), btnNone: $("btnNoUnits"), btnStart: $("btnStart"),
-      btnDeleteDeck: $("btnDeleteDeck"),
-      // Settings tab elements
-      tabBtnDecks: $("tabBtnDecks"), tabBtnStorage: $("tabBtnStorage"), tabBtnGitHub: $("tabBtnGitHub"), tabBtnOptions: $("tabBtnOptions"),
-      panelDecks: $("panelDecks"), panelStorage: $("panelStorage"), panelGitHub: $("panelGitHub"), panelOptions: $("panelOptions"),
-      settingsDeckSelect: $("settingsDeckSelect"), btnExportSelectedDeck: $("btnExportSelectedDeck"),
-      btnSettingsEditDeck: $("btnSettingsEditDeck"), btnSettingsNewDeck: $("btnSettingsNewDeck"),
-      selectedDeckInfo: $("selectedDeckInfo"), storageSummaryBox: $("storageSummaryBox"),
-      btnExportProgressOnly: $("btnExportProgressOnly"), btnTestGitHub: $("btnTestGitHub"),
-      prefDefaultHints: $("prefDefaultHints"),
-      ghToken: $("ghToken"), ghRepo: $("ghRepo"), ghPath: $("ghPath"), btnSync: $("btnSync"), syncStatus: $("syncStatus"),
-      ghSiteRepo: $("ghSiteRepo"), ghSiteToken: $("ghSiteToken"), btnSavePublisher: $("btnSavePublisher"), publisherStatus: $("publisherStatus"),
+      practice: $("practiceModal") || $("practiceSheet"),
+      settings: $("settingsModal") || $("settingsSheet"),
+      newDeckModal: $("newDeckModal"),
+      newDeckTitle: $("newDeckTitle"),
+      deckSelect: $("deckSelect"), modeSelect: $("modeSelect"), routeSelect: $("routeSelect"), unitList: $("unitList"),
+      roleFrontSelect: $("roleFrontSelect"), roleBackSelect: $("roleBackSelect"), btnRoleSwapModal: $("btnRoleSwapModal"),
+      sessionShowHints: $("sessionShowHints"),
+      sensoryTapSurface: $("sensoryTapSurface"), safetyLockGlyph: $("safetyLockGlyph"), pacingBar: $("pacingBar"),
+      sensoryHud: $("sensoryHud"), sensoryHudText: $("sensoryHudText"),
+      btnAll: $("btnAllUnits"), btnNone: $("btnNoUnits"), btnStart: $("btnStart"), btnDeleteDeck: $("btnDeleteDeck"),
+
+      // Settings Hub
+      tabDecks: $("tabDecks"), tabBackup: $("tabBackup"), tabSync: $("tabSync"), tabOptions: $("tabOptions"),
+      panelDecks: $("panelDecks"), panelBackup: $("panelBackup"), panelSync: $("panelSync"), panelOptions: $("panelOptions"),
+      settingsDeckSelect: $("settingsDeckSelect"), deckSummaryCard: $("deckSummaryCard"),
+      deckSummaryName: $("deckSummaryName"), deckSummaryOrigin: $("deckSummaryOrigin"), deckSummaryMetrics: $("deckSummaryMetrics"),
+      btnNewDeckModal: $("btnNewDeckModal"), btnExportDeck: $("btnExportDeck"), btnEditCards: $("btnEditCards"),
       importText: $("importText"), btnImport: $("btnImport"),
-      btnExport: $("btnExport"), importFile: $("importFile"), btnResetProgress: $("btnResetProgress"),
-      // Editor elements
-      editor: $("editorSheet"), editorTitle: $("editorTitle"), editorDeckName: $("editorDeckName"),
-      editorDeckLang: $("editorDeckLang"), editorPinyin: $("editorPinyin"),
-      btnEditorAddRow: $("btnEditorAddRow"), btnEditorChunkUnits: $("btnEditorChunkUnits"),
-      btnEditorPaste: $("btnEditorPaste"), btnEditorPublish: $("btnEditorPublish"),
-      editorStats: $("editorStats"), editorRows: $("editorRows"),
-      btnEditorSave: $("btnEditorSave"), btnEditorCancel: $("btnEditorCancel"),
-      // Paste modal
-      paste: $("pasteSheet"), pasteText: $("pasteText"),
-      btnPasteCancel: $("btnPasteCancel"), btnPasteApply: $("btnPasteApply"),
+      backupDeckCount: $("backupDeckCount"), backupDeckBreakdown: $("backupDeckBreakdown"),
+      backupTotalCards: $("backupTotalCards"), backupPracticedCount: $("backupPracticedCount"),
+      btnExportFull: $("btnExportFull") || $("btnExport"), btnExportProgress: $("btnExportProgress"),
+      btnExport: $("btnExportFull") || $("btnExport"), importFile: $("importFile"), btnResetProgress: $("btnResetProgress"),
+      ghToken: $("ghToken"), ghRepo: $("ghRepo"), ghPath: $("ghPath"), btnTestSync: $("btnTestSync"),
+      btnSync: $("btnSync"), syncStatus: $("syncStatus"), btnPublishDeck: $("btnPublishDeck"), publishStatus: $("publishStatus"),
+      optDefaultHints: $("optDefaultHints"), optDefaultStrictness: $("optDefaultStrictness"),
+
+      // Tabular Deck Builder
+      tabularDeckName: $("tabularDeckName"), tabularDeckLang: $("tabularDeckLang"), tabularDeckPinyin: $("tabularDeckPinyin"),
+      btnGridAddCard: $("btnGridAddCard"), btnGridSplitUnits: $("btnGridSplitUnits"), btnGridPasteTSV: $("btnGridPasteTSV"),
+      gridPasteArea: $("gridPasteArea"), gridPasteText: $("gridPasteText"), btnGridApplyPaste: $("btnGridApplyPaste"),
+      btnGridCancelPaste: $("btnGridCancelPaste"), deckGridTbody: $("deckGridTbody"),
+      btnGridCancel: $("btnGridCancel"), btnGridSave: $("btnGridSave"),
+
+      btnHome: $("btnHome"), homeHub: $("homeHub"), quickResumeHero: $("quickResumeHero"),
+      heroTitle: $("heroTitle"), heroMeta: $("heroMeta"), btnQuickResume: $("btnQuickResume"),
+      homeDeckGrid: $("homeDeckGrid"), btnOpenPractice: $("btnOpenPractice"),
+      imeCommitIndicator: $("imeCommitIndicator"),
+      milestoneModal: $("milestoneModal"), milestoneCards: $("milestoneCards"),
+      milestonePace: $("milestonePace"), milestoneStreak: $("milestoneStreak"), btnNextSet: $("btnNextSet"),
       toast: $("toast")
     };
+
+    this.sessionStartTime = Date.now();
+    this.sessionCardsCleared = 0;
+    this.activeClozeInput = null;
+    this.sessionShowHints = true;
+    this._editingDeckId = null;
+
+    this.routeController = new RouteController({
+      store: this.store,
+      audio: this.audio,
+      defaultRoute: Routes.REFLEX,
+      elements: { ghostInput: this.el.input, nativeInput: this.el.input }
+    });
+
     this.init();
   }
 
+
   async init() {
     this.bindStage();
+    this.bindHomeHub();
     this.bindSheets();
     this.bindSettings();
-    this.bindEditor();
+    this.bindTabularDeckBuilder();
     this.bindEngine();
+    this.bindServiceWorker();
     await this.store.init();
     this.renderDeck();
-    this.renderHintButton();
+    this.renderHomeHub();
+    this.showHomeHub();
     this.engine.next();
     if (this.store.deckIds().length === 0) {
       this.showCardMessage("Couldn't load any decks", "Check your connection and reload.");
@@ -106,21 +122,19 @@ class App {
   bindStage() {
     const { input, stage } = this.el;
 
-    input.addEventListener("compositionstart", () => {
-      this.isComposing = true;
-    });
-
-    input.addEventListener("compositionend", () => {
-      this.isComposing = false;
-      this.engine.input(input.value, false);
-    });
+    // IME composition listeners for Route 5 / strict production
+    input.addEventListener("compositionstart", (e) => this.routeController.handleCompositionStart(e));
+    input.addEventListener("compositionupdate", (e) => this.routeController.handleCompositionUpdate(e));
+    input.addEventListener("compositionend", (e) => this.routeController.handleCompositionEnd(e));
 
     input.addEventListener("input", () => {
-      this.engine.input(input.value, this.isComposing);
+      this.routeController.handleInput(input.value);
+      this.engine.input(input.value);
     });
 
     input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.isComposing) {
+      this.routeController.handleKeyDown(e);
+      if (e.key === "Enter" && !e.isComposing && this.routeController.activeRoute !== Routes.STRICT_PRODUCTION) {
         e.preventDefault();
         this.engine.giveUp(input.value);
       }
@@ -131,181 +145,440 @@ class App {
       input.focus();
     });
 
-    // Quick hint toggle in topbar
-    this.el.btnToggleHint.addEventListener("click", () => {
-      this.handleToggleHint();
-      if (this.engine.card && !this.el.practice.open && !this.el.settings.open && !this.el.editor.open && !this.el.paste.open) {
-        this.el.input.focus({ preventScroll: true });
+    // Sensory tap surface (Route 4)
+    if (this.el.sensoryTapSurface) {
+      this.el.sensoryTapSurface.addEventListener("click", () => {
+        this.routeController.handleTapSurface();
+      });
+    }
+
+    // Safety lock hold-to-unlock (Route 4)
+    if (this.el.safetyLockGlyph) {
+      this.el.safetyLockGlyph.addEventListener("pointerdown", () => {
+        this.el.safetyLockGlyph.classList.add("is-holding");
+        this.routeController.startSafetyHold();
+      });
+      const cancelHold = () => {
+        this.el.safetyLockGlyph.classList.remove("is-holding");
+        this.routeController.cancelSafetyHold();
+      };
+      this.el.safetyLockGlyph.addEventListener("pointerup", cancelHold);
+      this.el.safetyLockGlyph.addEventListener("pointerleave", cancelHold);
+      this.el.safetyLockGlyph.addEventListener("pointercancel", cancelHold);
+      this.el.safetyLockGlyph.addEventListener("click", () => {
+        this.toast("Hold 2 seconds to unlock");
+      });
+    }
+
+    // Route-changed handler for DOM chrome toggling
+    this.routeController.addEventListener("route-changed", ({ detail: { route } }) => {
+      document.body.dataset.route = route;
+      const isSensory = route === Routes.SENSORY_FLASH;
+      if (this.el.sensoryTapSurface) this.el.sensoryTapSurface.hidden = !isSensory;
+      if (this.el.safetyLockGlyph) this.el.safetyLockGlyph.hidden = !isSensory;
+      if (this.el.pacingBar) this.el.pacingBar.hidden = !isSensory;
+      if (this.el.sensoryHud) this.el.sensoryHud.hidden = !isSensory;
+      document.body.classList.toggle("route-sensory-flash", isSensory);
+      document.body.classList.toggle("locked-stage", isSensory);
+
+      // DOM Isolation & Accessibility: inert background chrome
+      const topbar = document.querySelector(".topbar");
+      if (topbar) {
+        topbar.inert = isSensory;
+        if (isSensory) topbar.setAttribute("aria-hidden", "true");
+        else topbar.removeAttribute("aria-hidden");
       }
-    });
+      const stats = document.querySelector(".stats");
+      if (stats) {
+        stats.inert = isSensory;
+        if (isSensory) stats.setAttribute("aria-hidden", "true");
+        else stats.removeAttribute("aria-hidden");
+      }
+      if (this.el.imeCommitIndicator) {
+        this.el.imeCommitIndicator.hidden = route !== Routes.STRICT_PRODUCTION;
+      }
+      document.body.classList.toggle("route-reflex", route === Routes.REFLEX);
+      document.body.classList.toggle("route-strict-production", route === Routes.STRICT_PRODUCTION);
+      document.body.classList.toggle("route-contextual-cloze", route === Routes.CONTEXT_CLOZE);
+      document.body.classList.toggle("route-variable-cloze", route === Routes.VARIABLE_CLOZE);
+      const isCloze = route === Routes.CONTEXT_CLOZE || route === Routes.VARIABLE_CLOZE || Boolean(this.engine.card?.cloze);
+      document.body.classList.toggle("has-cloze", isCloze);
 
-    // Quick swap in topbar
-    this.el.btnSwapTop.addEventListener("click", () => {
-      this.handleSwapFields();
-    });
-
-    // Global keyboard shortcut: H toggles hint/subtitle
-    window.addEventListener("keydown", (e) => {
-      if ((e.key === "h" || e.key === "H") && !e.ctrlKey && !e.metaKey && !e.altKey) {
-        const active = document.activeElement;
-        const isEditing = active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.isContentEditable);
-        if (!isEditing) {
-          e.preventDefault();
-          this.handleToggleHint();
+      if (this.el.input) {
+        if (isSensory) {
+          this.el.input.disabled = true;
+          this.el.input.blur();
+        } else {
+          this.el.input.disabled = false;
         }
       }
     });
 
-    // Tapping the card area brings the keyboard back on phones
+    this.routeController.addEventListener("card-mounted", ({ detail: { route } }) => {
+      if (route === Routes.SENSORY_FLASH) {
+        if (this.el.pacingBar) {
+          const fill = this.el.pacingBar.querySelector(".pacing-countdown-bar__fill");
+          if (fill) {
+            fill.style.animation = "none";
+            fill.style.transform = "";
+            void fill.offsetWidth; // force DOM reflow
+            fill.style.animation = "";
+          }
+        }
+        const hintText = this.el.sensoryTapSurface?.querySelector(".sensory-tap-surface__text");
+        if (hintText) hintText.textContent = "Tap anywhere to reveal / advance";
+      }
+    });
+
+    this.routeController.addEventListener("safety-unlocked", () => {
+      if (this.el.safetyLockGlyph) {
+        this.el.safetyLockGlyph.classList.remove("is-holding");
+      }
+      this.toast("Stage unlocked.");
+    });
+
+    this.routeController.addEventListener("safety-cancelled", () => {
+      if (this.el.safetyLockGlyph) {
+        this.el.safetyLockGlyph.classList.remove("is-holding");
+      }
+    });
+
+    this.routeController.addEventListener("card-revealed", ({ detail: { card } }) => {
+      this.el.answer.textContent = card.answer || card.script || "";
+      this.el.reveal.hidden = false;
+      if (this.routeController.activeRoute === Routes.SENSORY_FLASH) {
+        const fill = this.el.pacingBar?.querySelector(".pacing-countdown-bar__fill");
+        if (fill) {
+          fill.style.animation = "none";
+          fill.style.transform = "scaleX(0)";
+        }
+        const hintText = this.el.sensoryTapSurface?.querySelector(".sensory-tap-surface__text");
+        if (hintText) hintText.textContent = "Tap anywhere to advance";
+      }
+    });
+
+    // Tapping the card area brings the keyboard back on phones unless in Sensory mode
     stage.addEventListener("click", (e) => {
-      if (!e.target.closest("button, input, a")) input.focus();
+      if (this.routeController.activeRoute === Routes.SENSORY_FLASH) {
+        if (!e.target.closest("#sensoryTapSurface") && !e.target.closest("#safetyLockGlyph")) {
+          this.toast("Hold lock icon 2s to unlock");
+        }
+        return;
+      }
+      if (!e.target.closest("button, input, a")) {
+        if (this.activeClozeInput && document.body.contains(this.activeClozeInput)) {
+          this.activeClozeInput.focus();
+        } else {
+          input.focus();
+        }
+      }
     });
   }
 
-  handleToggleHint() {
-    const show = this.store.toggleHints();
-    this.renderHintButton();
-    this.toast(show ? "Hints enabled" : "Hints hidden");
+  /* ---------------- home hub & quick resume ---------------- */
+
+  bindHomeHub() {
+    const { el } = this;
+    if (el.btnHome) {
+      el.btnHome.addEventListener("click", () => {
+        if (!el.homeHub || el.homeHub.hidden) this.showHomeHub();
+        else this.hideHomeHub();
+      });
+    }
+
+    if (el.btnQuickResume) {
+      el.btnQuickResume.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.startQuickResume();
+      });
+    }
+
+    if (el.quickResumeHero) {
+      el.quickResumeHero.addEventListener("click", () => {
+        this.startQuickResume();
+      });
+    }
+
+    if (el.btnOpenPractice) {
+      el.btnOpenPractice.addEventListener("click", () => {
+        this.renderPractice();
+        el.practice.showModal();
+      });
+    }
+
+    if (el.btnNextSet) {
+      el.btnNextSet.addEventListener("click", () => {
+        if (el.milestoneModal && typeof el.milestoneModal.close === "function") {
+          el.milestoneModal.close();
+        }
+        this.sessionStartTime = Date.now();
+        this.engine.next();
+        if (el.input && !el.input.disabled) el.input.focus({ preventScroll: true });
+      });
+    }
   }
 
-  renderHintButton() {
-    const show = this.store.showHints;
-    this.el.btnToggleHint.setAttribute("aria-pressed", String(show));
-    this.el.btnToggleHint.title = show ? "Hints & notes visible (H to toggle)" : "Hints hidden (H to toggle)";
-    if (this.el.checkShowHints) {
-      this.el.checkShowHints.checked = show;
-    }
-    // Update card hint visibility without modifying input or card prompt/answer roles
-    if (this.engine.card) {
-      const canonical = this.engine.card.canonicalHint !== undefined
-        ? this.engine.card.canonicalHint
-        : (this.engine.card.sourceSubtitle !== undefined ? this.engine.card.sourceSubtitle : (this.engine.card.subtitle || ""));
-      this.el.hint.textContent = (show ? canonical : "") || "";
+  showHomeHub() {
+    this.renderHomeHub();
+    if (this.el.homeHub) this.el.homeHub.hidden = false;
+    if (this.el.stage) this.el.stage.hidden = true;
+  }
+
+  hideHomeHub() {
+    if (this.el.homeHub) this.el.homeHub.hidden = true;
+    if (this.el.stage) this.el.stage.hidden = false;
+  }
+
+  startQuickResume() {
+    this.hideHomeHub();
+    this.engine.next();
+    if (this.activeClozeInput && document.body.contains(this.activeClozeInput)) {
+      this.activeClozeInput.focus({ preventScroll: true });
+    } else if (this.el.input && !this.el.input.disabled) {
+      this.el.input.focus({ preventScroll: true });
     }
   }
 
-  handleSwapFields() {
-    const deck = this.store.currentDeck;
-    if (deck?.cards?.every((c) => c.isCloze)) {
-      this.toast("Cloze sentences always test the missing blank in-slot.");
-      return;
+  renderHomeHub() {
+    const { el, store } = this;
+    const deck = store.currentDeck;
+    const route = this.routeController?.activeRoute || Routes.REFLEX;
+    const routeLabel = ROUTE_LABELS[route] || "Speed Sprint";
+
+    if (el.heroTitle) {
+      el.heroTitle.textContent = `Resume ${deck?.name || "Drill"}: ${routeLabel}`;
     }
-    const { front, back } = this.store.swapDeckFields();
-    const options = getDeckFieldOptions(deck);
-    const fLabel = options.find((o) => o.value === front)?.label || front;
-    const bLabel = options.find((o) => o.value === back)?.label || back;
-    this.toast(`Swapped: ${fLabel} ⇄ ${bLabel}`);
-    this.renderDeck();
+    const pool = store.pool();
+    const streak = store.session.streak;
+    if (el.heroMeta) {
+      el.heroMeta.textContent = `${pool.length} card${pool.length === 1 ? "" : "s"} in queue · ${streak} streak`;
+    }
+    if (el.btnQuickResume) {
+      el.btnQuickResume.textContent = `Resume ${routeLabel}`;
+    }
+
+    // Render deck cards in secondary browse grid
+    if (el.homeDeckGrid) {
+      const frag = document.createDocumentFragment();
+      for (const id of store.deckIds()) {
+        const d = store.getDeck(id);
+        const card = document.createElement("div");
+        card.className = "home-deck-card";
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("aria-label", `Switch to ${d.name}`);
+        const name = document.createElement("span");
+        name.className = "home-deck-card__name";
+        name.textContent = d.name;
+        const meta = document.createElement("span");
+        meta.className = "home-deck-card__meta";
+        meta.textContent = `${d.cards.length} cards · ${d.lang || "general"}`;
+        card.append(name, meta);
+        card.addEventListener("click", () => {
+          store.setDeck(id);
+          const newDeck = store.currentDeck;
+          if (!isNativeTypingCompatible(newDeck) && this.routeController.activeRoute === Routes.STRICT_PRODUCTION) {
+            this.routeController.switchRoute(Routes.REFLEX);
+          }
+          this.startQuickResume();
+        });
+        frag.append(card);
+      }
+      el.homeDeckGrid.replaceChildren(frag);
+    }
+  }
+
+  showMilestoneModal() {
+    const elapsedSec = Math.max(1, (Date.now() - this.sessionStartTime) / 1000);
+    const pace = (elapsedSec / Math.max(1, this.sessionCardsCleared)).toFixed(1);
+    if (this.el.milestoneCards) this.el.milestoneCards.textContent = String(this.sessionCardsCleared);
+    if (this.el.milestonePace) this.el.milestonePace.textContent = `${pace}s`;
+    if (this.el.milestoneStreak) this.el.milestoneStreak.textContent = String(this.store.session.streak);
+    if (this.el.milestoneModal && typeof this.el.milestoneModal.showModal === "function") {
+      this.el.milestoneModal.showModal();
+    }
+  }
+
+  bindServiceWorker() {
+    if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return;
+
+    // Register service worker with cache-busting query parameter
+    navigator.serviceWorker.register("./sw.js?v=3").catch(() => {});
+
+    // Listen for controllerchange when a new service worker claims the client
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (refreshing) return;
+      refreshing = true;
+      // Notify the UI that an update has applied
+      this.toast("SpeedRecall updated to latest version.");
+      // Silently refresh active data references
+      if (this.store) {
+        this.store.init().then(() => {
+          this.renderDeck();
+          this.renderHomeHub();
+        }).catch(() => {});
+      }
+    });
   }
 
   bindEngine() {
     const { el, engine, store } = this;
 
     engine.addEventListener("card", ({ detail: { card } }) => {
+      this.audio.stopAll();
       el.card.className = "card";
       el.cardBadge.textContent = "";
       el.reveal.hidden = true;
       el.input.value = "";
       el.input.classList.remove("is-correcting");
-      this.currentClozeSlot = null;
-      this.currentClozeInner = null;
-
       if (!card) {
         el.input.disabled = el.btnReveal.disabled = true;
         this.showCardMessage("No units selected", "Open the deck menu to choose what to drill.");
         this.updateStats();
         return;
       }
-
       el.input.disabled = el.btnReveal.disabled = false;
       el.btnReveal.textContent = "Reveal";
-      el.input.placeholder = this.getInputPlaceholder(card, store.currentDeck);
+      el.input.placeholder = "Type the answer";
 
-      // Handle Cloze Sentence presentation
-      if (card.isCloze && card.clozeData) {
-        el.prompt.innerHTML = `
-          <span class="cloze-sentence">
-            <span class="cloze-text">${escapeHtml(card.clozeData.prefix)}</span>
-            <span class="cloze-slot" id="cardClozeSlot"><span class="cloze-slot__inner" id="cardClozeSlotInner"></span></span>
-            <span class="cloze-text">${escapeHtml(card.clozeData.suffix)}</span>
-          </span>
-        `;
-        el.prompt.dataset.size = "sm";
-        this.currentClozeSlot = $("cardClozeSlot");
-        this.currentClozeInner = $("cardClozeSlotInner");
+      // Lookahead queue buffering and audio playback
+      const pool = store.pool();
+      const currentIdx = pool.findIndex((c) => c.id === card.id);
+      if (currentIdx !== -1) {
+        this.audio.preloadQueue(pool, currentIdx, { stumbleQueue: this.store.stumbleQueue });
+      }
+      this.audio.playCurrent(card);
+
+      // Dynamic cloze rendering vs standard prompt
+      if (card.cloze) {
+        document.body.classList.add("has-cloze");
+        const { container, input: inlineInput } = renderCloze(card.cloze, {
+          onInput: (_e, val) => {
+            el.input.value = val;
+            this.routeController.handleInput(val);
+            engine.input(val);
+          }
+        });
+        this.activeClozeInput = inlineInput;
+        el.prompt.replaceChildren(container);
+        el.prompt.dataset.size = "cloze";
+        if (inlineInput) {
+          inlineInput.addEventListener("compositionstart", (e) => this.routeController.handleCompositionStart(e));
+          inlineInput.addEventListener("compositionupdate", (e) => this.routeController.handleCompositionUpdate(e));
+          inlineInput.addEventListener("compositionend", (e) => this.routeController.handleCompositionEnd(e));
+          inlineInput.addEventListener("keydown", (e) => {
+            this.routeController.handleKeyDown(e);
+            if (e.key === "Enter" && !e.isComposing && this.routeController.activeRoute !== Routes.STRICT_PRODUCTION) {
+              e.preventDefault();
+              engine.giveUp(inlineInput.value);
+            }
+          });
+          if (!el.practice.open && !el.settings.open) inlineInput.focus({ preventScroll: true });
+        }
       } else {
+        const isClozeRoute = this.routeController.activeRoute === Routes.CONTEXT_CLOZE || this.routeController.activeRoute === Routes.VARIABLE_CLOZE;
+        if (!isClozeRoute) {
+          document.body.classList.remove("has-cloze");
+        }
+        this.activeClozeInput = null;
         el.prompt.textContent = card.prompt;
         el.prompt.dataset.size = sizeFor(card.prompt);
       }
 
-      el.hint.textContent = (store.showHints ? card.subtitle : "") || "";
+      el.hint.textContent = card.subtitle || "";
+      const defaultHintsOn = this.store.state.prefs.defaultShowHints !== false;
+      const sessionHintsOn = this.sessionShowHints && defaultHintsOn;
+      el.hint.hidden = !sessionHintsOn || !card.subtitle;
       this.updateStats();
-      if (!el.practice.open && !el.settings.open && !el.editor.open && !el.paste.open) {
-        el.input.focus({ preventScroll: true });
+      if (!card.cloze && !el.practice.open && !el.settings.open) el.input.focus({ preventScroll: true });
+    });
+
+    engine.addEventListener("visual-reinforcement", ({ detail: { canonical, duration = 220 } }) => {
+      if (canonical && el.card) {
+        el.card.classList.add("is-accent-flash");
+        setTimeout(() => el.card.classList.remove("is-accent-flash"), duration);
       }
     });
 
-    engine.addEventListener("input", ({ detail: { value } }) => {
-      if (this.currentClozeInner) {
-        this.currentClozeInner.textContent = value || "";
+    this.routeController.addEventListener("visual-reinforcement", ({ detail: { canonical, duration = 220 } }) => {
+      if (canonical && el.card) {
+        el.card.classList.add("is-accent-flash");
+        setTimeout(() => el.card.classList.remove("is-accent-flash"), duration);
       }
     });
 
-    engine.addEventListener("correct", () => {
-      el.card.classList.add("is-correct");
+    engine.addEventListener("correct", ({ detail }) => {
+      this.audio.stopAll();
+      const currentCard = engine.card || detail?.card;
+      if (currentCard) {
+        this.audio.clearStumbled(currentCard);
+      }
+      if (this.activeClozeInput && document.body.contains(this.activeClozeInput)) {
+        this.activeClozeInput.classList.remove("is-correcting");
+      }
+      el.card.classList.add("is-correct", "is-accent-flash");
       el.cardBadge.textContent = "✓";
-      if (this.currentClozeSlot) {
-        this.currentClozeSlot.classList.remove("is-miss");
-        this.currentClozeSlot.classList.add("is-correct");
+      setTimeout(() => el.card.classList.remove("is-accent-flash"), 220);
+
+      this.sessionCardsCleared++;
+      if (this.sessionCardsCleared > 0 && this.sessionCardsCleared % 15 === 0) {
+        this.showMilestoneModal();
       }
     });
 
-    engine.addEventListener("miss", ({ detail: { answer } }) => {
+    engine.addEventListener("miss", ({ detail }) => {
+      this.audio.stopAll();
+      const failedCard = engine.card || detail?.card;
+      if (failedCard) {
+        this.audio.retainStumbled(failedCard);
+      }
       el.card.classList.add("is-miss");
       el.cardBadge.textContent = "✕";
-      el.answer.textContent = answer;
+      el.answer.textContent = detail?.answer || "";
       el.reveal.hidden = false;
       el.input.value = "";
       el.input.placeholder = "Type it to continue";
       el.input.classList.add("is-correcting");
       el.btnReveal.disabled = true;
-      if (this.currentClozeSlot) {
-        this.currentClozeSlot.classList.remove("is-correct");
-        this.currentClozeSlot.classList.add("is-miss");
-        if (this.currentClozeInner) this.currentClozeInner.textContent = answer;
+      if (this.activeClozeInput && document.body.contains(this.activeClozeInput)) {
+        this.activeClozeInput.value = "";
+        this.activeClozeInput.classList.add("is-correcting");
+        this.activeClozeInput.placeholder = "";
+        this.activeClozeInput.focus({ preventScroll: true });
       }
       this.missCount++;
       if (this.missCount <= 3) el.helpLine.textContent = "Type the answer shown to move on.";
     });
 
+
     engine.addEventListener("corrected", () => {
+      if (engine.card) {
+        this.audio.clearStumbled(engine.card);
+      }
       el.card.classList.remove("is-miss");
       el.card.classList.add("is-correct");
       el.cardBadge.textContent = "✓";
-      if (this.currentClozeSlot) {
-        this.currentClozeSlot.classList.remove("is-miss");
-        this.currentClozeSlot.classList.add("is-correct");
+      if (this.activeClozeInput && document.body.contains(this.activeClozeInput)) {
+        this.activeClozeInput.classList.remove("is-correcting");
       }
       if (this.missCount <= 3) el.helpLine.textContent = "Enter or Reveal shows the answer.";
     });
 
     engine.addEventListener("nudge", () => {
-      el.input.classList.remove("nudge");
-      void el.input.offsetWidth;
-      el.input.classList.add("nudge");
+      const activeInput = (this.activeClozeInput && document.body.contains(this.activeClozeInput))
+        ? this.activeClozeInput
+        : el.input;
+      activeInput.classList.remove("nudge");
+      void activeInput.offsetWidth;
+      activeInput.classList.add("nudge");
     });
 
     engine.addEventListener("pool", () => this.updateStats());
-    engine.addEventListener("hint", () => this.renderHintButton());
     store.addEventListener("stats-changed", () => this.updateStats());
     store.addEventListener("deck-changed", () => this.renderDeck());
     store.addEventListener("deck-updated", () => this.renderDeck());
     store.addEventListener("units-changed", () => this.renderDeckButton());
-    store.addEventListener("hints-changed", () => this.renderHintButton());
-    store.addEventListener("fields-changed", () => {
-      this.renderDeck();
-      if (this.el.practice.open) this.renderPractice();
-    });
     store.addEventListener("save-failed", () => this.toast("Storage is full or blocked — progress may not be saved.", true));
   }
 
@@ -320,56 +593,21 @@ class App {
     this.el.statStreak.textContent = streak;
     this.el.statAccuracy.textContent = attempts ? `${Math.round((correct / attempts) * 100)}%` : "–";
     this.el.statPool.textContent = this.store.pool().length;
-  }
-
-  getInputPlaceholder(card, deck) {
-    if (card?.isCloze) return "Fill in the blank";
-    const back = this.store.backField;
-    if (deck?.romanization === "pinyin") {
-      if (back === "prompt") return "Type Chinese characters";
-      if (back === "answer") return "Type pinyin (e.g. ni3hao3)";
-      if (back === "subtitle") return "Type English meaning";
+    if (this.el.sensoryHudText) {
+      this.el.sensoryHudText.textContent = `${streak} streak · ${this.store.pool().length} cards`;
     }
-    if (back === "prompt") return `Type in ${deck?.lang || "target language"}`;
-    if (back === "answer") return "Type the answer";
-    if (back === "subtitle") return "Type the hint / meaning";
-    return "Type the answer";
   }
 
-  /** Applies the deck's language/direction to prompt and input based on active front and back fields. */
+  /** Applies the deck's language/direction to prompt and input. */
   applyLanguage(deck) {
-    if (!deck) return;
-    const front = this.store.frontField;
-    const back = this.store.backField;
-
-    let promptLang = deck.lang || "";
-    let inputLang = deck.answerLang || "";
-
-    if (deck.romanization === "pinyin") {
-      if (front === "prompt") promptLang = "zh-CN";
-      else if (front === "answer") promptLang = "zh-Latn-pinyin";
-      else if (front === "subtitle") promptLang = "en";
-
-      if (back === "prompt") inputLang = "zh-CN";
-      else if (back === "answer") inputLang = "zh-Latn-pinyin";
-      else if (back === "subtitle") inputLang = "en";
-    } else {
-      if (front === "prompt") promptLang = deck.lang || "";
-      else if (front === "answer") promptLang = deck.answerLang || "en";
-      else if (front === "subtitle") promptLang = deck.answerLang || "en";
-
-      if (back === "prompt") inputLang = deck.lang || "";
-      else if (back === "answer") inputLang = deck.answerLang || "en";
-      else if (back === "subtitle") inputLang = deck.answerLang || "en";
-    }
-
-    const dir = RTL.has(promptLang.split("-")[0]) ? "rtl" : "auto";
-    setAttr(this.el.prompt, "lang", promptLang);
+    const lang = deck?.lang || "";
+    const dir = deck?.dir || (RTL.has(lang.split("-")[0]) ? "rtl" : "auto");
+    setAttr(this.el.prompt, "lang", lang);
     this.el.prompt.dir = dir;
-
-    setAttr(this.el.input, "lang", inputLang);
-    setAttr(this.el.answer, "lang", inputLang);
-    this.el.input.dir = RTL.has(inputLang.split("-")[0]) ? "rtl" : "auto";
+    const answerLang = deck?.romanization === "pinyin" ? "zh-Latn-pinyin" : deck?.answerLang || "";
+    setAttr(this.el.input, "lang", answerLang);
+    setAttr(this.el.answer, "lang", answerLang);
+    this.el.input.dir = "auto";
   }
 
   renderDeck() {
@@ -381,115 +619,129 @@ class App {
 
   renderDeckButton() {
     const deck = this.store.currentDeck;
-    let name = deck?.name || "No deck";
-    if (deck?.isOverride) name += " (edited)";
-    this.el.deckName.textContent = name;
+    this.el.deckName.textContent = deck?.name || "No deck";
     const total = this.store.allUnitKeys().length;
     const sel = this.store.selectedUnits.size;
-
-    const metaParts = [];
-    if (deck && !deck.cards?.every((c) => c.isCloze)) {
-      const opts = getDeckFieldOptions(deck);
-      const fLabel = opts.find((o) => o.value === this.store.frontField)?.label.split(" ")[0] || this.store.frontField;
-      const bLabel = opts.find((o) => o.value === this.store.backField)?.label.split(" ")[0] || this.store.backField;
-      metaParts.push(`${fLabel} → ${bLabel}`);
-    }
-    metaParts.push(`${sel} of ${total} unit${total === 1 ? "" : "s"}`);
-    this.el.deckMeta.textContent = deck ? metaParts.join(" · ") : "";
+    this.el.deckMeta.textContent = deck ? `${sel} of ${total} unit${total === 1 ? "" : "s"}` : "";
     this.updateStats();
   }
 
   /* ---------------- sheets ---------------- */
 
-  bindSheets() {
-    const { el } = this;
-    const open = (dlg, render) => {
-      render();
-      dlg.showModal();
-    };
-    el.btnPractice.addEventListener("click", () => open(el.practice, () => this.renderPractice()));
-    el.btnSettings.addEventListener("click", () => open(el.settings, () => this.renderSettings()));
+  /* ---------------- sheets & modals ---------------- */
 
-    for (const dlg of [el.practice, el.settings, el.editor, el.paste]) {
+  bindSheets() {
+    const { el, engine } = this;
+    const open = (dlg, render) => {
+      if (!dlg) return;
+      if (typeof render === "function") render();
+      if (typeof dlg.showModal === "function") dlg.showModal();
+    };
+
+    el.btnPractice?.addEventListener("click", () => open(el.practice, () => this.renderPractice()));
+    el.btnSettings?.addEventListener("click", () => open(el.settings, () => this.renderSettings()));
+
+    for (const dlg of [el.practice, el.settings, el.newDeckModal]) {
+      if (!dlg) continue;
       dlg.addEventListener("click", (e) => {
         if (e.target === dlg || e.target.closest("[data-close]")) dlg.close();
       });
-      dlg.addEventListener("close", () => {
-        if (!el.practice.open && !el.settings.open && !el.editor.open && !el.paste.open) {
-          el.input.focus({ preventScroll: true });
+      dlg.addEventListener("close", () => el.input?.focus({ preventScroll: true }));
+    }
+
+    el.deckSelect?.addEventListener("change", () => {
+      this.store.setDeck(el.deckSelect.value);
+      const deck = this.store.currentDeck;
+      if (!isNativeTypingCompatible(deck) && this.routeController.activeRoute === Routes.STRICT_PRODUCTION) {
+        this.routeController.switchRoute(Routes.REFLEX);
+      }
+      this.renderPractice();
+    });
+
+    el.modeSelect?.addEventListener("change", () => this.store.setMode(el.modeSelect.value));
+
+    if (el.routeSelect) {
+      el.routeSelect.addEventListener("change", () => this.routeController.switchRoute(el.routeSelect.value));
+    }
+
+    // Module 2: Bidirectional Role Matrix
+    if (el.roleFrontSelect && el.roleBackSelect) {
+      el.roleFrontSelect.addEventListener("change", () => {
+        this.engine.setRoles(el.roleFrontSelect.value, el.roleBackSelect.value);
+      });
+      el.roleBackSelect.addEventListener("change", () => {
+        this.engine.setRoles(el.roleFrontSelect.value, el.roleBackSelect.value);
+      });
+      el.btnRoleSwapModal?.addEventListener("click", () => {
+        const temp = el.roleFrontSelect.value;
+        el.roleFrontSelect.value = el.roleBackSelect.value;
+        el.roleBackSelect.value = temp;
+        this.engine.setRoles(el.roleFrontSelect.value, el.roleBackSelect.value);
+      });
+    }
+
+    // Module 2: Session Hint Control
+    if (el.sessionShowHints) {
+      el.sessionShowHints.addEventListener("change", () => {
+        this.sessionShowHints = el.sessionShowHints.checked;
+        if (el.hint && this.engine.card) {
+          el.hint.hidden = !this.sessionShowHints || !this.engine.card.subtitle;
         }
       });
     }
 
-    el.deckSelect.addEventListener("change", () => {
-      this.store.setDeck(el.deckSelect.value);
-      this.renderPractice();
-    });
+    // Module 3: Active Drill Staging & In-Drill Header Toggles
+    if (el.btnHintToggle) {
+      el.btnHintToggle.addEventListener("click", () => {
+        if (!this.engine.card) return;
+        el.hint.hidden = !el.hint.hidden;
+      });
+    }
 
-    el.modeSelect.addEventListener("change", () => this.store.setMode(el.modeSelect.value));
+    if (el.btnRoleFlip) {
+      el.btnRoleFlip.addEventListener("click", () => {
+        this.engine.flipRoles();
+        if (el.roleFrontSelect && el.roleBackSelect) {
+          el.roleFrontSelect.value = this.engine.activePromptRole;
+          el.roleBackSelect.value = this.engine.activeTargetRole;
+        }
+        this.toast("Flipped Front ⇄ Back");
+      });
+    }
 
-    el.frontFieldSelect.addEventListener("change", () => {
-      let front = el.frontFieldSelect.value;
-      let back = el.backFieldSelect.value;
-      if (front === back) {
-        const deck = this.store.currentDeck;
-        const opts = getDeckFieldOptions(deck).map((o) => o.value);
-        back = opts.find((o) => o !== front) || back;
-        el.backFieldSelect.value = back;
+    // Desktop Keyboard Shortcuts
+    window.addEventListener("keydown", (e) => {
+      if (el.stage.hidden) return;
+      if (e.key === "Tab") {
+        e.preventDefault();
+        this.engine.flipRoles();
+        if (el.roleFrontSelect && el.roleBackSelect) {
+          el.roleFrontSelect.value = this.engine.activePromptRole;
+          el.roleBackSelect.value = this.engine.activeTargetRole;
+        }
+        this.toast("Flipped Front ⇄ Back");
+      } else if (
+        (e.key === "h" || e.key === "H") &&
+        (e.altKey || (document.activeElement !== el.input && document.activeElement !== this.activeClozeInput))
+      ) {
+        if (this.engine.card) {
+          e.preventDefault();
+          el.hint.hidden = !el.hint.hidden;
+        }
       }
-      this.store.setDeckFields(front, back);
     });
 
-    el.backFieldSelect.addEventListener("change", () => {
-      let front = el.frontFieldSelect.value;
-      let back = el.backFieldSelect.value;
-      if (front === back) {
-        const deck = this.store.currentDeck;
-        const opts = getDeckFieldOptions(deck).map((o) => o.value);
-        front = opts.find((o) => o !== back) || front;
-        el.frontFieldSelect.value = front;
-      }
-      this.store.setDeckFields(front, back);
-    });
-
-    el.btnSwapFields.addEventListener("click", () => {
-      this.handleSwapFields();
-    });
-
-    el.checkShowHints?.addEventListener("change", () => {
-      this.store.setShowHints(el.checkShowHints.checked);
-      this.renderHintButton();
-    });
-
-    el.btnEditDeck.addEventListener("click", () => {
-      el.practice.close();
-      this.openDeckEditor(this.store.currentDeckId);
-    });
-
-    el.btnNewDeck.addEventListener("click", () => {
-      el.practice.close();
-      this.openDeckEditor(null);
-    });
-
-    el.btnRevertDeck.addEventListener("click", () => {
-      const deck = this.store.currentDeck;
-      if (!confirmTap(el.btnRevertDeck, "Tap again to revert")) return;
-      this.store.revertBuiltInDeck(this.store.currentDeckId);
-      this.renderPractice();
-      this.toast(`Reverted “${deck?.name}” back to original built-in cards.`);
-    });
-
-    el.btnAll.addEventListener("click", () => {
+    el.btnAll?.addEventListener("click", () => {
       this.store.setUnits(this.store.allUnitKeys());
       this.renderUnits();
     });
 
-    el.btnNone.addEventListener("click", () => {
+    el.btnNone?.addEventListener("click", () => {
       this.store.setUnits([]);
       this.renderUnits();
     });
 
-    el.btnDeleteDeck.addEventListener("click", () => {
+    el.btnDeleteDeck?.addEventListener("click", () => {
       const btn = el.btnDeleteDeck;
       if (!confirmTap(btn, "Tap again to delete")) return;
       const name = this.store.currentDeck?.name;
@@ -501,46 +753,45 @@ class App {
 
   renderPractice() {
     const { el, store } = this;
+    if (!el.deckSelect) return;
     el.deckSelect.replaceChildren(
-      ...store.deckIds().map((id) => {
-        const d = store.getDeck(id);
-        const label = d.isOverride ? `${d.name} (edited)` : d.name;
-        return new Option(label, id, false, id === store.currentDeckId);
-      })
+      ...store.deckIds().map((id) => new Option(store.getDeck(id).name, id, false, id === store.currentDeckId))
     );
     const deck = store.currentDeck;
-    el.modeSelect.replaceChildren(
-      ...modesForDeck(deck).map((m) => new Option(m.label, m.value, false, m.value === store.mode))
-    );
-
-    const isAllCloze = Boolean(deck?.cards?.length && deck.cards.every((c) => c.isCloze));
-    const fieldOpts = isAllCloze
-      ? [
-          { value: "prompt", label: "Sentence (Cloze)" },
-          { value: "answer", label: "Missing Blank" }
-        ]
-      : getDeckFieldOptions(deck);
-
-    el.frontFieldSelect.replaceChildren(
-      ...fieldOpts.map((o) => new Option(o.label, o.value, false, o.value === store.frontField))
-    );
-    el.backFieldSelect.replaceChildren(
-      ...fieldOpts.map((o) => new Option(o.label, o.value, false, o.value === store.backField))
-    );
-    el.frontFieldSelect.disabled = isAllCloze;
-    el.backFieldSelect.disabled = isAllCloze;
-    el.btnSwapFields.disabled = isAllCloze;
-    if (el.checkShowHints) {
-      el.checkShowHints.checked = store.showHints;
+    if (el.modeSelect) {
+      el.modeSelect.replaceChildren(
+        ...modesForDeck(deck).map((m) => new Option(m.label, m.value, false, m.value === store.mode))
+      );
+    }
+    if (el.routeSelect) {
+      const allowedRoutes = routesForDeck(deck);
+      const isAllowed = allowedRoutes.some((r) => r.value === this.routeController.activeRoute);
+      if (!isAllowed) {
+        this.routeController.switchRoute(Routes.REFLEX);
+      }
+      el.routeSelect.replaceChildren(
+        ...allowedRoutes.map((r) => new Option(r.label, r.value, false, r.value === this.routeController.activeRoute))
+      );
     }
 
-    el.btnDeleteDeck.hidden = !deck || deck.builtIn;
-    el.btnRevertDeck.hidden = !deck?.isOverride;
+    if (el.roleFrontSelect && el.roleBackSelect) {
+      el.roleFrontSelect.value = this.engine.activePromptRole || "script";
+      el.roleBackSelect.value = this.engine.activeTargetRole || "phonetic";
+    }
+
+    if (el.sessionShowHints) {
+      el.sessionShowHints.checked = this.sessionShowHints;
+    }
+
+    if (el.btnDeleteDeck) {
+      el.btnDeleteDeck.hidden = !deck || deck.builtIn;
+    }
     this.renderUnits();
   }
 
   renderUnits() {
     const { el, store } = this;
+    if (!el.unitList) return;
     const selected = store.selectedUnits;
     const deck = store.currentDeck;
     const frag = document.createDocumentFragment();
@@ -612,216 +863,210 @@ class App {
   }
 
   updateStartButton() {
+    if (!this.el.btnStart) return;
     const n = this.store.pool().length;
     this.el.btnStart.textContent = n ? `Start · ${n} card${n === 1 ? "" : "s"}` : "Choose at least one unit";
     this.el.btnStart.disabled = n === 0;
   }
 
-  /* ---------------- settings & publisher ---------------- */
+  /* ---------------- Module 1: The 4-Tab Settings Hub ---------------- */
 
-  /* ---------------- settings & publisher ---------------- */
+  switchSettingsTab(tabId) {
+    const tabs = [
+      { btn: this.el.tabDecks, panel: this.el.panelDecks, id: "tabDecks" },
+      { btn: this.el.tabBackup, panel: this.el.panelBackup, id: "tabBackup" },
+      { btn: this.el.tabSync, panel: this.el.panelSync, id: "tabSync" },
+      { btn: this.el.tabOptions, panel: this.el.panelOptions, id: "tabOptions" }
+    ];
+
+    for (const t of tabs) {
+      if (!t.btn || !t.panel) continue;
+      const isActive = t.id === tabId;
+      t.btn.setAttribute("aria-selected", String(isActive));
+      t.btn.classList.toggle("is-active", isActive);
+      t.panel.hidden = !isActive;
+    }
+
+    if (tabId === "tabDecks") this.renderSettingsDecks();
+    if (tabId === "tabBackup") this.renderSettingsBackup();
+  }
 
   renderSettings() {
+    this.renderSettingsDecks();
+    this.renderSettingsBackup();
+
     const { el, sync, store } = this;
-
-    // 1. Decks Tab
-    const deckIds = store.deckIds();
-    el.settingsDeckSelect.replaceChildren(
-      ...deckIds.map((id) => {
-        const d = store.getDeck(id);
-        const opt = new Option(d ? d.name : id, id);
-        opt.selected = id === store.currentDeckId;
-        return opt;
-      })
-    );
-    this.updateSelectedDeckInfo();
-
-    // 2. Storage Tab
-    const customCount = Object.keys(store.state.customDecks).length;
-    let totalCards = 0;
-    for (const id of deckIds) {
-      const d = store.getDeck(id);
-      totalCards += (d?.rawCards || d?.cards || []).length;
-    }
-    const practicedCount = Object.keys(store.state.progress).length;
-    el.storageSummaryBox.innerHTML = `
-      <div><b>Library:</b> ${deckIds.length} deck${deckIds.length === 1 ? "" : "s"} (${customCount} custom) · <b>${totalCards}</b> total cards</div>
-      <div><b>Study History:</b> <b>${practicedCount}</b> practiced cards with spaced-repetition weights</div>
-    `;
-
-    // 3. GitHub Tab
-    el.ghToken.value = sync.config.token || "";
-    el.ghRepo.value = sync.config.repo || "";
-    el.ghPath.value = sync.config.filePath || "speedrecall-data.json";
+    if (el.ghToken) el.ghToken.value = sync.config.token || "";
+    if (el.ghRepo) el.ghRepo.value = sync.config.repo || "";
+    if (el.ghPath) el.ghPath.value = sync.config.filePath || "reflex-data.json";
     const last = store.state.sync.lastSynced;
-    el.syncStatus.textContent = last ? `Last synced ${timeAgo(last)}` : "";
-    el.syncStatus.className = "status";
+    if (el.syncStatus) {
+      el.syncStatus.textContent = last ? `Last synced ${timeAgo(last)}` : "";
+      el.syncStatus.className = "status";
+    }
 
-    el.ghSiteRepo.value = this.sitePublishConfig.repo || "";
-    el.ghSiteToken.value = this.sitePublishConfig.token || "";
-
-    // 4. Options Tab
-    if (el.prefDefaultHints) {
-      el.prefDefaultHints.checked = Boolean(store.showHints);
+    if (el.optDefaultHints) {
+      el.optDefaultHints.checked = store.state.prefs.defaultShowHints !== false;
+    }
+    if (el.optDefaultStrictness) {
+      el.optDefaultStrictness.value = store.state.prefs.defaultStrictness || "standard";
     }
   }
 
-  updateSelectedDeckInfo() {
+  renderSettingsDecks() {
     const { el, store } = this;
-    const selectedId = el.settingsDeckSelect.value || store.currentDeckId;
-    const deck = store.getDeck(selectedId);
-    if (!deck) {
-      el.selectedDeckInfo.innerHTML = "<span>No deck selected.</span>";
-      return;
-    }
-    const cards = deck.rawCards || deck.cards || [];
-    const units = deck.units || [...new Set(cards.map(unitKey))];
-    const avgMastery = Math.round(store.unitMastery(deck.cards || []) * 100);
-    const typeLabel = deck.builtIn ? "Built-in deck" : "Custom deck";
+    if (!el.settingsDeckSelect) return;
 
-    el.selectedDeckInfo.innerHTML = `
-      <div><b>${escapeHtml(deck.name)}</b> · <span class="note">${typeLabel}</span></div>
-      <div><b>${cards.length}</b> card${cards.length === 1 ? "" : "s"} · <b>${units.length}</b> unit${units.length === 1 ? "" : "s"} · <b>${avgMastery}%</b> mastered</div>
-    `;
+    el.settingsDeckSelect.replaceChildren(
+      ...store.deckIds().map((id) => new Option(store.getDeck(id).name, id, false, id === store.currentDeckId))
+    );
+
+    const deck = store.currentDeck;
+    if (el.deckSummaryName) el.deckSummaryName.textContent = deck?.name || "No deck selected";
+    if (el.deckSummaryOrigin) {
+      el.deckSummaryOrigin.textContent = deck?.builtIn ? "Built-in deck" : "Custom deck";
+      el.deckSummaryOrigin.className = deck?.builtIn ? "badge" : "badge badge--custom";
+    }
+    if (el.deckSummaryMetrics) {
+      const cards = deck?.cards || [];
+      const units = new Set(cards.map(unitKey)).size;
+      const mastery = Math.round(store.unitMastery(cards) * 100);
+      el.deckSummaryMetrics.textContent = `${cards.length} cards · ${units} unit${units === 1 ? "" : "s"} · ${mastery}% mastered`;
+    }
+  }
+
+  renderSettingsBackup() {
+    const { el, store } = this;
+    const totalDecks = store.deckIds().length;
+    const builtInCount = store.builtInOrder.length;
+    const customCount = Object.keys(store.state.customDecks).length;
+    let totalCards = 0;
+    for (const id of store.deckIds()) {
+      totalCards += (store.getDeck(id)?.cards || []).length;
+    }
+    const practicedCount = Object.keys(store.state.progress).length;
+
+    if (el.backupDeckCount) el.backupDeckCount.textContent = String(totalDecks);
+    if (el.backupDeckBreakdown) el.backupDeckBreakdown.textContent = `${builtInCount} built-in · ${customCount} custom`;
+    if (el.backupTotalCards) el.backupTotalCards.textContent = String(totalCards);
+    if (el.backupPracticedCount) el.backupPracticedCount.textContent = String(practicedCount);
   }
 
   bindSettings() {
-    const { el, sync, store } = this;
+    const { el } = this;
 
-    // Segmented tab switching
-    const tabs = [
-      { btn: el.tabBtnDecks, panel: el.panelDecks },
-      { btn: el.tabBtnStorage, panel: el.panelStorage },
-      { btn: el.tabBtnGitHub, panel: el.panelGitHub },
-      { btn: el.tabBtnOptions, panel: el.panelOptions }
-    ];
+    // Tabs
+    el.tabDecks?.addEventListener("click", () => this.switchSettingsTab("tabDecks"));
+    el.tabBackup?.addEventListener("click", () => this.switchSettingsTab("tabBackup"));
+    el.tabSync?.addEventListener("click", () => this.switchSettingsTab("tabSync"));
+    el.tabOptions?.addEventListener("click", () => this.switchSettingsTab("tabOptions"));
 
-    tabs.forEach(({ btn, panel }) => {
-      if (!btn) return;
-      btn.addEventListener("click", () => {
-        tabs.forEach((t) => {
-          const active = t.btn === btn;
-          t.btn.classList.toggle("active", active);
-          t.btn.setAttribute("aria-selected", String(active));
-          if (t.panel) t.panel.hidden = !active;
-        });
-      });
+    // Panel A: Decks
+    el.settingsDeckSelect?.addEventListener("change", () => {
+      this.store.setDeck(el.settingsDeckSelect.value);
+      this.renderSettingsDecks();
+      this.renderPractice();
     });
 
-    // Deck picker in settings
-    el.settingsDeckSelect.addEventListener("change", () => {
-      this.updateSelectedDeckInfo();
+    el.btnNewDeckModal?.addEventListener("click", () => this.openTabularDeckBuilder(null));
+
+    el.btnExportDeck?.addEventListener("click", () => {
+      const deck = this.store.currentDeck;
+      if (!deck) return;
+      const slug = (deck.name || "deck").toLowerCase().replace(/\s+/g, "-");
+      downloadJSON(deck, `${slug}.json`);
     });
 
-    // Export single deck
-    el.btnExportSelectedDeck.addEventListener("click", () => {
-      const selectedId = el.settingsDeckSelect.value || store.currentDeckId;
-      try {
-        const deckData = store.exportDeck(selectedId);
-        downloadJSON(deckData, `${selectedId}.json`);
-        this.toast(`Exported "${deckData.name}" as JSON.`);
-      } catch (err) {
-        this.toast(err.message, true);
-      }
+    el.btnEditCards?.addEventListener("click", () => {
+      const deck = this.store.currentDeck;
+      if (!deck) return;
+      this.openTabularDeckBuilder(deck);
     });
 
-    // Edit deck from settings
-    el.btnSettingsEditDeck.addEventListener("click", () => {
-      const selectedId = el.settingsDeckSelect.value || store.currentDeckId;
-      el.settings.close();
-      this.openDeckEditor(selectedId);
-    });
-
-    // New deck from settings
-    el.btnSettingsNewDeck.addEventListener("click", () => {
-      el.settings.close();
-      this.openDeckEditor(null);
-    });
-
-    // Add cards to selected deck
-    el.btnImport.addEventListener("click", () => {
-      const selectedId = el.settingsDeckSelect.value || store.currentDeckId;
+    el.btnImport?.addEventListener("click", () => {
       const { cards, errors } = parseTSV(el.importText.value);
       if (!cards.length) {
         this.toast(errors[0] || "Paste some cards first.", true);
         return;
       }
-      store.addCards(selectedId, cards);
+      this.store.addCards(this.store.currentDeckId, cards);
       el.importText.value = "";
       const skipped = errors.length ? ` Skipped ${errors.length} line${errors.length === 1 ? "" : "s"} (${errors[0]})` : "";
       this.toast(`Added ${cards.length} card${cards.length === 1 ? "" : "s"}.${skipped}`, Boolean(errors.length));
-      this.renderSettings();
-      this.renderDeck();
+      this.renderSettingsDecks();
+      this.renderPractice();
     });
 
-    // Local Storage actions
-    el.btnExport.addEventListener("click", () => {
-      const date = new Date().toISOString().slice(0, 10);
-      downloadJSON(store.exportData(), `speedrecall-backup-${date}.json`);
-      this.toast("Full backup downloaded.");
+    // Panel B: Local Backup
+    const date = () => new Date().toISOString().slice(0, 10);
+    el.btnExportFull?.addEventListener("click", () => {
+      downloadJSON(this.store.exportData(), `reflex-backup-${date()}.json`);
     });
 
-    el.btnExportProgressOnly.addEventListener("click", () => {
-      const date = new Date().toISOString().slice(0, 10);
-      downloadJSON(store.exportProgress(), `speedrecall-progress-${date}.json`);
-      this.toast("Study progress exported.");
+    el.btnExportProgress?.addEventListener("click", () => {
+      const data = {
+        progress: this.store.state.progress,
+        session: this.store.session,
+        lastSynced: this.store.state.sync.lastSynced
+      };
+      downloadJSON(data, `reflex-progress-${date()}.json`);
     });
 
-    el.importFile.addEventListener("change", async () => {
+    el.importFile?.addEventListener("change", async () => {
       const file = el.importFile.files[0];
       el.importFile.value = "";
       if (!file) return;
       try {
-        const data = await readJSONFile(file);
-        store.mergeData(data);
+        this.store.mergeData(await readJSONFile(file));
+        this.toast("Backup restored and merged.");
         this.renderSettings();
-        this.renderDeck();
-        this.toast("Imported successfully.");
+        this.renderPractice();
       } catch (err) {
         this.toast(err.message, true);
       }
     });
 
-    el.btnResetProgress.addEventListener("click", () => {
+    el.btnResetProgress?.addEventListener("click", () => {
       if (!confirmTap(el.btnResetProgress, "Tap again to erase all progress")) return;
-      store.resetProgress();
-      this.renderSettings();
+      this.store.resetProgress();
+      this.renderSettingsBackup();
       this.toast("Progress reset.");
     });
 
-    // GitHub Sync actions
+    // Panel C: GitHub Sync
     const saveSync = () =>
-      sync.saveConfig({
-        token: el.ghToken.value.trim(),
-        repo: el.ghRepo.value.trim().replace(/^https?:\/\/github\.com\//, "").replace(/\.git$|\/$/g, ""),
-        filePath: el.ghPath.value.trim() || "speedrecall-data.json"
+      this.sync.saveConfig({
+        token: el.ghToken?.value.trim() || "",
+        repo: el.ghRepo?.value.trim().replace(/^https?:\/\/github\.com\//, "").replace(/\.git$|\/$/g, "") || "",
+        filePath: el.ghPath?.value.trim() || "reflex-data.json"
       });
-    for (const f of [el.ghToken, el.ghRepo, el.ghPath]) f.addEventListener("change", saveSync);
 
-    el.btnTestGitHub.addEventListener("click", async () => {
+    for (const f of [el.ghToken, el.ghRepo, el.ghPath]) f?.addEventListener("change", saveSync);
+
+    el.btnTestSync?.addEventListener("click", async () => {
       saveSync();
-      el.btnTestGitHub.disabled = true;
+      el.btnTestSync.disabled = true;
       el.syncStatus.className = "status";
-      el.syncStatus.textContent = "Testing connection…";
+      el.syncStatus.textContent = "Testing…";
       try {
-        const info = await sync.testConnection(el.ghToken.value, el.ghRepo.value);
+        const info = await this.sync.testConnection();
         el.syncStatus.className = "status ok";
-        el.syncStatus.textContent = `✓ Connected to ${info.repo} (${info.branch})`;
+        el.syncStatus.textContent = `Connected: ${info.repo} (${info.branch})`;
       } catch (err) {
         el.syncStatus.className = "status error";
         el.syncStatus.textContent = err.message;
       } finally {
-        el.btnTestGitHub.disabled = false;
+        el.btnTestSync.disabled = false;
       }
     });
 
-    el.btnSync.addEventListener("click", async () => {
+    el.btnSync?.addEventListener("click", async () => {
       saveSync();
       el.btnSync.disabled = true;
       el.syncStatus.className = "status";
       el.syncStatus.textContent = "Syncing…";
       try {
-        await sync.sync();
+        await this.sync.sync();
         el.syncStatus.className = "status ok";
         el.syncStatus.textContent = "Synced just now";
         this.engine.next();
@@ -833,309 +1078,247 @@ class App {
       }
     });
 
-    el.btnSavePublisher.addEventListener("click", () => {
-      const repo = el.ghSiteRepo.value.trim().replace(/^https?:\/\/github\.com\//, "").replace(/\.git$|\/$/g, "");
-      const token = el.ghSiteToken.value.trim();
-      this.sitePublishConfig = { repo, token };
-      localStorage.setItem("speedrecall_site_repo", repo);
-      localStorage.setItem("speedrecall_site_token", token);
-      el.publisherStatus.className = "status ok";
-      el.publisherStatus.textContent = "Saved! Publishing enabled.";
-      this.toast("Publisher settings saved.");
-    });
-
-    // Preferences Tab
-    if (el.prefDefaultHints) {
-      el.prefDefaultHints.addEventListener("change", () => {
-        store.showHints = el.prefDefaultHints.checked;
-        this.renderHintButton();
-        this.toast(`Default hints: ${store.showHints ? "ON" : "OFF"}`);
-      });
-    }
-  }
-
-  /* ---------------- deck editor ---------------- */
-
-  bindEditor() {
-    const { el } = this;
-    el.editorDeckLang.replaceChildren(...LANGS.map(([v, l]) => new Option(l, v)));
-
-    el.btnEditorAddRow.addEventListener("click", () => {
-      this.addEditorRow();
-      this.updateEditorStats();
-    });
-
-    el.btnEditorChunkUnits.addEventListener("click", () => {
-      const rows = this.getEditorCardData();
-      if (!rows.length) return;
-      const chunked = chunkCardsIntoUnits(rows, 10);
-      this.populateEditorRows(chunked);
-      this.toast(`Grouped ${rows.length} cards into units of 10.`);
-    });
-
-    el.btnEditorPaste.addEventListener("click", () => {
-      el.pasteText.value = "";
-      el.paste.showModal();
-    });
-
-    el.btnPasteApply.addEventListener("click", () => {
-      const rows = parseRowsForEditor(el.pasteText.value);
-      if (!rows.length) {
-        this.toast("No valid card rows found in pasted text.", true);
-        return;
+    el.btnPublishDeck?.addEventListener("click", async () => {
+      saveSync();
+      el.btnPublishDeck.disabled = true;
+      el.publishStatus.className = "status";
+      el.publishStatus.textContent = "Publishing…";
+      try {
+        await this.sync.publishDeck(this.store.currentDeckId);
+        el.publishStatus.className = "status ok";
+        el.publishStatus.textContent = "Deck published to GitHub!";
+      } catch (err) {
+        el.publishStatus.className = "status error";
+        el.publishStatus.textContent = err.message;
+      } finally {
+        el.btnPublishDeck.disabled = false;
       }
-      this.appendEditorRows(rows);
-      el.paste.close();
-      this.toast(`Imported ${rows.length} cards from clipboard.`);
     });
 
-    el.btnEditorSave.addEventListener("click", () => {
-      this.saveEditorDeck();
+    // Panel D: Options
+    el.optDefaultHints?.addEventListener("change", () => {
+      this.store.state.prefs.defaultShowHints = el.optDefaultHints.checked;
+      this.store.save();
     });
 
-    el.btnEditorPublish.addEventListener("click", async () => {
-      await this.publishCurrentDeckToRepo();
+    el.optDefaultStrictness?.addEventListener("change", () => {
+      this.store.state.prefs.defaultStrictness = el.optDefaultStrictness.value;
+      this.store.save();
     });
   }
 
-  openDeckEditor(deckId = null) {
-    const { el, store } = this;
-    this.editingDeckId = deckId;
-    el.editorRows.replaceChildren();
+  /* ---------------- Module 4: Tabular Deck Creator & Editor ---------------- */
 
-    if (deckId) {
-      const deck = store.getDeck(deckId);
-      el.editorTitle.textContent = `Edit “${deck.name}”`;
-      el.editorDeckName.value = deck.name;
-      el.editorDeckLang.value = deck.lang || "";
-      el.editorPinyin.checked = deck.romanization === "pinyin";
-      const cards = deck.rawCards || deck.cards || [];
-      this.populateEditorRows(cards);
+  openTabularDeckBuilder(deckToEdit = null) {
+    const { el } = this;
+    if (!el.newDeckModal) return;
+
+    if (deckToEdit) {
+      this._editingDeckId = deckToEdit.id;
+      if (el.newDeckTitle) el.newDeckTitle.textContent = `Edit Deck · ${deckToEdit.name}`;
+      if (el.tabularDeckName) el.tabularDeckName.value = deckToEdit.name;
+      if (el.tabularDeckLang) el.tabularDeckLang.value = deckToEdit.lang || "";
+      if (el.tabularDeckPinyin) el.tabularDeckPinyin.checked = deckToEdit.romanization === "pinyin";
+      this.renderGridRows(deckToEdit.cards || []);
     } else {
-      el.editorTitle.textContent = "New deck";
-      el.editorDeckName.value = "";
-      el.editorDeckLang.value = "";
-      el.editorPinyin.checked = false;
-      // Provide 3 clean starter rows
-      for (let i = 0; i < 3; i++) this.addEditorRow({ unit: "1" });
+      this._editingDeckId = null;
+      if (el.newDeckTitle) el.newDeckTitle.textContent = "Tabular Deck Builder";
+      if (el.tabularDeckName) el.tabularDeckName.value = "";
+      if (el.tabularDeckLang) el.tabularDeckLang.value = "";
+      if (el.tabularDeckPinyin) el.tabularDeckPinyin.checked = false;
+      this.renderGridRows([{ prompt: "", answer: "", subtitle: "", unit: "1" }]);
     }
 
-    // Show publish button if repo credentials exist
-    const hasPublisherCreds = Boolean(this.sitePublishConfig.token && this.sitePublishConfig.repo);
-    el.btnEditorPublish.hidden = !hasPublisherCreds || !deckId;
-
-    this.updateEditorStats();
-    el.editor.showModal();
+    if (el.gridPasteArea) el.gridPasteArea.hidden = true;
+    el.newDeckModal.showModal();
   }
 
-  populateEditorRows(cards) {
-    this.el.editorRows.replaceChildren();
-    for (const c of cards) {
-      this.addEditorRow({
-        id: c.id,
-        prompt: c.prompt || "",
-        answer: c.answers?.[0] || c.answer || "",
-        hint: c.subtitle || "",
-        unit: c.unit || "1"
-      });
+  renderGridRows(cards = []) {
+    const { el } = this;
+    if (!el.deckGridTbody) return;
+    el.deckGridTbody.replaceChildren();
+    for (const card of cards) {
+      this.addGridRow(card);
     }
-    this.updateEditorStats();
   }
 
-  appendEditorRows(rows) {
-    for (const r of rows) {
-      this.addEditorRow(r);
-    }
-    this.updateEditorStats();
-  }
+  addGridRow(card = { prompt: "", answer: "", subtitle: "", unit: "1" }) {
+    const { el } = this;
+    if (!el.deckGridTbody) return;
 
-  addEditorRow(data = {}) {
     const tr = document.createElement("tr");
-    tr.dataset.cardId = data.id || `card-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 
-    // Prompt column
+    // 1. Prompt cell with auto-cloze detection
     const tdPrompt = document.createElement("td");
-    const inPrompt = document.createElement("input");
-    inPrompt.className = "editor-input editor-input--prompt";
-    inPrompt.placeholder = "bonjour or Je {{suis}} fatigué";
-    inPrompt.value = data.prompt || "";
-    tdPrompt.appendChild(inPrompt);
+    const inputPrompt = document.createElement("input");
+    inputPrompt.type = "text";
+    inputPrompt.className = "grid-input grid-input--prompt";
+    inputPrompt.value = card.prompt || "";
+    inputPrompt.placeholder = "Prompt or cloze sentence";
+    tdPrompt.appendChild(inputPrompt);
 
-    // Answer column
+    // 2. Answer cell
     const tdAnswer = document.createElement("td");
-    const inAnswer = document.createElement("input");
-    inAnswer.className = "editor-input editor-input--answer";
-    inAnswer.placeholder = "hello";
-    inAnswer.value = data.answer || "";
-    tdAnswer.appendChild(inAnswer);
+    const inputAnswer = document.createElement("input");
+    inputAnswer.type = "text";
+    inputAnswer.className = "grid-input grid-input--answer";
+    inputAnswer.value = card.answer || (card.answers ? card.answers[0] : "") || "";
+    inputAnswer.placeholder = "Answer";
+    tdAnswer.appendChild(inputAnswer);
 
-    // Hint column
+    // Auto-Cloze extraction on typing
+    inputPrompt.addEventListener("input", () => {
+      const val = inputPrompt.value;
+      const match = val.match(/\{\{([^}]+)\}\}/);
+      if (match && !inputAnswer.value.trim()) {
+        inputAnswer.value = match[1].trim();
+      }
+    });
+
+    // 3. Hint cell
     const tdHint = document.createElement("td");
-    const inHint = document.createElement("input");
-    inHint.className = "editor-input editor-input--hint";
-    inHint.placeholder = "optional hint";
-    inHint.value = data.hint || "";
-    tdHint.appendChild(inHint);
+    const inputHint = document.createElement("input");
+    inputHint.type = "text";
+    inputHint.className = "grid-input grid-input--hint";
+    inputHint.value = card.subtitle || "";
+    inputHint.placeholder = "Hint";
+    tdHint.appendChild(inputHint);
 
-    // Unit column
+    // 4. Unit cell
     const tdUnit = document.createElement("td");
-    const inUnit = document.createElement("input");
-    inUnit.className = "editor-input editor-input--unit";
-    inUnit.placeholder = "1";
-    inUnit.value = data.unit || "1";
-    tdUnit.appendChild(inUnit);
+    const inputUnit = document.createElement("input");
+    inputUnit.type = "text";
+    inputUnit.className = "grid-input grid-input--unit";
+    inputUnit.value = card.unit || "1";
+    inputUnit.placeholder = "Unit";
+    tdUnit.appendChild(inputUnit);
 
-    // Delete column
-    const tdDel = document.createElement("td");
+    // 5. Delete action
+    const tdAction = document.createElement("td");
     const btnDel = document.createElement("button");
     btnDel.type = "button";
-    btnDel.className = "editor-del-btn";
-    btnDel.title = "Delete card";
+    btnDel.className = "btn-delete-row";
     btnDel.textContent = "✕";
-    btnDel.addEventListener("click", () => {
-      tr.remove();
-      this.updateEditorStats();
-    });
-    tdDel.appendChild(btnDel);
+    btnDel.setAttribute("aria-label", "Delete row");
+    btnDel.addEventListener("click", () => tr.remove());
+    tdAction.appendChild(btnDel);
 
-    // Auto-detect cloze on prompt typing
-    inPrompt.addEventListener("input", () => {
-      const val = inPrompt.value;
-      if (hasCloze(val)) {
-        const cloze = autoExtractCloze(val);
-        if (cloze) {
-          if (!inAnswer.value) inAnswer.value = cloze.primaryAnswer;
-          if (!inHint.value && cloze.primaryHint) inHint.value = cloze.primaryHint;
-        }
-      }
-    });
-
-    // Fast-entry keyboard shortcuts:
-    // Enter adds next row, Tab from Unit moves to next row Prompt
-    inPrompt.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const nextRow = this.addEditorRow({ unit: inUnit.value });
-        tr.after(nextRow);
-        nextRow.querySelector(".editor-input--prompt")?.focus();
-        this.updateEditorStats();
-      }
-    });
-
-    inAnswer.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const nextRow = this.addEditorRow({ unit: inUnit.value });
-        tr.after(nextRow);
-        nextRow.querySelector(".editor-input--prompt")?.focus();
-        this.updateEditorStats();
-      }
-    });
-
-    inUnit.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || (e.key === "Tab" && !e.shiftKey && tr === this.el.editorRows.lastElementChild)) {
-        e.preventDefault();
-        const nextRow = this.addEditorRow({ unit: inUnit.value });
-        this.el.editorRows.appendChild(nextRow);
-        nextRow.querySelector(".editor-input--prompt")?.focus();
-        this.updateEditorStats();
-      }
-    });
-
-    tr.append(tdPrompt, tdAnswer, tdHint, tdUnit, tdDel);
-    this.el.editorRows.appendChild(tr);
-    return tr;
+    tr.append(tdPrompt, tdAnswer, tdHint, tdUnit, tdAction);
+    el.deckGridTbody.appendChild(tr);
   }
 
-  getEditorCardData() {
-    const cards = [];
-    const rows = this.el.editorRows.querySelectorAll("tr");
-    rows.forEach((tr, i) => {
-      const prompt = tr.querySelector(".editor-input--prompt")?.value.trim() || "";
-      let answer = tr.querySelector(".editor-input--answer")?.value.trim() || "";
-      let hint = tr.querySelector(".editor-input--hint")?.value.trim() || "";
-      const unit = tr.querySelector(".editor-input--unit")?.value.trim() || "1";
-      const id = tr.dataset.cardId || `card-${i + 1}`;
-
-      // If prompt has cloze and answer is empty, extract it
-      if (hasCloze(prompt)) {
-        const cloze = autoExtractCloze(prompt);
-        if (cloze) {
-          if (!answer) answer = cloze.primaryAnswer;
-          if (!hint && cloze.primaryHint) hint = cloze.primaryHint;
-        }
-      }
-
-      if (prompt && answer) {
-        cards.push({ id, group: "General", unit, prompt, subtitle: hint, answer });
-      }
-    });
-    return cards;
-  }
-
-  updateEditorStats() {
-    const count = this.getEditorCardData().length;
-    this.el.editorStats.textContent = `${count} card${count === 1 ? "" : "s"}`;
-  }
-
-  saveEditorDeck() {
-    const { el, store } = this;
-    const name = el.editorDeckName.value.trim();
-    if (!name) {
-      this.toast("Please enter a deck name.", true);
-      el.editorDeckName.focus();
-      return;
+  bindTabularDeckBuilder() {
+    const { el } = this;
+    if (el.tabularDeckLang) {
+      el.tabularDeckLang.replaceChildren(...LANGS.map(([v, l]) => new Option(l, v)));
+      el.tabularDeckLang.addEventListener("change", () => {
+        if (el.tabularDeckPinyin) el.tabularDeckPinyin.checked = el.tabularDeckLang.value === "zh";
+      });
     }
 
-    const cards = this.getEditorCardData();
-    if (!cards.length) {
-      this.toast("Deck needs at least one card with a prompt and an answer.", true);
-      return;
-    }
+    el.btnGridAddCard?.addEventListener("click", () => {
+      const lastRow = el.deckGridTbody?.lastElementChild;
+      const lastUnit = lastRow?.querySelector(".grid-input--unit")?.value || "1";
+      this.addGridRow({ prompt: "", answer: "", subtitle: "", unit: lastUnit });
+    });
 
-    const meta = {
-      name,
-      lang: el.editorDeckLang.value,
-      romanization: el.editorPinyin.checked ? "pinyin" : ""
-    };
+    el.btnGridSplitUnits?.addEventListener("click", () => {
+      const rows = el.deckGridTbody?.querySelectorAll("tr") || [];
+      rows.forEach((row, idx) => {
+        const unitInput = row.querySelector(".grid-input--unit");
+        if (unitInput) {
+          unitInput.value = `Unit ${Math.floor(idx / 10) + 1}`;
+        }
+      });
+      this.toast(`Split ${rows.length} rows into batches of 10.`);
+    });
 
-    if (this.editingDeckId) {
-      const existing = store.getDeck(this.editingDeckId);
-      if (existing.builtIn) {
-        store.overrideBuiltInDeck(this.editingDeckId, meta, cards);
-        this.toast(`Saved local edits for built-in deck “${name}”.`);
+    el.btnGridPasteTSV?.addEventListener("click", () => {
+      if (el.gridPasteArea) el.gridPasteArea.hidden = !el.gridPasteArea.hidden;
+      if (el.gridPasteText && !el.gridPasteArea.hidden) el.gridPasteText.focus();
+    });
+
+    el.btnGridCancelPaste?.addEventListener("click", () => {
+      if (el.gridPasteArea) el.gridPasteArea.hidden = true;
+    });
+
+    el.btnGridApplyPaste?.addEventListener("click", () => {
+      const text = el.gridPasteText?.value.trim() || "";
+      if (!text) return;
+      const lines = text.split("\n");
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        const cols = line.split("\t");
+        let prompt = "", answer = "", hint = "", unit = "1";
+        if (cols.length === 2) {
+          [prompt, answer] = cols;
+        } else if (cols.length === 3) {
+          [prompt, answer, hint] = cols;
+        } else if (cols.length === 4) {
+          [prompt, answer, hint, unit] = cols;
+        } else if (cols.length >= 5) {
+          [, unit, prompt, hint, answer] = cols;
+        }
+        this.addGridRow({ prompt: prompt.trim(), answer: answer.trim(), subtitle: hint.trim(), unit: unit.trim() });
+      }
+      if (el.gridPasteText) el.gridPasteText.value = "";
+      if (el.gridPasteArea) el.gridPasteArea.hidden = true;
+    });
+
+    el.btnGridSave?.addEventListener("click", () => {
+      const name = el.tabularDeckName?.value.trim() || "";
+      if (!name) {
+        this.toast("Give the deck a name.", true);
+        el.tabularDeckName?.focus();
+        return;
+      }
+
+      const rows = el.deckGridTbody?.querySelectorAll("tr") || [];
+      const cards = [];
+      rows.forEach((row, i) => {
+        const p = row.querySelector(".grid-input--prompt")?.value.trim() || "";
+        const a = row.querySelector(".grid-input--answer")?.value.trim() || "";
+        const h = row.querySelector(".grid-input--hint")?.value.trim() || "";
+        const u = row.querySelector(".grid-input--unit")?.value.trim() || "1";
+        if (p && a) {
+          cards.push({
+            id: `card-${i + 1}`,
+            group: "General",
+            unit: u,
+            prompt: p,
+            answer: a,
+            answers: [a],
+            subtitle: h,
+            isCloze: p.includes("{{")
+          });
+        }
+      });
+
+      if (cards.length === 0) {
+        this.toast("Add at least one card with a prompt and answer.", true);
+        return;
+      }
+
+      const lang = el.tabularDeckLang?.value || "";
+      const romanization = el.tabularDeckPinyin?.checked ? "pinyin" : "";
+
+      if (this._editingDeckId && this.store.state.customDecks[this._editingDeckId]) {
+        this.store.state.customDecks[this._editingDeckId].name = name;
+        this.store.state.customDecks[this._editingDeckId].lang = lang;
+        this.store.state.customDecks[this._editingDeckId].romanization = romanization;
+        this.store.state.customDecks[this._editingDeckId].cards = cards;
+        this.store.save();
+        this.store.dispatchEvent(new CustomEvent("deck-updated"));
       } else {
-        store.updateDeck(this.editingDeckId, meta, cards);
-        this.toast(`Updated deck “${name}”.`);
+        const deckId = this.store.createDeck({ name, lang, romanization }, cards);
+        this.store.setDeck(deckId);
       }
-    } else {
-      const newId = store.createDeck(meta, cards);
-      this.toast(`Created deck “${name}”.`);
-    }
 
-    el.editor.close();
-    this.renderDeck();
-    this.engine.next();
-  }
-
-  async publishCurrentDeckToRepo() {
-    const { store } = this;
-    const deckId = this.editingDeckId;
-    if (!deckId) return;
-
-    const deck = store.getDeck(deckId);
-    if (!this.sitePublishConfig.token || !this.sitePublishConfig.repo) {
-      this.toast("Configure site repo & write token in Settings first.", true);
-      return;
-    }
-
-    this.toast(`Publishing “${deck.name}” to GitHub Pages…`);
-    try {
-      await this.sync.publishDeckToRepo(deck, this.sitePublishConfig.token, this.sitePublishConfig.repo);
-      this.toast(`Published “${deck.name}” to ${this.sitePublishConfig.repo}! GitHub Pages updates in ~1 min.`);
-    } catch (err) {
-      this.toast(`Publish failed: ${err.message}`, true);
-    }
+      el.newDeckModal.close();
+      this.toast(`Saved “${name}” with ${cards.length} cards.`);
+      this.renderDeck();
+      this.renderHomeHub();
+    });
   }
 
   toast(message, isError = false) {
@@ -1145,13 +1328,7 @@ class App {
     clearTimeout(this._toastTimer);
     this._toastTimer = setTimeout(() => (t.className = "toast"), isError ? 6000 : 3000);
     // Show above an open modal
-    const host = this.el.editor.open
-      ? this.el.editor
-      : this.el.practice.open
-      ? this.el.practice
-      : this.el.settings.open
-      ? this.el.settings
-      : document.body;
+    const host = this.el.practice.open ? this.el.practice : this.el.settings.open ? this.el.settings : document.body;
     if (t.parentElement !== host) host.append(t);
   }
 }

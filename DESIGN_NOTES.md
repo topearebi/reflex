@@ -161,6 +161,85 @@ SpeedRecall is a client-side, zero-latency progressive web application (PWA) eng
 * **Animation Restart on Card Transition:** Fixed CSS animation freezing on `.pacing-countdown-bar__fill` by forcing DOM reflow (`fill.style.animation = "none"; void fill.offsetWidth; fill.style.animation = "";`) upon every `card-mounted` event.
 * **Tactile Affordance Hint Pill:** Added a visually centered tactile affordance badge (`.sensory-tap-surface__hint`) to `.sensory-tap-surface` with an upward cue arrow (`.sensory-tap-surface__cue`) and a subtle 3s pulsing animation (`@keyframes sensoryHintPulse`), instructing learners: *"Tap anywhere to reveal / advance"*.
 
+### 2.11 PWA Cache Invalidation & Instant Client Claim Lifecycle (`sw.js` & `index.html`)
+* **Cache Versioning (`speedrecall-v3`):** Updated cache namespace to `CACHE_NAME = "speedrecall-v3"` to cleanly decouple from stale browser caches.
+* **Immediate Installation & Skip Waiting:** `self.skipWaiting()` is invoked at the onset of the `install` event handler in `sw.js`. This allows the newly fetched service worker to bypass the waiting lifecycle state immediately without requiring the learner to close active tabs.
+* **Instant Client Claiming:** In the `activate` event handler, `await self.clients.claim()` forces active pages under the control of the new worker immediately upon activation.
+* **Stale Cache Eviction:** The `activate` event queries all cache names via `caches.keys()` and asynchronously removes any cache whose key does not strictly match `CACHE_NAME` (`Promise.all(keys.map(k => k !== CACHE_NAME ? caches.delete(k) : null))`).
+* **Pre-Cache Asset List Expansion:** The `CORE` pre-cache bundle was audited and updated to include modern modular scripts and assets: `js/routes.js`, `js/audio.js`, `js/cloze.js`, and `css/app.css`.
+* **Query Parameter Cache-Busting (`?v=3`):** To invalidate external browser HTTP caches and intermediate proxies, cache-busting search parameters were added to the primary entry points in `index.html`:
+  - Stylesheet: `<link rel="stylesheet" href="css/app.css?v=3" />`
+  - Main application module: `<script type="module" src="js/app.js?v=3"></script>`
+  - Service Worker registration: `navigator.serviceWorker.register("./sw.js?v=3")`
+* **Query-Agnostic Cache Matching:** The service worker's `fetch` handler matches cached items via `cache.match(request, { ignoreSearch: true })`, ensuring that requests carrying cache-busting parameters (`css/app.css?v=3`) reliably resolve against pre-cached assets (`./css/app.css`) offline.
+* **Client-Side Lifecycle Handling (`js/app.js`):** In `bindServiceWorker()`, the application registers `./sw.js?v=3` and registers an event listener for `navigator.serviceWorker.addEventListener("controllerchange", ...)`. When an updated service worker claims the client via `clients.claim()`, the app:
+  1. Prevents duplicate refresh storms via a `refreshing` boolean guard.
+  2. Notifies the learner via a non-disruptive toast notification: *"SpeedRecall updated to latest version."*
+  3. Silently updates active data references by re-running `this.store.init()`, `this.renderDeck()`, and `this.renderHomeHub()`, avoiding jarring page reloads or active drill interruptions.
+
+### 2.12 Module 1: The 4-Tab Settings Hub (`#settingsModal`)
+* **Segmented Navigation & Tab Isolation:**
+  - Four distinct tabs: `Decks`, `Local Backup`, `GitHub Sync`, and `Options`.
+  - Switching tabs modifies `aria-selected` and `hidden` attributes without resetting form fields or unbinding event listeners (`switchSettingsTab(tabId)`).
+* **Panel A (Decks):**
+  - Live Deck Summary Card (`#deckSummaryCard`): Deck name, built-in vs. custom origin badge, total cards, units, and percentage mastered.
+  - Action ribbon: `+ New deck` (opens tabular builder), `Export deck` (downloads clean standalone JSON), `Edit cards` (loads deck in tabular editor).
+  - Quick Row Importer: Multiline TSV parser (`Prompt [TAB] Answer` or `Group [TAB] Unit [TAB] Prompt [TAB] Hint [TAB] Answer`) with `Add cards` button appending to active deck.
+* **Panel B (Local Backup):**
+  - Library metrics: Active decks (built-in vs. custom), total cards, and total practiced cards tracked in `TokenExposureLedger`.
+  - Backup Triggers: `Download full backup` (all decks, custom cards, units, progress) vs. `Export progress only` (progress states & retention ledger).
+  - Import / Restore: File picker with non-destructive merge (`store.mergeData()`).
+  - Danger Zone: `Reset progress` with two-tap confirmation (`confirmTap()`), clearing weights and intervals while preserving custom deck definitions.
+* **Panel C (GitHub Sync):**
+  - Personal Access Token (PAT) masked input, target repository (`owner/repo`), and cloud file path (`reflex-data.json`, with fallback to `speedrecall-data.json`).
+  - `Test connection` (read validation without writing) and `Sync now` (two-way merge with timestamp conflict resolution).
+  - Static Publishing: Direct deck publication to GitHub Pages `data/` directory and `manifest.json`.
+* **Panel D (Options):**
+  - Global default for semantic hint masking (`optDefaultHints`).
+  - Global default strictness for tone and diacritic checking (`optDefaultStrictness`).
+
+### 2.13 Module 2: Practice Setup Modal & Bidirectional Role Matrix (`#practiceModal`)
+* **Cognitive Micro-Chunking (DJT Kana Style):**
+  - Breaks decks into discrete 10-card units displayed in an interactive grid (`#unitList`).
+  - Each card displays unit number, card count, mastery percentage, and a horizontal preview snippet of the first 4–6 tokens.
+  - Group toggles (`All` / `None` chips) enable instantaneous bulk selection.
+  - Dynamic launch button (`#btnStart`) displays current active queue size: `Start · [X] cards`.
+* **Bidirectional Field Role Matrix (`roleFrontSelect` ⇄ `roleBackSelect`):**
+  - Allows learners to choose stimulus (`Front`) and response (`Back`) fields independently:
+    - Target Language (`script` / Native Orthography)
+    - Hint / Romanization (`phonetic`)
+    - Native Language (`gloss` / English)
+  - Centered Role Swap button (`btnRoleSwapModal` `⇄`): Instantly inverts Front and Back selections.
+  - Session Hint Control (`#sessionShowHints`): Direct toggle under role matrix controlling in-drill hint masking.
+
+### 2.14 Module 3: Active Drill Staging & In-Drill Header Toggles (`#topbar`)
+* **Persistent Top Navigation Header:**
+  - `💡` (`#btnHintToggle`): Toggles visibility of the current card's secondary hint, subtitle, or mnemonic. When hints are masked by default, clicking `💡` reveals the hint for that specific card only; advancing returns to the default masked state. Desktop shortcut: `H`.
+  - `⇄` (`#btnRoleFlip`): Instantly inverts `Front` and `Back` roles in-flight via `engine.flipRoles()`. The card re-renders immediately without advancing the queue, altering active pool, or resetting session streak/accuracy. Desktop shortcut: `Tab`.
+  - `⚙️` (`#btnSettings`): Opens the 4-tab settings modal without terminating the current drill session.
+* **Route 4 (Sensory / Kid Mode) Suppression Guardrail:**
+  - When entering Route 4, `#topbar` is automatically set to `inert` and `aria-hidden="true"`, with CSS enforcing `display: none !important; pointer-events: none !important;`.
+
+### 2.15 Module 4: In-App Tabular Deck Creator & Editor (`#newDeckModal`)
+* **Spreadsheet-Style Authoring:**
+  - Metadata header: `Deck name`, `Prompt language` dropdown (BCP-47), and `Pinyin tones checking` toggle.
+  - Action Ribbon:
+    - `+ Add card`: Appends an empty row with default unit inherited from preceding row.
+    - `Split into units of 10`: Sequentially groups rows into `Unit 1` (1–10), `Unit 2` (11–20), `Unit 3` (21–30), matching the DJT micro-chunking model.
+    - `Paste TSV / Anki`: Collapsible bulk-paste area supporting 2-, 3-, 4-, or 5-column TSV data.
+  - Table Columns: `PROMPT / CLOZE SENTENCE`, `ANSWER`, `HINT / SUBTITLE`, `UNIT`, and `Action (✕)`.
+  - **Auto-Cloze Detection:** Typing cloze brackets (e.g. `Je {{suis}} fatigué` or `这是{{老师}}`) into the prompt field extracts the target string into the `ANSWER` input automatically, provided the answer field is empty (preventing destructive overwrite of custom answers).
+  - Compilation & Persistence: Validates rows, compiles into unified card schema, saves to `customDecks`, updates manifest, and makes the deck immediately selectable.
+
+### 2.16 Global Brand Migration (`SpeedRecall` $\to$ `Reflex`)
+* **Unified Brand Identity:** Rebranded customer-facing strings, metadata manifests, document titles, OpenGraph/Twitter tags, and package definitions from `SpeedRecall` to `Reflex`.
+* **Zero-Loss Backward-Compatible Migration:**
+  - Primary storage key transitioned from `speedrecall_v3` to `reflex_v3`.
+  - Token transaction log transitioned from `speedrecall_token_ledger` to `reflex_token_ledger`.
+  - In `Store.constructor` and `Store.#load()`, if `reflex_v3` is absent, the store automatically ingests and migrates legacy data from `speedrecall_v3`.
+  - In `TokenExposureLedger.load()`, legacy logs under `speedrecall_token_ledger` or `speedrecall_ledger_log_v1` are seamlessly migrated to `reflex_token_ledger`.
+  - In `GitHubSync`, default sync file is `reflex-data.json`, with automated fallback to `speedrecall-data.json` on initial 404 responses.
+
 ---
 
 ## 3. UI/UX & Component Behavior
@@ -222,20 +301,21 @@ interface Card {
 ### 4.2 Local Storage & State Payload (`state.js`)
 * **State Schema Version:** 3
 * **Keys:**
-  - `speedrecall_v3`: Snapshot of custom decks, progress records (`${deckId}::${cardId} -> { w, n, c, t }`), deleted deck tombstones, and per-deck preferences.
-  - `speedrecall_token_ledger`: Newline-delimited JSON transaction log for token exposures:
-    `{"token": "laoshi", "success": true, "t": 1729272000000}`.
+  - `reflex_v3`: Snapshot of custom decks, progress records (`${deckId}::${cardId} -> { w, n, c, t }`), deleted deck tombstones, and per-deck preferences. (Seamless backward-compatible migration from `speedrecall_v3`).
+  - `reflex_token_ledger`: Newline-delimited JSON transaction log for token exposures:
+    `{"token": "laoshi", "success": true, "t": 1729272000000}`. (Seamless backward-compatible migration from `speedrecall_token_ledger` and `speedrecall_ledger_log_v1`).
 
 ---
 
 ## 5. Verification Suite & Quality Gates
 
-The test architecture consists of 10 hermetic test suites executed via Node.js native test runner (`node --test tests/*.test.mjs`), ensuring zero test cross-contamination:
+The test architecture consists of 11 hermetic test suites executed via Node.js native test runner (`node --test tests/*.test.mjs`), ensuring zero test cross-contamination:
 
 | Test Suite | Tests | Verification Scope |
 | :--- | :---: | :--- |
+| `tests/features_v3.test.mjs` | **9** | Tab navigation isolation in `#settingsModal`, role inversion integrity (`flipRoles` / `⇄` without reload/reset), 10-unit micro-chunking pool restriction, auto-cloze extraction in tabular builder, batch unit splitting in groups of 10, brand migration metadata verification, zero-loss `Store` ingestion (`speedrecall_v3` $\to$ `reflex_v3`), zero-loss `TokenExposureLedger` ingestion, and GitHubSync `reflex-data.json` fallback. |
 | `tests/datasets.test.mjs` | **17** | Unified schema validation, global ID uniqueness, Unicode NFC enforcement, $\ge 30\%$ alias coverage, Chinese space-collapsing, Yorùbá speed vs. strict diacritics, French elisions, 3-tier audio decoding & silent fallback, dynamic blank rotation, legacy backward compatibility, HTML document UTF-8 `<head>` declaration, canonical Unicode fixture enforcement (zero BOM/mojibake). |
-| `tests/decks.test.mjs` | **11** | Manifest answerability across all 11 built-in and test decks in STANDARD and STRICT modes. |
+| `tests/decks.test.mjs` | **6** | Manifest answerability across all built-in and test decks in STANDARD and STRICT modes. |
 | `tests/visual.test.mjs` | **13** | Dynamic 100dvh viewport, 300px keyboard clearance, CLS = 0, font fallback alignment, safe-area padding, $\ge 48\text{px}$ targets, chrome suppression, radial hold-to-unlock, quick resume $\le 2$ taps, Route 1 Sprint clutter suppression, sensory tap surface tactile affordance. |
 | `tests/normalizer.test.mjs` | **17** | NFC/NFD equivalence, speed diacritic stripping, strict rejection, Pinyin tone suffix parsing, alias resolution, $<10\text{ms}$ / 1,000 evaluations throughput benchmark. |
 | `tests/lockdown.test.mjs` | **11** | Sensory route isolation, virtual keyboard suppression, 2.0s hold cancellation, touch interruption resilience, 200ms tap debounce, wake lock API. |
@@ -243,8 +323,8 @@ The test architecture consists of 10 hermetic test suites executed via Node.js n
 | `tests/cloze.test.mjs` | **12** | Dynamic blank alignment, multi-word token replacement, punctuation isolation, Chinese vs. Latin space rendering, Latin `ch` vs. CJK `em` inline width calculation, punctuation gap elimination (.cloze-token--punct), dual-input elimination (answer-row suppression), scoped cloze typography. |
 | `tests/scaffolding.test.mjs` | **14** | Deck verification, alias coverage, tone parsing, lookahead pre-fetch, cascade fallback, token ledger frequency-capping. |
 | `tests/audio.test.mjs` | **4** | Audio lookahead queue, 3-tier cascade fallback, buffer release memory management, stumble-recycled buffer retention lifecycle. |
-| `tests/integration.test.mjs` | **1** | State immutability and sync isolation during 50-card continuous drill sprints. |
-| **Total** | **114** | **100% Passing (0 failures, 0 skipped, 0 cancelled)** |
+| `tests/integration.test.mjs` | **2** | State immutability and sync isolation during 50-card continuous drill sprints; service worker cache busting, lifecycle claim, and asset versioning. |
+| **Total** | **119** | **100% Passing (0 failures, 0 skipped, 0 cancelled)** |
 
 ---
 

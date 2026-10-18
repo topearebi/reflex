@@ -170,6 +170,18 @@ export class RouteController extends EventTarget {
       await this.releaseWakeLock();
     }
 
+    // Topbar suppression guardrail for Route 4 Sensory Flash
+    if (typeof document !== "undefined") {
+      const topbar = document.getElementById("topbar");
+      if (topbar) {
+        if (newRoute === Routes.SENSORY_FLASH) {
+          topbar.setAttribute("inert", "");
+        } else {
+          topbar.removeAttribute("inert");
+        }
+      }
+    }
+
     this.dispatchEvent(new CustomEvent("route-changed", { detail: { prevRoute, route: newRoute } }));
 
     // Re-mount current card in new route presentation if active

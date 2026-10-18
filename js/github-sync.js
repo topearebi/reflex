@@ -6,7 +6,8 @@
  * Uses the repo's default branch.
  */
 
-const CONFIG_KEY = "speedrecall_github_sync_cfg_v1";
+const CONFIG_KEY = "reflex_github_sync_cfg_v1";
+const LEGACY_CONFIG_KEY = "speedrecall_github_sync_cfg_v1";
 
 function encodeBase64(str) {
   const bytes = new TextEncoder().encode(str);
@@ -25,9 +26,15 @@ function decodeBase64(b64) {
 export class GitHubSync {
   constructor(store) {
     this.store = store;
-    this.config = { token: "", repo: "", filePath: "speedrecall-data.json" };
+    this.config = { token: "", repo: "", filePath: "reflex-data.json" };
     try {
-      Object.assign(this.config, JSON.parse(localStorage.getItem(CONFIG_KEY) || "{}"));
+      const saved = localStorage.getItem(CONFIG_KEY) || localStorage.getItem(LEGACY_CONFIG_KEY);
+      if (saved) {
+        Object.assign(this.config, JSON.parse(saved));
+        if (this.config.filePath === "speedrecall-data.json") {
+          this.config.filePath = "reflex-data.json";
+        }
+      }
     } catch {
       /* ignore */
     }
@@ -105,17 +112,39 @@ export class GitHubSync {
       const remote = JSON.parse(decodeBase64(file.content));
       const firstSyncHere = !this.store.state.sync.lastSynced;
       this.store.mergeData(remote, { adoptPrefs: firstSyncHere });
-    } else if (getRes.status !== 404) {
-      throw new Error(await this.#explain(getRes));
+    } else if (getRes.status === 404) {
+      // If remote sync fails to find reflex-data.json on initial connection, check for speedrecall-data.json as a fallback
+      let resolvedFallback = false;
+      if (this.config.filePath === "reflex-data.json") {
+        try {
+          const fallbackPath = encodeURIComponent("speedrecall-data.json");
+          const fallbackRes = await fetch(`https://api.github.com/repos/${this.config.repo}/contents/${fallbackPath}`, {
+            headers: this.#headers(),
+            cache: "no-store"
+          });
+          if (fallbackRes.ok) {
+            const file = await fallbackRes.json();
+            const remote = JSON.parse(decodeBase64(file.content));
+            const firstSyncHere = !this.store.state.sync.lastSynced;
+            this.store.mergeData(remote, { adoptPrefs: firstSyncHere });
+            resolvedFallback = true;
+          }
+        } catch {
+          /* fallback check skipped */
+        }
+      }
+      if (!resolvedFallback) {
+        // 404 is either "file not created yet" or "repo not visible" — check which
+        const repoRes = await fetch(`https://api.github.com/repos/${this.config.repo}`, { headers: this.#headers() });
+        if (!repoRes.ok) throw new Error(await this.#explain(repoRes));
+      }
     } else {
-      // 404 is either "file not created yet" or "repo not visible" — check which
-      const repoRes = await fetch(`https://api.github.com/repos/${this.config.repo}`, { headers: this.#headers() });
-      if (!repoRes.ok) throw new Error(await this.#explain(repoRes));
+      throw new Error(await this.#explain(getRes));
     }
 
     // 2. Push merged state
     const body = {
-      message: `SpeedRecall sync ${new Date().toISOString()}`,
+      message: `Reflex sync ${new Date().toISOString()}`,
       content: encodeBase64(JSON.stringify(this.store.exportData()))
     };
     if (sha) body.sha = sha;

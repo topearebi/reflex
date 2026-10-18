@@ -1,7 +1,7 @@
 {
-  "name": "SpeedRecall",
-  "short_name": "SpeedRecall",
-  "description": "Rapid-fire flashcard drilling for any language.",
+  "name": "Reflex",
+  "short_name": "Reflex",
+  "description": "Rapid active recall and reflex drilling for any language.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
